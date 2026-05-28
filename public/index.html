@@ -5,119 +5,164 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Tipovačka</title>
 <style>
-body{margin:0;background:#f4f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:#101828;padding-bottom:90px}
-.app{max-width:620px;margin:0 auto}.hero{margin:14px;padding:18px;border-radius:28px;color:white;background:linear-gradient(135deg,#0f172a,#1d4ed8);box-shadow:0 18px 36px #0f172a30}.big{font-size:32px;font-weight:950}.card{background:white;margin:12px 14px;padding:16px;border-radius:24px;border:1px solid #e5e7eb;box-shadow:0 12px 28px #00000012}.title{font-size:20px;font-weight:950;margin-bottom:12px}.note{font-size:13px;color:#667085;line-height:1.35}.input{width:100%;box-sizing:border-box;border:1px solid #e5e7eb;background:#f9fafb;border-radius:16px;padding:13px;margin:6px 0}.btn{border:0;border-radius:16px;padding:12px 13px;font-weight:950;background:#e8f0ff;color:#1d4ed8}.btn.primary{background:#2563eb;color:white}.full{width:100%}.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px}.notice{background:#fff7ed;color:#9a3412;border:1px solid #fed7aa;border-radius:18px;padding:12px;white-space:pre-wrap}.bad{background:#fef2f2;color:#991b1b;border-color:#fecaca}.ok{background:#ecfdf3;color:#027a48;border-color:#bbf7d0}.tabs{display:flex;gap:8px;overflow:auto;padding:0 14px 4px}.tabs button{white-space:nowrap;border:1px solid #e5e7eb;background:white;border-radius:999px;padding:10px 13px;font-weight:950;color:#667085}.tabs button.on{background:#2563eb;color:white}.match{border:1px solid #e5e7eb;border-radius:18px;padding:13px;margin:10px 0;background:#fbfcff}.teams{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin:12px 0}.team{text-align:center;font-weight:950}.vs{width:42px;height:42px;border-radius:50%;background:#f2f4f7;color:#667085;display:flex;align-items:center;justify-content:center;font-weight:900}.score{text-align:center;font-size:25px;font-weight:950}.badge{display:inline-block;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:950;background:#eff6ff;color:#1d4ed8}.live{background:#dcfce7;color:#166534}.done{background:#f2f4f7;color:#475467}.teamrow{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;padding:10px 0}.bottom{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);width:min(600px,calc(100% - 16px));background:white;border-radius:25px;box-shadow:0 14px 34px #0002;display:grid;grid-template-columns:repeat(4,1fr);padding:7px}.bottom button{border:0;background:white;color:#667085;border-radius:18px;padding:8px 2px;font-size:11px;font-weight:950}.bottom button.on{background:#e8f0ff;color:#1d4ed8}
+:root{--bg:#f3f6fb;--card:#fff;--text:#101828;--muted:#667085;--line:#e5e7eb;--blue:#2563eb;--blue2:#e8f0ff;--green:#16a34a;--red:#dc2626;--orange:#f97316;--shadow:0 12px 28px rgba(16,24,40,.10)}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#eaf1ff,#f7f9ff 260px,#f3f6fb);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--text);padding-bottom:92px}
+button,input{font:inherit}button{cursor:pointer}.app{max-width:720px;margin:0 auto}.hero{margin:14px;padding:19px;border-radius:30px;color:white;background:linear-gradient(135deg,#0f172a,#1d4ed8);box-shadow:0 18px 36px rgba(15,23,42,.18)}.big{font-size:34px;font-weight:950;line-height:1.05}.hero-sub{opacity:.9;margin-top:4px}
+.card{background:white;margin:12px 14px;padding:16px;border-radius:24px;border:1px solid var(--line);box-shadow:var(--shadow)}.title{font-size:21px;font-weight:950;margin:0 0 12px}.note{font-size:13px;color:var(--muted);line-height:1.35}.muted{color:var(--muted)}
+.input{width:100%;box-sizing:border-box;border:1px solid var(--line);background:#f9fafb;border-radius:16px;padding:13px;margin:6px 0}.btn{border:0;border-radius:16px;padding:12px 13px;font-weight:950;background:var(--blue2);color:#1d4ed8}.btn.primary{background:var(--blue);color:white}.full{width:100%}
+.notice{background:#fff7ed;color:#9a3412;border:1px solid #fed7aa;border-radius:18px;padding:12px;white-space:pre-wrap}.bad{background:#fef2f2;color:#991b1b;border-color:#fecaca}.ok{background:#ecfdf3;color:#027a48;border-color:#bbf7d0}.info{background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe}
+.tabs{display:flex;gap:8px;overflow:auto;padding:0 14px 6px}.tabs button{white-space:nowrap;border:1px solid var(--line);background:white;border-radius:999px;padding:10px 13px;font-weight:950;color:#667085}.tabs button.on{background:#2563eb;color:white;border-color:#2563eb}
+.match{border:1px solid var(--line);border-radius:20px;padding:14px;margin:10px 0;background:#fbfcff;cursor:pointer;transition:.15s}.match:hover{transform:translateY(-1px);box-shadow:0 10px 24px #0001}.match-top{display:flex;justify-content:space-between;gap:8px;align-items:center}.badge{display:inline-block;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:950;background:#eff6ff;color:#1d4ed8}.live{background:#dcfce7;color:#166534}.done{background:#f2f4f7;color:#475467}
+.teams{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin:12px 0}.team{text-align:center;font-weight:950}.flag{font-size:30px}.team-name{font-size:16px}.score{font-size:28px;font-weight:950;text-align:center;min-width:74px}.date-title{font-weight:950;margin:18px 0 8px;color:#344054}.periods{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}.chip{font-size:12px;padding:5px 8px;border-radius:999px;background:#f2f4f7;color:#475467;font-weight:800}
+.teamrow{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;border-bottom:1px solid #eee;padding:11px 0}.stat{font-weight:900}.table{width:100%;border-collapse:collapse}.table th,.table td{border-bottom:1px solid #eee;padding:9px 4px;text-align:left}.right{text-align:right}.center{text-align:center}.small{font-size:12px}
+.bottom{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);width:min(700px,calc(100% - 16px));background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:25px;box-shadow:0 14px 34px #0002;display:grid;grid-template-columns:repeat(4,1fr);padding:7px}.bottom button{border:0;background:transparent;color:#667085;border-radius:18px;padding:8px 2px;font-size:11px;font-weight:950}.bottom button.on{background:#e8f0ff;color:#1d4ed8}
+.modal-bg{position:fixed;inset:0;background:#0008;z-index:40;display:flex;align-items:flex-end}.modal{background:white;width:100%;max-width:720px;margin:0 auto;border-radius:28px 28px 0 0;padding:18px;max-height:88vh;overflow:auto}.modal h2{margin:0 0 8px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.raw{font-size:11px;white-space:pre-wrap;max-height:220px;overflow:auto;background:#f9fafb;border:1px solid #eee;border-radius:14px;padding:10px;color:#344054}
+@media(min-width:760px){.modal-bg{align-items:center}.modal{border-radius:28px}}
 </style>
 </head>
 <body>
 <div id="root"></div>
 <script>
-let data=null, view="today", logged=false;
+let data=null, view="games", filter="all", selected=null, logged=false;
 
 function e(s){return String(s??"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[m]))}
-function dt(x){try{return new Date(x).toLocaleString("cs-CZ",{dateStyle:"medium",timeStyle:"short"})}catch{return x||""}}
-function key(x){const d=new Date(x);return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
-function today(){const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
-function score(g){return g.score || "–"}
-function live(g){return g.live}
-function done(g){return g.done}
+function dateKey(x){const d=new Date(x);return d.toLocaleDateString("cs-CZ",{weekday:"long",day:"numeric",month:"long",year:"numeric"})}
+function dateTime(x){try{return new Date(x).toLocaleString("cs-CZ",{dateStyle:"medium",timeStyle:"short"})}catch{return x||""}}
+function byDate(games){const groups={};games.forEach(g=>{const k=dateKey(g.date); if(!groups[k])groups[k]=[]; groups[k].push(g)});return groups}
+function cls(g){return g.live?"live":g.done?"done":""}
 
 async function loadData(){
   document.getElementById("content").innerHTML='<div class="card"><div class="notice">Načítám data přes Cloudflare backend…</div></div>';
   try{
     const res=await fetch("/api/live-data");
     const json=await res.json();
-    if(!res.ok) throw new Error(json.error || "Backend chyba");
+    if(!res.ok) throw new Error(json.error||"Backend chyba");
     data=json;
     render();
   }catch(err){
-    document.getElementById("content").innerHTML=`<div class="card"><div class="notice bad">Nepodařilo se načíst data:\n${e(err.message)}\n\nZkontroluj v Cloudflare:\n1) proměnnou APISPORTS_KEY\n2) D1 binding DB\n3) Functions deployment</div></div>`;
+    document.getElementById("content").innerHTML=`<div class="card"><div class="notice bad">Nepodařilo se načíst data:\n${e(err.message)}\n\nZkontroluj Functions a APISPORTS_KEY.</div></div>`;
   }
 }
 
 function login(){
-  const mail=document.getElementById("email").value.trim();
-  const pass=document.getElementById("pass").value.trim();
-  if(!mail||!pass){alert("Vyplň přihlášení.");return}
-  logged=true;
-  render();
-  loadData();
+  if(!document.getElementById("email").value || !document.getElementById("pass").value){alert("Vyplň přihlášení.");return}
+  logged=true; render(); loadData();
 }
 
 function loginScreen(){
   return `<div class="app">
-    <div class="hero"><div class="big">🏒 Tipovačka</div><div>MS v hokeji 2026 • data přes Cloudflare backend</div></div>
-    <div class="card">
-      <div class="title">Přihlášení</div>
+    <div class="hero"><div class="big">🏒 Tipovačka</div><div class="hero-sub">MS v hokeji • přehled zápasů, týmů a statistik</div></div>
+    <div class="card"><div class="title">Přihlášení</div>
       <input id="email" class="input" placeholder="E-mail">
       <input id="pass" type="password" class="input" placeholder="Heslo">
       <button class="btn primary full" onclick="login()">Přihlásit</button>
-      <p class="note">Veřejně nezobrazujeme demo přihlašovací údaje. Účet aktivuje admin po zaplacení.</p>
+      <p class="note">Po registraci a zaplacení poplatku účet aktivuje admin.</p>
     </div>
   </div>`;
 }
 
-function filteredGames(){
-  const games=data?.games || [];
-  if(view==="all") return games;
-  if(view==="today") return games.filter(g=>key(g.date)===today());
-  if(view==="live") return games.filter(live);
-  if(view==="done") return games.filter(done);
+function gamesFiltered(){
+  const games=data?.games||[];
+  if(filter==="done") return games.filter(g=>g.done);
+  if(filter==="live") return games.filter(g=>g.live);
+  if(filter==="playoff") return games.filter(g=>/quarter|semi|final|čtvrt|semi|fin/i.test(g.phase+" "+g.stage));
   return games;
 }
 
 function gamesHtml(){
-  if(!data) return `<div class="card"><div class="notice">Data nejsou načtená.</div></div>`;
-  const arr=filteredGames();
+  const games=gamesFiltered();
+  const groups=byDate(games);
   return `<div class="tabs">
-    <button class="${view==="today"?"on":""}" onclick="view='today';render()">Dnes</button>
-    <button class="${view==="live"?"on":""}" onclick="view='live';render()">Live</button>
-    <button class="${view==="done"?"on":""}" onclick="view='done';render()">Dohráno</button>
-    <button class="${view==="all"?"on":""}" onclick="view='all';render()">Vše</button>
+    <button class="${filter==="all"?"on":""}" onclick="filter='all';render()">Vše (${data.games.length})</button>
+    <button class="${filter==="done"?"on":""}" onclick="filter='done';render()">Dohráno</button>
+    <button class="${filter==="live"?"on":""}" onclick="filter='live';render()">Live</button>
+    <button class="${filter==="playoff"?"on":""}" onclick="filter='playoff';render()">Play-off</button>
   </div>
   <div class="card"><div class="title">Zápasy</div>
-  <div class="notice ok">API odpovědělo. Načteno zápasů: ${data.games.length}</div>
-  ${arr.length?arr.map(g=>`<div class="match">
-    <span class="badge ${g.live?"live":g.done?"done":""}">${e(g.statusText)}</span>
-    <div class="note">${e(g.phase)} • ${dt(g.date)}</div>
-    <div class="teams"><div class="team">${e(g.home)}</div><div class="vs">VS</div><div class="team">${e(g.away)}</div></div>
-    <div class="score">${e(score(g))}</div>
-    <div class="grid3" style="margin-top:12px"><button class="btn">1</button><button class="btn">X</button><button class="btn">2</button></div>
-  </div>`).join(""):`<div class="notice">Pro tento filtr nejsou zápasy. Klikni na „Vše“.</div>`}
+    <div class="notice ok">API funguje. Načteno zápasů: ${data.games.length}</div>
+    ${games.length?Object.entries(groups).map(([day,arr])=>`<div class="date-title">${e(day)}</div>${arr.map(g=>matchCard(g)).join("")}`).join(""):`<div class="notice">Pro tento filtr nejsou zápasy.</div>`}
+  </div>`;
+}
+
+function matchCard(g){
+  return `<div class="match" onclick="selected='${g.id}';render()">
+    <div class="match-top"><span class="badge ${cls(g)}">${e(g.statusText)}</span><span class="note">${dateTime(g.date)}</span></div>
+    <div class="teams">
+      <div class="team"><div class="flag">${e(g.homeFlag)}</div><div class="team-name">${e(g.home)}</div></div>
+      <div class="score">${e(g.score||"–")}</div>
+      <div class="team"><div class="flag">${e(g.awayFlag)}</div><div class="team-name">${e(g.away)}</div></div>
+    </div>
+    <div class="periods">${(g.periods||[]).map(p=>`<span class="chip">${e(p)}</span>`).join("")}</div>
+    <div class="note center">${e(g.phase)} ${g.stage?`• ${e(g.stage)}`:""}</div>
   </div>`;
 }
 
 function teamsHtml(){
-  const teams=data?.teams || [];
+  const teams=data?.teams||[];
   return `<div class="card"><div class="title">Týmy a statistiky</div>
-    <p class="note">Statistiky jsou teď odvozené z načtených zápasů. Další krok: doplnit detailní endpoint týmů a soupisky.</p>
-    ${teams.length?teams.map(t=>`<div class="teamrow"><b>${e(t.name)}</b><span class="note">zápasy: ${t.played} • góly: ${t.goalsFor}:${t.goalsAgainst} • bilance: ${t.w}-${t.d}-${t.l}</span></div>`).join(""):`<div class="notice">Žádné týmy.</div>`}
-  </div>`;
+  <p class="note">Statistiky jsou vypočtené z výsledků načtených z API.</p>
+  <table class="table">
+    <thead><tr><th>Tým</th><th class="center">Z</th><th class="center">V</th><th class="center">R</th><th class="center">P</th><th class="right">Skóre</th></tr></thead>
+    <tbody>${teams.map(t=>`<tr><td><b>${e(t.flag)} ${e(t.name)}</b></td><td class="center">${t.played}</td><td class="center">${t.w}</td><td class="center">${t.d}</td><td class="center">${t.l}</td><td class="right">${t.goalsFor}:${t.goalsAgainst}</td></tr>`).join("")}</tbody>
+  </table></div>`;
+}
+
+function standingsHtml(){
+  const teams=[...(data?.teams||[])].sort((a,b)=>(b.w*3+b.d)-(a.w*3+a.d)||((b.goalsFor-b.goalsAgainst)-(a.goalsFor-a.goalsAgainst)));
+  return `<div class="card"><div class="title">Orientační tabulka</div>
+  <p class="note">Pořadí je orientačně vypočtené ze všech dohraných zápasů. Skupiny doplníme v další verzi podle dat API.</p>
+  <table class="table">
+    <thead><tr><th>#</th><th>Tým</th><th class="center">B</th><th class="center">Z</th><th class="right">Skóre</th></tr></thead>
+    <tbody>${teams.map((t,i)=>`<tr><td>${i+1}</td><td><b>${e(t.flag)} ${e(t.name)}</b></td><td class="center"><b>${t.w*3+t.d}</b></td><td class="center">${t.played}</td><td class="right">${t.goalsFor}:${t.goalsAgainst}</td></tr>`).join("")}</tbody>
+  </table></div>`;
 }
 
 function apiHtml(){
   return `<div class="card"><div class="title">API diagnostika</div>
-    <p>League ID: <b>${data?.league || "-"}</b><br>Season: <b>${data?.season || "-"}</b><br>Načteno zápasů: <b>${data?.games?.length || 0}</b></p>
-    <button class="btn primary full" onclick="loadData()">Znovu načíst</button>
-    <hr>
-    <p class="note">Pokud je zápasů 0, pošli mi screenshot této obrazovky.</p>
-    <pre class="notice">${e(JSON.stringify(data?.debug || {}, null, 2))}</pre>
-  </div>`;
+  <p>League ID: <b>${data?.league}</b><br>Season: <b>${data?.season}</b><br>Zápasy: <b>${data?.games?.length}</b><br>Týmy: <b>${data?.teams?.length}</b></p>
+  <button class="btn primary full" onclick="loadData()">Znovu načíst</button>
+  <pre class="raw">${e(JSON.stringify(data?.debug||{},null,2))}</pre></div>`;
+}
+
+function modalHtml(){
+  if(!selected)return "";
+  const g=(data.games||[]).find(x=>x.id===selected);
+  if(!g)return "";
+  return `<div class="modal-bg" onclick="selected=null;render()"><div class="modal" onclick="event.stopPropagation()">
+    <button class="btn full" onclick="selected=null;render()">Zavřít</button>
+    <h2>${e(g.home)} vs ${e(g.away)}</h2>
+    <p class="note">${dateTime(g.date)} • ${e(g.statusText)}</p>
+    <div class="teams">
+      <div class="team"><div class="flag">${e(g.homeFlag)}</div><div class="team-name">${e(g.home)}</div></div>
+      <div class="score">${e(g.score||"–")}</div>
+      <div class="team"><div class="flag">${e(g.awayFlag)}</div><div class="team-name">${e(g.away)}</div></div>
+    </div>
+    <div class="card" style="margin:12px 0"><div class="title">Skóre po částech</div>${(g.periods||[]).length?g.periods.map(p=>`<span class="chip">${e(p)}</span>`).join(" "):"<p class='note'>API neposlalo rozpis po třetinách.</p>"}</div>
+    <div class="grid2">
+      <div class="notice info"><b>Fáze</b><br>${e(g.phase||"-")}</div>
+      <div class="notice info"><b>Status</b><br>${e(g.statusText||"-")}</div>
+    </div>
+    <h3>Raw API data</h3>
+    <pre class="raw">${e(JSON.stringify(g.raw||{},null,2))}</pre>
+  </div></div>`;
 }
 
 function render(){
   if(!logged){document.getElementById("root").innerHTML=loginScreen();return}
-  let body=view==="teams"?teamsHtml():view==="api"?apiHtml():gamesHtml();
+  let body=!data?`<div class="card"><div class="notice">Načítám…</div></div>`:
+    view==="teams"?teamsHtml():
+    view==="standings"?standingsHtml():
+    view==="api"?apiHtml():gamesHtml();
   document.getElementById("root").innerHTML=`<div class="app">
-    <div class="hero"><div class="big">Tipovačka</div><div>World Championship 2026</div></div>
+    <div class="hero"><div class="big">Tipovačka</div><div class="hero-sub">World Championship ${data?.season||""}</div></div>
     <div id="content">${body}</div>
   </div>
   <div class="bottom">
-    <button class="${!['teams','api'].includes(view)?"on":""}" onclick="view='today';render()">🏒<br>Zápasy</button>
+    <button class="${view==="games"?"on":""}" onclick="view='games';filter='all';render()">🏒<br>Zápasy</button>
     <button class="${view==="teams"?"on":""}" onclick="view='teams';render()">🌍<br>Týmy</button>
-    <button onclick="alert('Pořadí napojíme zpět po ověření API dat.')">🏆<br>Pořadí</button>
+    <button class="${view==="standings"?"on":""}" onclick="view='standings';render()">📊<br>Tabulka</button>
     <button class="${view==="api"?"on":""}" onclick="view='api';render()">⚙️<br>API</button>
-  </div>`;
+  </div>${modalHtml()}`;
 }
 render();
 </script>
