@@ -1,3 +1,1 @@
-# Tipovačka v3
-
-Nahraj do GitHubu a Cloudflare udělá nový deploy.
+Tipovačka stabilní v4 – bez závislosti na placeném live API.
