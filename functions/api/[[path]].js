@@ -1,9 +1,148 @@
-export async function onRequest({request,env}){let path=new URL(request.url).pathname.replace(/^\/api/,"")||"/";try{await tables(env);await seed(env);if(path=="/health")return j({ok:true});if(path=="/auth/login"&&request.method=="POST")return j(await login(env,await request.json()));if(path=="/auth/register"&&request.method=="POST")return j(await reg(env,await request.json()));let me=await auth(env,request);if(!me)return j({error:"Nepřihlášeno"},401);if(path=="/me")return j({user:pub(me)});if(path=="/app")return j(await app(env,me));if(path=="/bets"&&request.method=="POST")return j(await bet(env,me,await request.json()));if(path=="/admin/approve"&&request.method=="POST")return j(await approve(env,me,await request.json()));if(path=="/admin/settings"&&request.method=="POST")return j(await settings(env,me,await request.json()));if(path=="/admin/season"&&request.method=="POST")return j(await season(env,me,await request.json()));if(path=="/admin/archive"&&request.method=="POST")return j(await archive(env,me));if(path=="/admin/create-season"&&request.method=="POST")return j(await createSeason(env,me,await request.json()));if(path=="/admin/add-match"&&request.method=="POST")return j(await addMatch(env,me,await request.json()));if(path=="/admin/proposal"&&request.method=="POST")return j(await proposal(env,me,await request.json()));if(path=="/admin/sync"&&request.method=="POST")return j(await sync(env,me));return j({error:"Nenalezeno "+path},404)}catch(e){return j({error:e.message||String(e)},400)}}function j(d,s=200){return new Response(JSON.stringify(d),{status:s,headers:{"content-type":"application/json;charset=utf-8"}})}function id(p){return p+"-"+crypto.randomUUID()}function adm(me){if(!["admin","superadmin"].includes(me.role))throw Error("Nemáš oprávnění admina.")}function pub(u){return{id:u.id,name:u.name,email:u.email,role:u.role,approved:!!u.approved,paid:!!u.paid,avatar:u.avatar||"?",points:u.points||0}}async function hash(t){let h=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(t));return[...new Uint8Array(h)].map(b=>b.toString(16).padStart(2,"0")).join("")}
-async function tables(env){await env.DB.exec(`CREATE TABLE IF NOT EXISTS meta(key TEXT PRIMARY KEY,value TEXT);CREATE TABLE IF NOT EXISTS settings(id TEXT PRIMARY KEY,admin_fee INTEGER DEFAULT 10,game_fee INTEGER DEFAULT 100,split TEXT DEFAULT '[50,30,20]',api_league_id TEXT,api_season TEXT DEFAULT '2026');CREATE TABLE IF NOT EXISTS users(id TEXT PRIMARY KEY,name TEXT,email TEXT UNIQUE,password_hash TEXT,role TEXT DEFAULT 'player',approved INTEGER DEFAULT 0,paid INTEGER DEFAULT 0,avatar TEXT,points INTEGER DEFAULT 0);CREATE TABLE IF NOT EXISTS sessions(token TEXT PRIMARY KEY,user_id TEXT,created_at TEXT);CREATE TABLE IF NOT EXISTS seasons(id TEXT PRIMARY KEY,name TEXT,description TEXT,sport TEXT,active INTEGER DEFAULT 0,public INTEGER DEFAULT 0,status TEXT DEFAULT 'draft');CREATE TABLE IF NOT EXISTS matches(id TEXT PRIMARY KEY,season_id TEXT,external_id TEXT,phase TEXT,start_time TEXT,home TEXT,away TEXT,home_flag TEXT,away_flag TEXT,status TEXT DEFAULT 'locked',score TEXT,confirmed INTEGER DEFAULT 0,info TEXT);CREATE UNIQUE INDEX IF NOT EXISTS idx_matches_external ON matches(external_id);CREATE TABLE IF NOT EXISTS bets(user_id TEXT,match_id TEXT,pick TEXT,created_at TEXT,PRIMARY KEY(user_id,match_id));CREATE TABLE IF NOT EXISTS proposals(id TEXT PRIMARY KEY,type TEXT,match_id TEXT,text TEXT,payload TEXT,state TEXT DEFAULT 'waiting',created_at TEXT);`)}
-async function seed(env){if(await env.DB.prepare("SELECT value FROM meta WHERE key='seeded'").first())return;await env.DB.batch([env.DB.prepare("INSERT INTO meta VALUES('seeded','1')"),env.DB.prepare("INSERT INTO settings(id) VALUES('main')"),env.DB.prepare("INSERT INTO seasons(id,name,description,sport,active,public,status) VALUES('hockey-2026','MS v hokeji 2026','Tipování zápasů mistrovství světa v hokeji','hockey',1,1,'running')"),env.DB.prepare("INSERT INTO seasons(id,name,description,sport,active,public,status) VALUES('football-2026','MS ve fotbale 2026','Připravená budoucí soutěž','football',0,0,'draft')"),env.DB.prepare("INSERT INTO users VALUES('u-admin','Admin','admin@demo.cz',?,'superadmin',1,1,'A',0)").bind(await hash("admin123")),env.DB.prepare("INSERT INTO users VALUES('u-tomas','Tomáš','tomas@demo.cz',?,'player',1,1,'T',0)").bind(await hash("1234")),env.DB.prepare("INSERT INTO matches(id,season_id,phase,start_time,home,away,home_flag,away_flag,status,confirmed,info) VALUES('m1','hockey-2026','Skupina','2026-05-28T16:20','Kanada','USA','🇨🇦','🇺🇸','open',0,'Ukázkový zápas')"),env.DB.prepare("INSERT INTO matches(id,season_id,phase,start_time,home,away,home_flag,away_flag,status,confirmed,info) VALUES('m2','hockey-2026','Čtvrtfinále','2026-05-28T20:20','Česko','Finsko','🇨🇿','🇫🇮','open',0,'Tipuje se jen 1/X/2')")])}
-async function login(env,b){let u=await env.DB.prepare("SELECT * FROM users WHERE email=?").bind((b.email||"").toLowerCase().trim()).first();if(!u||u.password_hash!==await hash(b.password||""))throw Error("Špatný e-mail nebo heslo");let tok=id("tok");await env.DB.prepare("INSERT INTO sessions VALUES(?,?,datetime('now'))").bind(tok,u.id).run();return{token:tok}}async function reg(env,b){let name=(b.name||"").trim(),email=(b.email||"").trim().toLowerCase(),pass=b.password||"";if(!name||!email||pass.length<4)throw Error("Vyplň údaje");if(await env.DB.prepare("SELECT id FROM users WHERE email=?").bind(email).first())throw Error("E-mail už existuje");let uid=id("u"),tok=id("tok");await env.DB.prepare("INSERT INTO users(id,name,email,password_hash,role,approved,paid,avatar,points) VALUES(?,?,?,?, 'player',0,0,?,0)").bind(uid,name,email,await hash(pass),name[0].toUpperCase()).run();await env.DB.prepare("INSERT INTO sessions VALUES(?,?,datetime('now'))").bind(tok,uid).run();return{token:tok}}async function auth(env,req){let tok=(req.headers.get("authorization")||"").replace(/^Bearer\s+/i,"");if(!tok)return null;return await env.DB.prepare("SELECT users.* FROM sessions JOIN users ON users.id=sessions.user_id WHERE token=?").bind(tok).first()}
-function rp(sc){let[h,a]=String(sc).split(":").map(Number);return h>a?"1":h<a?"2":"X"}async function recalc(env){let us=(await env.DB.prepare("SELECT id FROM users").all()).results||[];for(let u of us){let rows=(await env.DB.prepare("SELECT bets.pick,matches.score FROM bets JOIN matches ON matches.id=bets.match_id WHERE bets.user_id=? AND matches.confirmed=1 AND matches.score IS NOT NULL").bind(u.id).all()).results||[];await env.DB.prepare("UPDATE users SET points=? WHERE id=?").bind(rows.reduce((s,r)=>s+(r.pick==rp(r.score)?1:0),0),u.id).run()}}
-async function app(env,me){await recalc(env);let set=await env.DB.prepare("SELECT * FROM settings WHERE id='main'").first();set.split=JSON.parse(set.split||"[50,30,20]");let sea=await env.DB.prepare("SELECT * FROM seasons WHERE active=1 LIMIT 1").first()||{id:"none",name:"Žádná aktivní soutěž"};let seasons=(await env.DB.prepare("SELECT * FROM seasons ORDER BY active DESC,status,name").all()).results||[],matches=(await env.DB.prepare("SELECT * FROM matches WHERE season_id=? ORDER BY start_time").bind(sea.id).all()).results||[],bets=(await env.DB.prepare("SELECT * FROM bets WHERE user_id=?").bind(me.id).all()).results||[],ranking=(await env.DB.prepare("SELECT id,name,email,role,approved,paid,avatar,points FROM users WHERE approved=1 AND paid=1 ORDER BY points DESC,name").all()).results||[],pending=["admin","superadmin"].includes(me.role)?((await env.DB.prepare("SELECT id,name,email,avatar FROM users WHERE approved=0 OR paid=0 ORDER BY name").all()).results||[]):[],proposals=["admin","superadmin"].includes(me.role)?((await env.DB.prepare("SELECT * FROM proposals WHERE state='waiting' ORDER BY created_at DESC").all()).results||[]):[];return{settings:set,season:sea,seasons,matches,bets,ranking,pending,proposals,pool:{players:ranking.length,game:ranking.length*set.game_fee,admin:ranking.length*set.admin_fee}}}
-async function bet(env,me,b){if(!me.approved||!me.paid)throw Error("Účet není aktivovaný");let m=await env.DB.prepare("SELECT * FROM matches WHERE id=?").bind(b.matchId).first();if(!m||m.status!="open")throw Error("Zápas nejde tipovat");if(!["1","X","2"].includes(b.pick))throw Error("Neplatný tip");await env.DB.prepare("INSERT INTO bets(user_id,match_id,pick,created_at) VALUES(?,?,?,datetime('now')) ON CONFLICT(user_id,match_id) DO UPDATE SET pick=excluded.pick,created_at=datetime('now')").bind(me.id,b.matchId,b.pick).run();return{ok:true}}
-async function approve(env,me,b){adm(me);await env.DB.prepare("UPDATE users SET approved=1,paid=1 WHERE id=?").bind(b.userId).run();return{ok:true}}async function settings(env,me,b){adm(me);await env.DB.prepare("UPDATE settings SET admin_fee=?,game_fee=?,split=?,api_league_id=?,api_season=? WHERE id='main'").bind(+b.admin_fee||10,+b.game_fee||100,JSON.stringify(b.split||[50,30,20]),b.api_league_id||null,b.api_season||"2026").run();return{ok:true}}async function season(env,me,b){adm(me);await env.DB.prepare("UPDATE seasons SET active=0,public=0").run();await env.DB.prepare("UPDATE seasons SET active=1,public=1,status=CASE WHEN status='archived' THEN 'running' ELSE status END WHERE id=?").bind(b.seasonId).run();return{ok:true}}async function archive(env,me){adm(me);await env.DB.prepare("UPDATE seasons SET active=0,public=0,status='archived' WHERE active=1").run();return{ok:true}}async function createSeason(env,me,b){adm(me);await env.DB.prepare("INSERT INTO seasons(id,name,description,sport,active,public,status) VALUES(?,?,?,?,0,0,'draft')").bind(id("season"),b.name||"Nová soutěž",b.description||"",b.sport||"hockey").run();return{ok:true}}async function addMatch(env,me,b){adm(me);let s=await env.DB.prepare("SELECT * FROM seasons WHERE active=1").first();if(!s)throw Error("Není aktivní soutěž");if(!b.home||!b.away)throw Error("Vyplň týmy");await env.DB.prepare("INSERT INTO matches(id,season_id,phase,start_time,home,away,home_flag,away_flag,status,confirmed,info) VALUES(?,?,?,?,?,?,?,?, 'open',0,'Ručně přidaný zápas')").bind(id("m"),s.id,b.phase||"Zápas",b.start_time||new Date().toISOString(),b.home,b.away,"🏒","🏒").run();return{ok:true}}async function proposal(env,me,b){adm(me);let p=await env.DB.prepare("SELECT * FROM proposals WHERE id=?").bind(b.proposalId).first();if(!p)throw Error("Návrh nenalezen");if(b.action=="reject"){await env.DB.prepare("UPDATE proposals SET state='rejected' WHERE id=?").bind(p.id).run();return{ok:true}}let data=JSON.parse(p.payload||"{}");if(p.type=="result"){await env.DB.prepare("UPDATE matches SET score=?,status='finished',confirmed=1 WHERE id=?").bind(data.score,p.match_id).run();await recalc(env)}await env.DB.prepare("UPDATE proposals SET state='accepted' WHERE id=?").bind(p.id).run();return{ok:true}}
-async function sync(env,me){adm(me);let set=await env.DB.prepare("SELECT * FROM settings WHERE id='main'").first(),sea=await env.DB.prepare("SELECT * FROM seasons WHERE active=1").first();if(!env.APISPORTS_KEY)throw Error("Chybí APISPORTS_KEY");if(!set.api_league_id)throw Error("V adminu nastav API league id");let r=await fetch(`https://v1.hockey.api-sports.io/games?league=${encodeURIComponent(set.api_league_id)}&season=${encodeURIComponent(set.api_season||"2026")}`,{headers:{"x-apisports-key":env.APISPORTS_KEY}});if(!r.ok)throw Error("API chyba "+r.status);let data=await r.json(),games=data.response||[],imported=0;for(let g of games){let ext=String(g.id??""),home=g.teams?.home?.name||"Domácí",away=g.teams?.away?.name||"Hosté";if(!ext)continue;let m=await env.DB.prepare("SELECT * FROM matches WHERE external_id=?").bind(ext).first();if(!m){await env.DB.prepare("INSERT INTO matches(id,season_id,external_id,phase,start_time,home,away,home_flag,away_flag,status,confirmed,info) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)").bind(id("m"),sea.id,ext,g.league?.name||"Zápas",g.date||new Date().toISOString(),home,away,"🏒","🏒","open",0,"Načteno z API-SPORTS").run();imported++}}return{ok:true,imported}}
+export async function onRequest(context) {
+  const { request, env } = context;
+  const url = new URL(request.url);
+  const path = url.pathname.replace(/^\/api/, "") || "/";
+
+  try {
+    if (path === "/live-data") return json(await liveData(env));
+    return json({ error: "Nenalezená API cesta: " + path }, 404);
+  } catch (e) {
+    return json({ error: e.message || String(e) }, 500);
+  }
+}
+
+function json(data, status = 200) {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: {
+      "content-type": "application/json;charset=utf-8",
+      "cache-control": "no-store"
+    }
+  });
+}
+
+function safeDate(x) {
+  return x || new Date().toISOString();
+}
+
+function statusText(g) {
+  return g?.status?.long || g?.status?.short || g?.status || "neznámý stav";
+}
+
+function statusShort(g) {
+  return String(g?.status?.short || g?.status || "").toUpperCase();
+}
+
+function isLive(g) {
+  const s = statusShort(g);
+  return ["1P","2P","3P","OT","BT","P"].includes(s) || /progress|live/i.test(statusText(g));
+}
+
+function isDone(g) {
+  const s = statusShort(g);
+  return ["FT","AOT","AP"].includes(s) || /finished|after/i.test(statusText(g));
+}
+
+function homeName(g) {
+  return g?.teams?.home?.name || g?.teams?.home || "Domácí";
+}
+
+function awayName(g) {
+  return g?.teams?.away?.name || g?.teams?.away || "Hosté";
+}
+
+function scoreObj(g) {
+  const h = g?.scores?.home ?? g?.goals?.home ?? null;
+  const a = g?.scores?.away ?? g?.goals?.away ?? null;
+  return { h, a };
+}
+
+function scoreText(g) {
+  const { h, a } = scoreObj(g);
+  return h !== null || a !== null ? `${h ?? ""}:${a ?? ""}` : "";
+}
+
+function normalizeGame(g) {
+  return {
+    id: String(g.id || g.game?.id || crypto.randomUUID()),
+    date: safeDate(g.date || g.time),
+    phase: g.league?.name || "World Championship",
+    home: homeName(g),
+    away: awayName(g),
+    statusText: statusText(g),
+    statusShort: statusShort(g),
+    live: isLive(g),
+    done: isDone(g),
+    score: scoreText(g),
+    rawStatus: g.status || null
+  };
+}
+
+function buildTeams(games) {
+  const map = {};
+  function ensure(name) {
+    if (!map[name]) map[name] = { name, played: 0, goalsFor: 0, goalsAgainst: 0, w: 0, d: 0, l: 0 };
+    return map[name];
+  }
+
+  for (const g of games) {
+    const h = ensure(g.home);
+    const a = ensure(g.away);
+    if (!g.done || !g.score) continue;
+
+    const [hg, ag] = g.score.split(":").map(Number);
+    if (Number.isNaN(hg) || Number.isNaN(ag)) continue;
+
+    h.played++; a.played++;
+    h.goalsFor += hg; h.goalsAgainst += ag;
+    a.goalsFor += ag; a.goalsAgainst += hg;
+
+    if (hg > ag) { h.w++; a.l++; }
+    else if (hg < ag) { a.w++; h.l++; }
+    else { h.d++; a.d++; }
+  }
+
+  return Object.values(map).sort((a,b)=>a.name.localeCompare(b.name, "cs"));
+}
+
+async function fetchGames(env, league, season) {
+  const apiUrl = `https://v1.hockey.api-sports.io/games?league=${encodeURIComponent(league)}&season=${encodeURIComponent(season)}`;
+  const res = await fetch(apiUrl, {
+    headers: { "x-apisports-key": env.APISPORTS_KEY }
+  });
+  const text = await res.text();
+  let data = {};
+  try { data = JSON.parse(text); } catch { data = { raw: text }; }
+  return { res, data, apiUrl };
+}
+
+async function liveData(env) {
+  if (!env.APISPORTS_KEY) throw new Error("Chybí APISPORTS_KEY v Cloudflare proměnných.");
+
+  const league = "111";
+  const season = "2026";
+  const { res, data, apiUrl } = await fetchGames(env, league, season);
+
+  if (!res.ok) {
+    throw new Error(`API-SPORTS chyba ${res.status}: ${JSON.stringify(data).slice(0, 300)}`);
+  }
+
+  const response = Array.isArray(data.response) ? data.response : [];
+  const games = response.map(normalizeGame).sort((a,b)=>new Date(a.date)-new Date(b.date));
+  const teams = buildTeams(games);
+
+  return {
+    league,
+    season,
+    games,
+    teams,
+    debug: {
+      apiUrl,
+      status: res.status,
+      responseCount: response.length,
+      firstItemKeys: response[0] ? Object.keys(response[0]) : [],
+      errors: data.errors || null,
+      paging: data.paging || null
+    }
+  };
+}
