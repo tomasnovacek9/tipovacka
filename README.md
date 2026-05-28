@@ -1,1 +1,1 @@
-Tipovačka stabilní v4 – bez závislosti na placeném live API.
+Tipovačka v5 – admin admin/admiN9, registrace přes vstupní kód, platby, zápasy, výsledky, body.
