@@ -1,7 +1,7 @@
-CREATE TABLE IF NOT EXISTS v14_settings(id TEXT PRIMARY KEY,admin_fee INTEGER DEFAULT 0,game_fee INTEGER DEFAULT 0,split TEXT DEFAULT '[50,30,20]',bank_account TEXT DEFAULT '',access_code TEXT DEFAULT 'TIP2026',rules_html TEXT);
-CREATE TABLE IF NOT EXISTS v14_users(id TEXT PRIMARY KEY,first TEXT NOT NULL,last TEXT NOT NULL,name_norm TEXT NOT NULL UNIQUE,password_hash TEXT NOT NULL,role TEXT DEFAULT 'player',approved INTEGER DEFAULT 0,paid INTEGER DEFAULT 0,initials TEXT,points INTEGER DEFAULT 0,tips_count INTEGER DEFAULT 0,evaluated_count INTEGER DEFAULT 0,hit_1 INTEGER DEFAULT 0,hit_3 INTEGER DEFAULT 0);
-CREATE TABLE IF NOT EXISTS v14_sessions(token TEXT PRIMARY KEY,user_id TEXT NOT NULL,created_at TEXT NOT NULL);
-CREATE TABLE IF NOT EXISTS v14_seasons(id TEXT PRIMARY KEY,name TEXT,description TEXT,sport TEXT,active INTEGER DEFAULT 0,status TEXT DEFAULT 'draft');
-CREATE TABLE IF NOT EXISTS v14_matches(id TEXT PRIMARY KEY,season_id TEXT,phase TEXT,start_time TEXT,home TEXT,away TEXT,home_flag TEXT,away_flag TEXT,status TEXT DEFAULT 'open',score TEXT,confirmed INTEGER DEFAULT 0,info TEXT);
-CREATE UNIQUE INDEX IF NOT EXISTS v14_match_unique ON v14_matches(season_id,start_time,home,away);
-CREATE TABLE IF NOT EXISTS v14_bets(user_id TEXT,match_id TEXT,pick TEXT,home_goals INTEGER,away_goals INTEGER,created_at TEXT,PRIMARY KEY(user_id,match_id));
+CREATE TABLE IF NOT EXISTS v16_settings(id TEXT PRIMARY KEY,admin_fee INTEGER DEFAULT 0,game_fee INTEGER DEFAULT 0,split TEXT DEFAULT '[50,30,20]',bank_account TEXT DEFAULT '',access_code TEXT DEFAULT 'TIP2026',rules_html TEXT);
+CREATE TABLE IF NOT EXISTS v16_users(id TEXT PRIMARY KEY,first TEXT NOT NULL,last TEXT NOT NULL,name_norm TEXT NOT NULL UNIQUE,password_hash TEXT NOT NULL,role TEXT DEFAULT 'player',approved INTEGER DEFAULT 0,paid INTEGER DEFAULT 0,initials TEXT,points INTEGER DEFAULT 0,tips_count INTEGER DEFAULT 0,evaluated_count INTEGER DEFAULT 0,hit_1 INTEGER DEFAULT 0,hit_3 INTEGER DEFAULT 0);
+CREATE TABLE IF NOT EXISTS v16_sessions(token TEXT PRIMARY KEY,user_id TEXT NOT NULL,created_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS v16_seasons(id TEXT PRIMARY KEY,name TEXT,description TEXT,sport TEXT,active INTEGER DEFAULT 0,status TEXT DEFAULT 'draft');
+CREATE TABLE IF NOT EXISTS v16_matches(id TEXT PRIMARY KEY,season_id TEXT,phase TEXT,start_time TEXT,home TEXT,away TEXT,home_flag TEXT,away_flag TEXT,status TEXT DEFAULT 'open',score TEXT,confirmed INTEGER DEFAULT 0,info TEXT);
+CREATE UNIQUE INDEX IF NOT EXISTS v16_match_unique ON v16_matches(season_id,start_time,home,away);
+CREATE TABLE IF NOT EXISTS v16_bets(user_id TEXT,match_id TEXT,pick TEXT,home_goals INTEGER,away_goals INTEGER,created_at TEXT,PRIMARY KEY(user_id,match_id));

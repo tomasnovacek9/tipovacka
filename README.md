@@ -1,4 +1,4 @@
-Tipovačka v15
+Tipovačka v16
 
 Nahraj do GitHubu:
 - public/index.html
@@ -10,10 +10,16 @@ Nahraj do GitHubu:
 - schema.sql
 - README.md
 
-Opravy:
-- admin formuláře už se samy nepřepisují
-- lze ukládat nastavení, výsledky a spravovat hráče
-- aktivní filtr je zvýrazněný
-- fáze/skupiny jsou v rozbalovací nabídce
-- pořadí ukazuje jen vyhodnocené tipy
-- ikona aplikace je varianta 1: míč + T
+Admin:
+Jméno: admin
+Příjmení: prázdné
+Heslo: admiN9
+
+Změny:
+- přihlášený uživatel ve všech hlavičkách
+- barevné výsledky v Tipy všech
+- silnější T v ikoně
+- aktivní role a stav hráče jsou zvýrazněné
+- více filtrů zápasů
+- skupiny/fáze rozbalovacím seznamem
+- admin údaje nejsou na přihlašovací obrazovce
