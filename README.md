@@ -1,4 +1,4 @@
-Tipovačka v8 profi
+Tipovačka v9 profi
 
 Nahraj do GitHubu:
 - public/index.html
@@ -9,4 +9,5 @@ Nahraj do GitHubu:
 Admin: admin / admiN9
 Vstupní kód: TIP2026
 
-Novinky: admin netipuje, profilovky, přesný výsledek, odpočet po sekundách, filtry dnes/zítra/vše/fáze, automatické vlajky, prázdné platby pro admina.
+Zachováno z předchozí verze: registrace, role, profilovky, admin, aktivace hráčů, zápasy, výsledky, pořadí.
+Nově: tipuje se jen přesný výsledek, pořadí ukazuje počet tipů / 1b / 3b, pravidla edituje admin.
