@@ -1,25 +1,14 @@
-Tipovačka v16
+# Tipovačka v17 profi
 
-Nahraj do GitHubu:
-- public/index.html
-- public/manifest.json
-- public/sw.js
-- public/icon.svg
-- public/worldcup2026-logo.png
-- functions/api/[[path]].js
-- schema.sql
-- README.md
+Úpravy:
+- nový tmavý Apple-like vzhled v barvách TIP loga,
+- nové PWA ikony: favicon.svg, icon.svg, icon-192.png, icon-512.png, apple-touch-icon.png,
+- registrační editor avataru: obličej, vlasy, barva, doplněk a vtipný titul,
+- avatary v profilu, správě hráčů a leaderboardu,
+- medaile pro TOP 3,
+- role zobrazené jako odznaky,
+- fáze „32 postupujících“ místo Round of 32,
+- rozpis šablony: 72 skupinových zápasů + 16 zápasů 32 postupujících + další vyřazovací část.
 
-Admin:
-Jméno: admin
-Příjmení: prázdné
-Heslo: admiN9
-
-Změny:
-- přihlášený uživatel ve všech hlavičkách
-- barevné výsledky v Tipy všech
-- silnější T v ikoně
-- aktivní role a stav hráče jsou zvýrazněné
-- více filtrů zápasů
-- skupiny/fáze rozbalovacím seznamem
-- admin údaje nejsou na přihlašovací obrazovce
+Poznámka:
+U skupin B–L jsou připravené pozice B1–L4. Admin může týmy jednoduše doplnit podle finálního rozlosování.
