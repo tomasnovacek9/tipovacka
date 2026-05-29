@@ -1,14 +1,24 @@
-# Tipovačka v17 profi
+Tipovačka v18 – profi oprava
 
-Úpravy:
-- nový tmavý Apple-like vzhled v barvách TIP loga,
-- nové PWA ikony: favicon.svg, icon.svg, icon-192.png, icon-512.png, apple-touch-icon.png,
-- registrační editor avataru: obličej, vlasy, barva, doplněk a vtipný titul,
-- avatary v profilu, správě hráčů a leaderboardu,
-- medaile pro TOP 3,
-- role zobrazené jako odznaky,
-- fáze „32 postupujících“ místo Round of 32,
-- rozpis šablony: 72 skupinových zápasů + 16 zápasů 32 postupujících + další vyřazovací část.
+Admin:
+- jméno: admin
+- heslo: admiN9
+
+Co je opraveno:
+- návrat k vybranému logu TIP v kruhu + fajfka
+- zachovaný motiv FIFA WORLD CUP 26 v hlavičce
+- moderní tmavý Apple-like vzhled
+- PWA ikony: favicon, apple-touch-icon, manifest
+- avatar editor při registraci bez nahrávání fotky
+- výběr avatara už nevrací uživatele na úvodní obrazovku
+- avatary jsou generované jako čisté SVG přímo v aplikaci
+- TOP 3 v pořadí mají medaile
+- role jsou vizuální odznaky
+- admin role se po nastavení automaticky aktivuje
+- admin se nepočítá do pořadí a nemůže tipovat
+- předvyplněno 72 skupinových zápasů + vyřazovací část = 104 zápasů
+- fáze Round of 32 je přejmenovaná na 32 postupujících
+- v adminu je výběr týmů z nabídky včetně vlajek
 
 Poznámka:
-U skupin B–L jsou připravené pozice B1–L4. Admin může týmy jednoduše doplnit podle finálního rozlosování.
+Předvyplněné týmy a zápasy jsou připravené jako praktická šablona pro aplikaci. Před ostrým nasazením je zkontroluj podle oficiálního rozpisu FIFA a případně uprav v adminu nebo přes import.
