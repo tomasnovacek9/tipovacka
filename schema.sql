@@ -1,6 +1,7 @@
-CREATE TABLE IF NOT EXISTS v9_settings(id TEXT PRIMARY KEY,admin_fee INTEGER DEFAULT 0,game_fee INTEGER DEFAULT 0,split TEXT DEFAULT '[50,30,20]',bank_account TEXT DEFAULT '',access_code TEXT DEFAULT 'TIP2026',rules_html TEXT DEFAULT '<p>Tipuje se přesný výsledek. Správný směr zápasu = 1 bod. Přesný výsledek = celkem 3 body.</p>');
-CREATE TABLE IF NOT EXISTS v9_users(id TEXT PRIMARY KEY,first TEXT NOT NULL,last TEXT NOT NULL,name_norm TEXT NOT NULL UNIQUE,password_hash TEXT NOT NULL,role TEXT DEFAULT 'player',approved INTEGER DEFAULT 0,paid INTEGER DEFAULT 0,avatar_data TEXT,initials TEXT,points INTEGER DEFAULT 0,total INTEGER DEFAULT 0,basic INTEGER DEFAULT 0,exact INTEGER DEFAULT 0);
-CREATE TABLE IF NOT EXISTS v9_sessions(token TEXT PRIMARY KEY,user_id TEXT NOT NULL,created_at TEXT NOT NULL);
-CREATE TABLE IF NOT EXISTS v9_seasons(id TEXT PRIMARY KEY,name TEXT,description TEXT,sport TEXT,active INTEGER DEFAULT 0,status TEXT DEFAULT 'draft');
-CREATE TABLE IF NOT EXISTS v9_matches(id TEXT PRIMARY KEY,season_id TEXT,phase TEXT,start_time TEXT,home TEXT,away TEXT,home_flag TEXT,away_flag TEXT,status TEXT DEFAULT 'open',score TEXT,confirmed INTEGER DEFAULT 0,info TEXT);
-CREATE TABLE IF NOT EXISTS v9_bets(user_id TEXT,match_id TEXT,home_goals INTEGER,away_goals INTEGER,created_at TEXT,PRIMARY KEY(user_id,match_id));
+CREATE TABLE IF NOT EXISTS v10_settings(id TEXT PRIMARY KEY,admin_fee INTEGER DEFAULT 0,game_fee INTEGER DEFAULT 0,split TEXT DEFAULT '[50,30,20]',bank_account TEXT DEFAULT '',access_code TEXT DEFAULT 'TIP2026',rules_html TEXT);
+CREATE TABLE IF NOT EXISTS v10_users(id TEXT PRIMARY KEY,first TEXT NOT NULL,last TEXT NOT NULL,name_norm TEXT NOT NULL UNIQUE,password_hash TEXT NOT NULL,role TEXT DEFAULT 'player',approved INTEGER DEFAULT 0,paid INTEGER DEFAULT 0,initials TEXT,points INTEGER DEFAULT 0,tips_count INTEGER DEFAULT 0,hit_1 INTEGER DEFAULT 0,hit_3 INTEGER DEFAULT 0);
+CREATE TABLE IF NOT EXISTS v10_sessions(token TEXT PRIMARY KEY,user_id TEXT NOT NULL,created_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS v10_seasons(id TEXT PRIMARY KEY,name TEXT,description TEXT,sport TEXT,active INTEGER DEFAULT 0,status TEXT DEFAULT 'draft');
+CREATE TABLE IF NOT EXISTS v10_matches(id TEXT PRIMARY KEY,season_id TEXT,phase TEXT,start_time TEXT,home TEXT,away TEXT,home_flag TEXT,away_flag TEXT,status TEXT DEFAULT 'open',score TEXT,confirmed INTEGER DEFAULT 0,info TEXT);
+CREATE UNIQUE INDEX IF NOT EXISTS v10_match_unique ON v10_matches(season_id,start_time,home,away);
+CREATE TABLE IF NOT EXISTS v10_bets(user_id TEXT,match_id TEXT,pick TEXT,home_goals INTEGER,away_goals INTEGER,created_at TEXT,PRIMARY KEY(user_id,match_id));
