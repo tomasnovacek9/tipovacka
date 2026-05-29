@@ -1,4 +1,4 @@
-Tipovačka v14
+Tipovačka v15
 
 Nahraj do GitHubu:
 - public/index.html
@@ -10,21 +10,10 @@ Nahraj do GitHubu:
 - schema.sql
 - README.md
 
-Admin:
-Jméno: admin
-Příjmení: prázdné
-Heslo: admiN9
-
-Vstupní kód:
-TIP2026
-
-Opravy a změny:
-- zachované logo vpravo v hlavičce
-- přihlášení jméno + příjmení
-- tipuje se přesný výsledek přes plus/minus
-- opravené počítání bodů po zadání výsledku adminem
-- stránka Tipy všech místo Moje
-- tipy ostatních se zobrazují až po uzamčení zápasu
-- admin může hráče aktivovat, deaktivovat, smazat, nastavit hráče/admina
-- data se průběžně obnovují
-- rozšířený seznam vlajek a placeholdery pro všechny skupiny/fáze
+Opravy:
+- admin formuláře už se samy nepřepisují
+- lze ukládat nastavení, výsledky a spravovat hráče
+- aktivní filtr je zvýrazněný
+- fáze/skupiny jsou v rozbalovací nabídce
+- pořadí ukazuje jen vyhodnocené tipy
+- ikona aplikace je varianta 1: míč + T
