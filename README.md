@@ -1,4 +1,4 @@
-Tipovačka v6 clean
+Tipovačka v7
 
 Nahraj do GitHubu:
 - public/index.html
@@ -7,10 +7,12 @@ Nahraj do GitHubu:
 - README.md
 
 Admin:
-- jméno: admin
-- heslo: admiN9
+admin
+admiN9
 
-Vstupní kód:
-TIP2026
+Registrace:
+- jméno + příjmení
+- vstupní kód TIP2026
+- volitelně profilová fotka
 
-Používá nové tabulky v6_, takže nevadí staré rozbité pokusy.
+Admin se nepočítá do pořadí a nemůže tipovat.

@@ -1,6 +1,6 @@
-CREATE TABLE IF NOT EXISTS v6_settings(id TEXT PRIMARY KEY,admin_fee INTEGER DEFAULT 10,game_fee INTEGER DEFAULT 100,split TEXT DEFAULT '[50,30,20]',bank_account TEXT DEFAULT '240616/617/0300',access_code TEXT DEFAULT 'TIP2026');
-CREATE TABLE IF NOT EXISTS v6_users(id TEXT PRIMARY KEY,name TEXT NOT NULL,name_norm TEXT NOT NULL UNIQUE,password_hash TEXT NOT NULL,role TEXT DEFAULT 'player',approved INTEGER DEFAULT 0,paid INTEGER DEFAULT 0,avatar TEXT,points INTEGER DEFAULT 0);
-CREATE TABLE IF NOT EXISTS v6_sessions(token TEXT PRIMARY KEY,user_id TEXT NOT NULL,created_at TEXT NOT NULL);
-CREATE TABLE IF NOT EXISTS v6_seasons(id TEXT PRIMARY KEY,name TEXT,description TEXT,sport TEXT,active INTEGER DEFAULT 0,public INTEGER DEFAULT 0,status TEXT DEFAULT 'draft');
-CREATE TABLE IF NOT EXISTS v6_matches(id TEXT PRIMARY KEY,season_id TEXT,phase TEXT,start_time TEXT,home TEXT,away TEXT,status TEXT DEFAULT 'open',score TEXT,confirmed INTEGER DEFAULT 0,info TEXT);
-CREATE TABLE IF NOT EXISTS v6_bets(user_id TEXT,match_id TEXT,pick TEXT,created_at TEXT,PRIMARY KEY(user_id,match_id));
+CREATE TABLE IF NOT EXISTS v7_settings(id TEXT PRIMARY KEY,admin_fee INTEGER DEFAULT 10,game_fee INTEGER DEFAULT 100,split TEXT DEFAULT '[50,30,20]',bank_account TEXT DEFAULT '240616/617/0300',access_code TEXT DEFAULT 'TIP2026');
+CREATE TABLE IF NOT EXISTS v7_users(id TEXT PRIMARY KEY,first TEXT NOT NULL,last TEXT NOT NULL,name_norm TEXT NOT NULL UNIQUE,password_hash TEXT NOT NULL,role TEXT DEFAULT 'player',approved INTEGER DEFAULT 0,paid INTEGER DEFAULT 0,avatar TEXT,avatar_data TEXT,initials TEXT,points INTEGER DEFAULT 0);
+CREATE TABLE IF NOT EXISTS v7_sessions(token TEXT PRIMARY KEY,user_id TEXT NOT NULL,created_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS v7_seasons(id TEXT PRIMARY KEY,name TEXT,description TEXT,sport TEXT,active INTEGER DEFAULT 0,status TEXT DEFAULT 'draft');
+CREATE TABLE IF NOT EXISTS v7_matches(id TEXT PRIMARY KEY,season_id TEXT,phase TEXT,start_time TEXT,home TEXT,away TEXT,home_flag TEXT,away_flag TEXT,status TEXT DEFAULT 'open',score TEXT,confirmed INTEGER DEFAULT 0,info TEXT);
+CREATE TABLE IF NOT EXISTS v7_bets(user_id TEXT,match_id TEXT,pick TEXT,created_at TEXT,PRIMARY KEY(user_id,match_id));
