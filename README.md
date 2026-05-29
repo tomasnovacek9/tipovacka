@@ -1,21 +1,18 @@
-Tipovačka v19 – opravená verze
+# Tipovačka v20 rollback + realtime
 
-Co je opraveno:
-- ikony jsou vytvořené přímo z vybraného návrhu TIP v kruhu + fajfka, ne nově překreslené
-- doplněné PNG ikony pro PWA: 32, 64, 180, 192, 512, 1024 px
-- zachovaný motiv FIFA WORLD CUP 26 v hlavičce
-- opravené přepínání avatarů v registraci
-- opravené role: admin/superadmin vidí Admin, admin se netipuje a nepočítá do pořadí
-- při změně role na admin se účet automaticky aktivuje
-- doplněné týmy a vlajky ve skupinové části
-- 72 skupinových zápasů + vyřazovací část
-- fáze „32 postupujících“
-- opravené neplatné datumy 2026-06-31
-- v adminu je tlačítko „Obnovit výchozí zápasy MS 2026“
+Postaveno zpět na funkční v7 základu. Nejsou zde avatary ani rozsáhlé nové experimenty.
 
-Přihlášení hlavního admina:
-Jméno: admin
-Heslo: admiN9
+## Přihlášení admina
+- jméno: `admin`
+- heslo: `admiN9`
 
-Poznámka:
-Pokud na existující databázi zůstaly staré zápasy, přihlas se jako admin a klikni v Adminu na „Obnovit výchozí zápasy MS 2026“.
+## Změny
+- veřejně se zobrazuje přezdívka, admin vidí jméno, příjmení, telefon a e-mail.
+- platba má poznámku `TIP-PREZDIVKA`.
+- data se automaticky obnovují každých 5 sekund, také při návratu na kartu / do aplikace.
+- opravené role a aktivace hráčů.
+- ponechaný jednoduchý funkční základ, bez avatarů.
+- přidaná čistá SVG/PNG ikona TIP v kruhu + fajfka.
+
+## Nahrání
+Nahraj celý obsah ZIPu stejně jako původní funkční v7. Pokud používáš Cloudflare Pages, musí zůstat složky `public` a `functions` v kořeni projektu.
