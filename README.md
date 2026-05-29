@@ -1,4 +1,4 @@
-Tipovačka v10
+Tipovačka v11
 
 Nahraj do GitHubu:
 - public/index.html
@@ -16,13 +16,14 @@ admiN9
 Vstupní kód:
 TIP2026
 
-Změny:
-- odstraněné profilovky
-- tipuje se jen přesný výsledek
-- systém sám pozná 1/X/2
-- bodování: správný směr = 1b, přesný výsledek = 3b celkem
-- pořadí ukazuje Tipy / 1b / 3b / Body
-- Moje tipy
-- PWA instalace na plochu telefonu
-- import přeskočí duplicity
-- admin může editovat pravidla
+Opravy:
+- opravena registrace nového hráče
+- přidán náhled tipů ostatních až po uzamčení zápasu
+- zachovány funkce v10
+
+
+V12:
+- logo FIFA World Cup 2026 v hlavičce napravo
+- odstraněný emoji pohár z hlavní hlavičky
+- zadávání přesného výsledku přes tlačítka − / +
+- zvýraznění uloženého tipu
