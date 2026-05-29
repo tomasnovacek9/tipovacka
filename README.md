@@ -1,4 +1,4 @@
-Tipovačka v7
+Tipovačka v8 profi
 
 Nahraj do GitHubu:
 - public/index.html
@@ -6,13 +6,7 @@ Nahraj do GitHubu:
 - schema.sql
 - README.md
 
-Admin:
-admin
-admiN9
+Admin: admin / admiN9
+Vstupní kód: TIP2026
 
-Registrace:
-- jméno + příjmení
-- vstupní kód TIP2026
-- volitelně profilová fotka
-
-Admin se nepočítá do pořadí a nemůže tipovat.
+Novinky: admin netipuje, profilovky, přesný výsledek, odpočet po sekundách, filtry dnes/zítra/vše/fáze, automatické vlajky, prázdné platby pro admina.
