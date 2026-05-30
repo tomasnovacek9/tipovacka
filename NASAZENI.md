@@ -1,27 +1,63 @@
-# Nasazení
+# Nasazení TIPovačky
 
-Doporučené prostředí: Cloudflare Pages + Functions + D1.
+Tahle verze musí běžet na Cloudflare Pages s Functions a D1 databází.
 
-## Nastavení Pages
+## Důležité
 
-- Build command: prázdné
+Ve starší verzi byl špatně soubor `public/_routes.json`:
+
+```json
+"exclude": ["/*"]
+```
+
+Tím se omylem vypnuly i `/api/*` funkce. Výsledek byl, že `/api` vracelo HTML místo JSONu a nešlo se přihlásit.
+
+V této verzi je opraveno:
+
+```json
+{
+  "version": 1,
+  "include": ["/api/*"],
+  "exclude": []
+}
+```
+
+## Nastavení Cloudflare Pages
+
+- Build command: nechat prázdné
 - Build output directory: `public`
 - Functions directory: `functions`
 
-## D1
+## D1 databáze
 
-V Cloudflare vytvoř D1 databázi a připoj ji k Pages projektu jako binding:
+V Pages projektu musí být připojená D1 databáze s bindingem přesně:
 
-`DB`
+```text
+DB
+```
 
-Backend používá `env.DB`, takže název bindingu musí být přesně `DB`.
+Pokud binding nebude `DB`, backend nebude fungovat.
 
-## Kontrola
+## Kontrola po nahrání
 
-Po nasazení otevři:
+Otevři:
 
-`/api-test.html`
+```text
+/api/health
+```
 
-Správný stav: zobrazí JSON odpověď z `/api/health`.
+Správně musí vrátit JSON, např.:
 
-Špatný stav: místo JSONu se zobrazí HTML – to znamená, že `/api/*` nejde do functions.
+```json
+{"ok":true,"version":"v54","api":true,"db":true}
+```
+
+Když se zobrazí HTML stránka, Functions nejsou nasazené nebo Cloudflare nepoužívá složku `functions`.
+
+## Přihlášení admina
+
+```text
+Admin / admiN9
+```
+
+Na úvodní obrazovce se admin údaje nezobrazují.
