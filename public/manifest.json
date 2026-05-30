@@ -1,7 +1,7 @@
 {
   "name": "Tipovačka",
   "short_name": "Tipovačka",
-  "start_url": "./?v=34",
+  "start_url": "./?v=53",
   "scope": "./",
   "display": "standalone",
   "background_color": "#080d12",

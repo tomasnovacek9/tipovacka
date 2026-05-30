@@ -1,16 +1,27 @@
-# Nasazení backendu
+# Nasazení
 
-Aplikace musí běžet jako Cloudflare Pages projekt s Functions a D1 databází. Nestačí nahrát jen obsah složky `public` na GitHub Pages.
+Doporučené prostředí: Cloudflare Pages + Functions + D1.
 
-Správná struktura projektu:
+## Nastavení Pages
 
-- `public/index.html`
-- `public/_routes.json`
-- `functions/api/[[path]].js`
-- D1 binding `DB`
+- Build command: prázdné
+- Build output directory: `public`
+- Functions directory: `functions`
 
-Kontrola po nasazení:
+## D1
 
-1. Otevři `/api/health` nebo `/api-test.html`.
-2. Správná odpověď je JSON, např. `{ "ok": true, "api": true }`.
-3. Pokud se zobrazí HTML stránky, backend Functions není nasazený nebo Cloudflare nevidí složku `functions`.
+V Cloudflare vytvoř D1 databázi a připoj ji k Pages projektu jako binding:
+
+`DB`
+
+Backend používá `env.DB`, takže název bindingu musí být přesně `DB`.
+
+## Kontrola
+
+Po nasazení otevři:
+
+`/api-test.html`
+
+Správný stav: zobrazí JSON odpověď z `/api/health`.
+
+Špatný stav: místo JSONu se zobrazí HTML – to znamená, že `/api/*` nejde do functions.
