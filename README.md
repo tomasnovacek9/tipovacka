@@ -80,3 +80,14 @@ Pokud se na iPhonu pořád zobrazuje stará rozbitá verze:
 4. Až potom znovu přidej na plochu.
 
 Ve v31 je service worker vypnutý, aby iPhone nedržel starou cache.
+
+
+## v32 oprava
+
+- Přepsaný `index.html` bez duplicitních funkcí a nahromaděných starých CSS patchů.
+- Horní panel: vlevo TIP + název soutěže, vpravo pouze sekce a přihlášený uživatel.
+- Dashboard bez ikon; poslední hodnota je počet vyhodnocených tipů.
+- Profil a Admin jsou samostatně vyčištěné sekce.
+- Automatická aktualizace každých 5 s zůstává, ale během rozkliknuté úpravy tipu se dočasně pozastaví, aby se výsledek nesmazal.
+- Service worker se odregistruje, aby iPhone nedržel starou rozbitou cache.
+- Pokud aplikace po nahrání stále ukazuje chybu API, není problém v telefonu, ale v nasazení backendu `/api` / D1 databáze.
