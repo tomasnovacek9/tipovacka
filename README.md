@@ -10,4 +10,4 @@
 - mobilní tabulka pořadí bez horizontálního posunu,
 - legenda sloupců pořadí.
 
-Admin: admin / admiN9
+Admin účet je vytvořený v backendu. Přihlašovací údaje se nezobrazují veřejně na úvodní obrazovce.
