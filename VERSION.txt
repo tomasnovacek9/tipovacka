@@ -1,1 +1,1 @@
-v43 pravidla platba poradi rozpis UX
+v46-buttons-static-schedule

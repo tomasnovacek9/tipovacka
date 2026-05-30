@@ -1,0 +1,1048 @@
+{
+  "source": "Pevná šablona v aplikaci podle veřejného rozpisu FIFA World Cup 2026",
+  "count": 104,
+  "group_stage": 72,
+  "knockout": 32,
+  "matches": [
+    {
+      "id": "m1",
+      "phase": "Skupina A",
+      "start_time": "2026-06-11T21:00",
+      "home": "Mexiko",
+      "away": "Jihoafrická republika",
+      "home_flag": "🇲🇽",
+      "away_flag": "🇿🇦",
+      "info": "Zahajovací zápas"
+    },
+    {
+      "id": "m2",
+      "phase": "Skupina A",
+      "start_time": "2026-06-12T04:00",
+      "home": "Jižní Korea",
+      "away": "Česko",
+      "home_flag": "🇰🇷",
+      "away_flag": "🇨🇿",
+      "info": "Skupina A"
+    },
+    {
+      "id": "m3",
+      "phase": "Skupina A",
+      "start_time": "2026-06-18T18:00",
+      "home": "Česko",
+      "away": "Jihoafrická republika",
+      "home_flag": "🇨🇿",
+      "away_flag": "🇿🇦",
+      "info": "Skupina A"
+    },
+    {
+      "id": "m4",
+      "phase": "Skupina A",
+      "start_time": "2026-06-19T03:00",
+      "home": "Mexiko",
+      "away": "Jižní Korea",
+      "home_flag": "🇲🇽",
+      "away_flag": "🇰🇷",
+      "info": "Skupina A"
+    },
+    {
+      "id": "m5",
+      "phase": "Skupina A",
+      "start_time": "2026-06-25T03:00",
+      "home": "Jihoafrická republika",
+      "away": "Jižní Korea",
+      "home_flag": "🇿🇦",
+      "away_flag": "🇰🇷",
+      "info": "Skupina A"
+    },
+    {
+      "id": "m6",
+      "phase": "Skupina A",
+      "start_time": "2026-06-25T03:00",
+      "home": "Česko",
+      "away": "Mexiko",
+      "home_flag": "🇨🇿",
+      "away_flag": "🇲🇽",
+      "info": "Skupina A"
+    },
+    {
+      "id": "m7",
+      "phase": "Skupina B",
+      "start_time": "2026-06-12T21:00",
+      "home": "Kanada",
+      "away": "Bosna a Hercegovina",
+      "home_flag": "🇨🇦",
+      "away_flag": "🇧🇦",
+      "info": "Skupina B"
+    },
+    {
+      "id": "m8",
+      "phase": "Skupina B",
+      "start_time": "2026-06-13T21:00",
+      "home": "Katar",
+      "away": "Švýcarsko",
+      "home_flag": "🇶🇦",
+      "away_flag": "🇨🇭",
+      "info": "Skupina B"
+    },
+    {
+      "id": "m9",
+      "phase": "Skupina B",
+      "start_time": "2026-06-18T21:00",
+      "home": "Švýcarsko",
+      "away": "Bosna a Hercegovina",
+      "home_flag": "🇨🇭",
+      "away_flag": "🇧🇦",
+      "info": "Skupina B"
+    },
+    {
+      "id": "m10",
+      "phase": "Skupina B",
+      "start_time": "2026-06-19T00:00",
+      "home": "Kanada",
+      "away": "Katar",
+      "home_flag": "🇨🇦",
+      "away_flag": "🇶🇦",
+      "info": "Skupina B"
+    },
+    {
+      "id": "m11",
+      "phase": "Skupina B",
+      "start_time": "2026-06-24T21:00",
+      "home": "Švýcarsko",
+      "away": "Kanada",
+      "home_flag": "🇨🇭",
+      "away_flag": "🇨🇦",
+      "info": "Skupina B"
+    },
+    {
+      "id": "m12",
+      "phase": "Skupina B",
+      "start_time": "2026-06-24T21:00",
+      "home": "Bosna a Hercegovina",
+      "away": "Katar",
+      "home_flag": "🇧🇦",
+      "away_flag": "🇶🇦",
+      "info": "Skupina B"
+    },
+    {
+      "id": "m13",
+      "phase": "Skupina C",
+      "start_time": "2026-06-14T00:00",
+      "home": "Brazílie",
+      "away": "Maroko",
+      "home_flag": "🇧🇷",
+      "away_flag": "🇲🇦",
+      "info": "Skupina C"
+    },
+    {
+      "id": "m14",
+      "phase": "Skupina C",
+      "start_time": "2026-06-14T03:00",
+      "home": "Haiti",
+      "away": "Skotsko",
+      "home_flag": "🇭🇹",
+      "away_flag": "🏴",
+      "info": "Skupina C"
+    },
+    {
+      "id": "m15",
+      "phase": "Skupina C",
+      "start_time": "2026-06-20T00:00",
+      "home": "Skotsko",
+      "away": "Maroko",
+      "home_flag": "🏴",
+      "away_flag": "🇲🇦",
+      "info": "Skupina C"
+    },
+    {
+      "id": "m16",
+      "phase": "Skupina C",
+      "start_time": "2026-06-20T03:00",
+      "home": "Brazílie",
+      "away": "Haiti",
+      "home_flag": "🇧🇷",
+      "away_flag": "🇭🇹",
+      "info": "Skupina C"
+    },
+    {
+      "id": "m17",
+      "phase": "Skupina C",
+      "start_time": "2026-06-25T00:00",
+      "home": "Skotsko",
+      "away": "Brazílie",
+      "home_flag": "🏴",
+      "away_flag": "🇧🇷",
+      "info": "Skupina C"
+    },
+    {
+      "id": "m18",
+      "phase": "Skupina C",
+      "start_time": "2026-06-25T00:00",
+      "home": "Maroko",
+      "away": "Haiti",
+      "home_flag": "🇲🇦",
+      "away_flag": "🇭🇹",
+      "info": "Skupina C"
+    },
+    {
+      "id": "m19",
+      "phase": "Skupina D",
+      "start_time": "2026-06-13T03:00",
+      "home": "USA",
+      "away": "Paraguay",
+      "home_flag": "🇺🇸",
+      "away_flag": "🇵🇾",
+      "info": "Skupina D"
+    },
+    {
+      "id": "m20",
+      "phase": "Skupina D",
+      "start_time": "2026-06-14T06:00",
+      "home": "Austrálie",
+      "away": "Turecko",
+      "home_flag": "🇦🇺",
+      "away_flag": "🇹🇷",
+      "info": "Skupina D"
+    },
+    {
+      "id": "m21",
+      "phase": "Skupina D",
+      "start_time": "2026-06-19T21:00",
+      "home": "USA",
+      "away": "Austrálie",
+      "home_flag": "🇺🇸",
+      "away_flag": "🇦🇺",
+      "info": "Skupina D"
+    },
+    {
+      "id": "m22",
+      "phase": "Skupina D",
+      "start_time": "2026-06-20T06:00",
+      "home": "Turecko",
+      "away": "Paraguay",
+      "home_flag": "🇹🇷",
+      "away_flag": "🇵🇾",
+      "info": "Skupina D"
+    },
+    {
+      "id": "m23",
+      "phase": "Skupina D",
+      "start_time": "2026-06-26T04:00",
+      "home": "Turecko",
+      "away": "USA",
+      "home_flag": "🇹🇷",
+      "away_flag": "🇺🇸",
+      "info": "Skupina D"
+    },
+    {
+      "id": "m24",
+      "phase": "Skupina D",
+      "start_time": "2026-06-26T04:00",
+      "home": "Paraguay",
+      "away": "Austrálie",
+      "home_flag": "🇵🇾",
+      "away_flag": "🇦🇺",
+      "info": "Skupina D"
+    },
+    {
+      "id": "m25",
+      "phase": "Skupina E",
+      "start_time": "2026-06-14T19:00",
+      "home": "Německo",
+      "away": "Curaçao",
+      "home_flag": "🇩🇪",
+      "away_flag": "🇨🇼",
+      "info": "Skupina E"
+    },
+    {
+      "id": "m26",
+      "phase": "Skupina E",
+      "start_time": "2026-06-15T01:00",
+      "home": "Pobřeží slonoviny",
+      "away": "Ekvádor",
+      "home_flag": "🇨🇮",
+      "away_flag": "🇪🇨",
+      "info": "Skupina E"
+    },
+    {
+      "id": "m27",
+      "phase": "Skupina E",
+      "start_time": "2026-06-20T22:00",
+      "home": "Německo",
+      "away": "Pobřeží slonoviny",
+      "home_flag": "🇩🇪",
+      "away_flag": "🇨🇮",
+      "info": "Skupina E"
+    },
+    {
+      "id": "m28",
+      "phase": "Skupina E",
+      "start_time": "2026-06-21T02:00",
+      "home": "Ekvádor",
+      "away": "Curaçao",
+      "home_flag": "🇪🇨",
+      "away_flag": "🇨🇼",
+      "info": "Skupina E"
+    },
+    {
+      "id": "m29",
+      "phase": "Skupina E",
+      "start_time": "2026-06-25T21:00",
+      "home": "Curaçao",
+      "away": "Pobřeží slonoviny",
+      "home_flag": "🇨🇼",
+      "away_flag": "🇨🇮",
+      "info": "Skupina E"
+    },
+    {
+      "id": "m30",
+      "phase": "Skupina E",
+      "start_time": "2026-06-25T22:00",
+      "home": "Ekvádor",
+      "away": "Německo",
+      "home_flag": "🇪🇨",
+      "away_flag": "🇩🇪",
+      "info": "Skupina E"
+    },
+    {
+      "id": "m31",
+      "phase": "Skupina F",
+      "start_time": "2026-06-14T22:00",
+      "home": "Nizozemsko",
+      "away": "Japonsko",
+      "home_flag": "🇳🇱",
+      "away_flag": "🇯🇵",
+      "info": "Skupina F"
+    },
+    {
+      "id": "m32",
+      "phase": "Skupina F",
+      "start_time": "2026-06-15T04:00",
+      "home": "Švédsko",
+      "away": "Tunisko",
+      "home_flag": "🇸🇪",
+      "away_flag": "🇹🇳",
+      "info": "Skupina F"
+    },
+    {
+      "id": "m33",
+      "phase": "Skupina F",
+      "start_time": "2026-06-20T19:00",
+      "home": "Nizozemsko",
+      "away": "Švédsko",
+      "home_flag": "🇳🇱",
+      "away_flag": "🇸🇪",
+      "info": "Skupina F"
+    },
+    {
+      "id": "m34",
+      "phase": "Skupina F",
+      "start_time": "2026-06-21T06:00",
+      "home": "Tunisko",
+      "away": "Japonsko",
+      "home_flag": "🇹🇳",
+      "away_flag": "🇯🇵",
+      "info": "Skupina F"
+    },
+    {
+      "id": "m35",
+      "phase": "Skupina F",
+      "start_time": "2026-06-26T01:00",
+      "home": "Tunisko",
+      "away": "Nizozemsko",
+      "home_flag": "🇹🇳",
+      "away_flag": "🇳🇱",
+      "info": "Skupina F"
+    },
+    {
+      "id": "m36",
+      "phase": "Skupina F",
+      "start_time": "2026-06-26T01:00",
+      "home": "Japonsko",
+      "away": "Švédsko",
+      "home_flag": "🇯🇵",
+      "away_flag": "🇸🇪",
+      "info": "Skupina F"
+    },
+    {
+      "id": "m37",
+      "phase": "Skupina G",
+      "start_time": "2026-06-15T21:00",
+      "home": "Belgie",
+      "away": "Egypt",
+      "home_flag": "🇧🇪",
+      "away_flag": "🇪🇬",
+      "info": "Skupina G"
+    },
+    {
+      "id": "m38",
+      "phase": "Skupina G",
+      "start_time": "2026-06-16T03:00",
+      "home": "Írán",
+      "away": "Nový Zéland",
+      "home_flag": "🇮🇷",
+      "away_flag": "🇳🇿",
+      "info": "Skupina G"
+    },
+    {
+      "id": "m39",
+      "phase": "Skupina G",
+      "start_time": "2026-06-21T21:00",
+      "home": "Belgie",
+      "away": "Írán",
+      "home_flag": "🇧🇪",
+      "away_flag": "🇮🇷",
+      "info": "Skupina G"
+    },
+    {
+      "id": "m40",
+      "phase": "Skupina G",
+      "start_time": "2026-06-22T03:00",
+      "home": "Nový Zéland",
+      "away": "Egypt",
+      "home_flag": "🇳🇿",
+      "away_flag": "🇪🇬",
+      "info": "Skupina G"
+    },
+    {
+      "id": "m41",
+      "phase": "Skupina G",
+      "start_time": "2026-06-27T05:00",
+      "home": "Nový Zéland",
+      "away": "Belgie",
+      "home_flag": "🇳🇿",
+      "away_flag": "🇧🇪",
+      "info": "Skupina G"
+    },
+    {
+      "id": "m42",
+      "phase": "Skupina G",
+      "start_time": "2026-06-27T05:00",
+      "home": "Egypt",
+      "away": "Írán",
+      "home_flag": "🇪🇬",
+      "away_flag": "🇮🇷",
+      "info": "Skupina G"
+    },
+    {
+      "id": "m43",
+      "phase": "Skupina H",
+      "start_time": "2026-06-15T18:00",
+      "home": "Španělsko",
+      "away": "Kapverdy",
+      "home_flag": "🇪🇸",
+      "away_flag": "🇨🇻",
+      "info": "Skupina H"
+    },
+    {
+      "id": "m44",
+      "phase": "Skupina H",
+      "start_time": "2026-06-16T00:00",
+      "home": "Saúdská Arábie",
+      "away": "Uruguay",
+      "home_flag": "🇸🇦",
+      "away_flag": "🇺🇾",
+      "info": "Skupina H"
+    },
+    {
+      "id": "m45",
+      "phase": "Skupina H",
+      "start_time": "2026-06-21T18:00",
+      "home": "Španělsko",
+      "away": "Saúdská Arábie",
+      "home_flag": "🇪🇸",
+      "away_flag": "🇸🇦",
+      "info": "Skupina H"
+    },
+    {
+      "id": "m46",
+      "phase": "Skupina H",
+      "start_time": "2026-06-22T00:00",
+      "home": "Uruguay",
+      "away": "Kapverdy",
+      "home_flag": "🇺🇾",
+      "away_flag": "🇨🇻",
+      "info": "Skupina H"
+    },
+    {
+      "id": "m47",
+      "phase": "Skupina H",
+      "start_time": "2026-06-27T02:00",
+      "home": "Saúdská Arábie",
+      "away": "Kapverdy",
+      "home_flag": "🇸🇦",
+      "away_flag": "🇨🇻",
+      "info": "Skupina H"
+    },
+    {
+      "id": "m48",
+      "phase": "Skupina H",
+      "start_time": "2026-06-27T02:00",
+      "home": "Uruguay",
+      "away": "Španělsko",
+      "home_flag": "🇺🇾",
+      "away_flag": "🇪🇸",
+      "info": "Skupina H"
+    },
+    {
+      "id": "m49",
+      "phase": "Skupina I",
+      "start_time": "2026-06-16T21:00",
+      "home": "Francie",
+      "away": "Senegal",
+      "home_flag": "🇫🇷",
+      "away_flag": "🇸🇳",
+      "info": "Skupina I"
+    },
+    {
+      "id": "m50",
+      "phase": "Skupina I",
+      "start_time": "2026-06-17T00:00",
+      "home": "Irák",
+      "away": "Norsko",
+      "home_flag": "🇮🇶",
+      "away_flag": "🇳🇴",
+      "info": "Skupina I"
+    },
+    {
+      "id": "m51",
+      "phase": "Skupina I",
+      "start_time": "2026-06-22T23:00",
+      "home": "Francie",
+      "away": "Irák",
+      "home_flag": "🇫🇷",
+      "away_flag": "🇮🇶",
+      "info": "Skupina I"
+    },
+    {
+      "id": "m52",
+      "phase": "Skupina I",
+      "start_time": "2026-06-23T02:00",
+      "home": "Senegal",
+      "away": "Norsko",
+      "home_flag": "🇸🇳",
+      "away_flag": "🇳🇴",
+      "info": "Skupina I"
+    },
+    {
+      "id": "m53",
+      "phase": "Skupina I",
+      "start_time": "2026-06-26T21:00",
+      "home": "Senegal",
+      "away": "Irák",
+      "home_flag": "🇸🇳",
+      "away_flag": "🇮🇶",
+      "info": "Skupina I"
+    },
+    {
+      "id": "m54",
+      "phase": "Skupina I",
+      "start_time": "2026-06-26T21:00",
+      "home": "Norsko",
+      "away": "Francie",
+      "home_flag": "🇳🇴",
+      "away_flag": "🇫🇷",
+      "info": "Skupina I"
+    },
+    {
+      "id": "m55",
+      "phase": "Skupina J",
+      "start_time": "2026-06-17T03:00",
+      "home": "Argentina",
+      "away": "Alžírsko",
+      "home_flag": "🇦🇷",
+      "away_flag": "🇩🇿",
+      "info": "Skupina J"
+    },
+    {
+      "id": "m56",
+      "phase": "Skupina J",
+      "start_time": "2026-06-17T06:00",
+      "home": "Rakousko",
+      "away": "Jordánsko",
+      "home_flag": "🇦🇹",
+      "away_flag": "🇯🇴",
+      "info": "Skupina J"
+    },
+    {
+      "id": "m57",
+      "phase": "Skupina J",
+      "start_time": "2026-06-22T19:00",
+      "home": "Argentina",
+      "away": "Rakousko",
+      "home_flag": "🇦🇷",
+      "away_flag": "🇦🇹",
+      "info": "Skupina J"
+    },
+    {
+      "id": "m58",
+      "phase": "Skupina J",
+      "start_time": "2026-06-23T05:00",
+      "home": "Alžírsko",
+      "away": "Jordánsko",
+      "home_flag": "🇩🇿",
+      "away_flag": "🇯🇴",
+      "info": "Skupina J"
+    },
+    {
+      "id": "m59",
+      "phase": "Skupina J",
+      "start_time": "2026-06-28T04:00",
+      "home": "Alžírsko",
+      "away": "Rakousko",
+      "home_flag": "🇩🇿",
+      "away_flag": "🇦🇹",
+      "info": "Skupina J"
+    },
+    {
+      "id": "m60",
+      "phase": "Skupina J",
+      "start_time": "2026-06-28T04:00",
+      "home": "Argentina",
+      "away": "Jordánsko",
+      "home_flag": "🇦🇷",
+      "away_flag": "🇯🇴",
+      "info": "Skupina J"
+    },
+    {
+      "id": "m61",
+      "phase": "Skupina K",
+      "start_time": "2026-06-17T19:00",
+      "home": "Portugalsko",
+      "away": "DR Kongo",
+      "home_flag": "🇵🇹",
+      "away_flag": "🇨🇩",
+      "info": "Skupina K"
+    },
+    {
+      "id": "m62",
+      "phase": "Skupina K",
+      "start_time": "2026-06-18T04:00",
+      "home": "Uzbekistán",
+      "away": "Kolumbie",
+      "home_flag": "🇺🇿",
+      "away_flag": "🇨🇴",
+      "info": "Skupina K"
+    },
+    {
+      "id": "m63",
+      "phase": "Skupina K",
+      "start_time": "2026-06-23T19:00",
+      "home": "Portugalsko",
+      "away": "Uzbekistán",
+      "home_flag": "🇵🇹",
+      "away_flag": "🇺🇿",
+      "info": "Skupina K"
+    },
+    {
+      "id": "m64",
+      "phase": "Skupina K",
+      "start_time": "2026-06-24T04:00",
+      "home": "DR Kongo",
+      "away": "Kolumbie",
+      "home_flag": "🇨🇩",
+      "away_flag": "🇨🇴",
+      "info": "Skupina K"
+    },
+    {
+      "id": "m65",
+      "phase": "Skupina K",
+      "start_time": "2026-06-28T01:30",
+      "home": "Kolumbie",
+      "away": "Portugalsko",
+      "home_flag": "🇨🇴",
+      "away_flag": "🇵🇹",
+      "info": "Skupina K"
+    },
+    {
+      "id": "m66",
+      "phase": "Skupina K",
+      "start_time": "2026-06-28T01:30",
+      "home": "DR Kongo",
+      "away": "Uzbekistán",
+      "home_flag": "🇨🇩",
+      "away_flag": "🇺🇿",
+      "info": "Skupina K"
+    },
+    {
+      "id": "m67",
+      "phase": "Skupina L",
+      "start_time": "2026-06-17T22:00",
+      "home": "Anglie",
+      "away": "Chorvatsko",
+      "home_flag": "🏴",
+      "away_flag": "🇭🇷",
+      "info": "Skupina L"
+    },
+    {
+      "id": "m68",
+      "phase": "Skupina L",
+      "start_time": "2026-06-18T01:00",
+      "home": "Ghana",
+      "away": "Panama",
+      "home_flag": "🇬🇭",
+      "away_flag": "🇵🇦",
+      "info": "Skupina L"
+    },
+    {
+      "id": "m69",
+      "phase": "Skupina L",
+      "start_time": "2026-06-23T22:00",
+      "home": "Anglie",
+      "away": "Ghana",
+      "home_flag": "🏴",
+      "away_flag": "🇬🇭",
+      "info": "Skupina L"
+    },
+    {
+      "id": "m70",
+      "phase": "Skupina L",
+      "start_time": "2026-06-24T01:00",
+      "home": "Chorvatsko",
+      "away": "Panama",
+      "home_flag": "🇭🇷",
+      "away_flag": "🇵🇦",
+      "info": "Skupina L"
+    },
+    {
+      "id": "m71",
+      "phase": "Skupina L",
+      "start_time": "2026-06-27T23:00",
+      "home": "Anglie",
+      "away": "Panama",
+      "home_flag": "🏴",
+      "away_flag": "🇵🇦",
+      "info": "Skupina L"
+    },
+    {
+      "id": "m72",
+      "phase": "Skupina L",
+      "start_time": "2026-06-27T23:00",
+      "home": "Chorvatsko",
+      "away": "Ghana",
+      "home_flag": "🇭🇷",
+      "away_flag": "🇬🇭",
+      "info": "Skupina L"
+    },
+    {
+      "id": "m73",
+      "phase": "32 postupujících",
+      "start_time": "2026-06-28T18:00",
+      "home": "1A",
+      "away": "3C/D/E/F",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "32 postupujících"
+    },
+    {
+      "id": "m74",
+      "phase": "32 postupujících",
+      "start_time": "2026-06-28T21:00",
+      "home": "2B",
+      "away": "2F",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "32 postupujících"
+    },
+    {
+      "id": "m75",
+      "phase": "32 postupujících",
+      "start_time": "2026-06-29T00:00",
+      "home": "1C",
+      "away": "3A/B/F",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "32 postupujících"
+    },
+    {
+      "id": "m76",
+      "phase": "32 postupujících",
+      "start_time": "2026-06-29T03:00",
+      "home": "1E",
+      "away": "3A/B/C/D",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "32 postupujících"
+    },
+    {
+      "id": "m77",
+      "phase": "32 postupujících",
+      "start_time": "2026-06-29T18:00",
+      "home": "1I",
+      "away": "3C/D/F/G",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "32 postupujících"
+    },
+    {
+      "id": "m78",
+      "phase": "32 postupujících",
+      "start_time": "2026-06-29T21:00",
+      "home": "2A",
+      "away": "2C",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "32 postupujících"
+    },
+    {
+      "id": "m79",
+      "phase": "32 postupujících",
+      "start_time": "2026-06-30T00:00",
+      "home": "1D",
+      "away": "3B/E/F/I",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "32 postupujících"
+    },
+    {
+      "id": "m80",
+      "phase": "32 postupujících",
+      "start_time": "2026-06-30T03:00",
+      "home": "1G",
+      "away": "3A/E/H/I",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "32 postupujících"
+    },
+    {
+      "id": "m81",
+      "phase": "32 postupujících",
+      "start_time": "2026-06-30T18:00",
+      "home": "1B",
+      "away": "3A/C/D/E",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "32 postupujících"
+    },
+    {
+      "id": "m82",
+      "phase": "32 postupujících",
+      "start_time": "2026-06-30T21:00",
+      "home": "2E",
+      "away": "2I",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "32 postupujících"
+    },
+    {
+      "id": "m83",
+      "phase": "32 postupujících",
+      "start_time": "2026-07-01T00:00",
+      "home": "1F",
+      "away": "2C",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "32 postupujících"
+    },
+    {
+      "id": "m84",
+      "phase": "32 postupujících",
+      "start_time": "2026-07-01T03:00",
+      "home": "1J",
+      "away": "2H",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "32 postupujících"
+    },
+    {
+      "id": "m85",
+      "phase": "32 postupujících",
+      "start_time": "2026-07-01T18:00",
+      "home": "1K",
+      "away": "3D/E/I/J",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "32 postupujících"
+    },
+    {
+      "id": "m86",
+      "phase": "32 postupujících",
+      "start_time": "2026-07-01T21:00",
+      "home": "2D",
+      "away": "2G",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "32 postupujících"
+    },
+    {
+      "id": "m87",
+      "phase": "32 postupujících",
+      "start_time": "2026-07-02T00:00",
+      "home": "1H",
+      "away": "2J",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "32 postupujících"
+    },
+    {
+      "id": "m88",
+      "phase": "32 postupujících",
+      "start_time": "2026-07-02T03:00",
+      "home": "1L",
+      "away": "3E/G/H/I",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "32 postupujících"
+    },
+    {
+      "id": "m89",
+      "phase": "Osmifinále",
+      "start_time": "2026-07-04T18:00",
+      "home": "Vítěz M73",
+      "away": "Vítěz M74",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "Doplní se podle postupujících"
+    },
+    {
+      "id": "m90",
+      "phase": "Osmifinále",
+      "start_time": "2026-07-04T21:00",
+      "home": "Vítěz M75",
+      "away": "Vítěz M76",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "Doplní se podle postupujících"
+    },
+    {
+      "id": "m91",
+      "phase": "Osmifinále",
+      "start_time": "2026-07-05T18:00",
+      "home": "Vítěz M77",
+      "away": "Vítěz M78",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "Doplní se podle postupujících"
+    },
+    {
+      "id": "m92",
+      "phase": "Osmifinále",
+      "start_time": "2026-07-05T21:00",
+      "home": "Vítěz M79",
+      "away": "Vítěz M80",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "Doplní se podle postupujících"
+    },
+    {
+      "id": "m93",
+      "phase": "Osmifinále",
+      "start_time": "2026-07-06T18:00",
+      "home": "Vítěz M81",
+      "away": "Vítěz M82",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "Doplní se podle postupujících"
+    },
+    {
+      "id": "m94",
+      "phase": "Osmifinále",
+      "start_time": "2026-07-06T21:00",
+      "home": "Vítěz M83",
+      "away": "Vítěz M84",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "Doplní se podle postupujících"
+    },
+    {
+      "id": "m95",
+      "phase": "Osmifinále",
+      "start_time": "2026-07-07T18:00",
+      "home": "Vítěz M85",
+      "away": "Vítěz M86",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "Doplní se podle postupujících"
+    },
+    {
+      "id": "m96",
+      "phase": "Osmifinále",
+      "start_time": "2026-07-07T21:00",
+      "home": "Vítěz M87",
+      "away": "Vítěz M88",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "Doplní se podle postupujících"
+    },
+    {
+      "id": "m97",
+      "phase": "Čtvrtfinále",
+      "start_time": "2026-07-09T21:00",
+      "home": "Vítěz M89",
+      "away": "Vítěz M90",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "Doplní se podle postupujících"
+    },
+    {
+      "id": "m98",
+      "phase": "Čtvrtfinále",
+      "start_time": "2026-07-10T21:00",
+      "home": "Vítěz M91",
+      "away": "Vítěz M92",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "Doplní se podle postupujících"
+    },
+    {
+      "id": "m99",
+      "phase": "Čtvrtfinále",
+      "start_time": "2026-07-11T18:00",
+      "home": "Vítěz M93",
+      "away": "Vítěz M94",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "Doplní se podle postupujících"
+    },
+    {
+      "id": "m100",
+      "phase": "Čtvrtfinále",
+      "start_time": "2026-07-11T21:00",
+      "home": "Vítěz M95",
+      "away": "Vítěz M96",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "Doplní se podle postupujících"
+    },
+    {
+      "id": "m101",
+      "phase": "Semifinále",
+      "start_time": "2026-07-14T21:00",
+      "home": "Vítěz M97",
+      "away": "Vítěz M98",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "Doplní se podle postupujících"
+    },
+    {
+      "id": "m102",
+      "phase": "Semifinále",
+      "start_time": "2026-07-15T21:00",
+      "home": "Vítěz M99",
+      "away": "Vítěz M100",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "Doplní se podle postupujících"
+    },
+    {
+      "id": "m103",
+      "phase": "O 3. místo",
+      "start_time": "2026-07-18T21:00",
+      "home": "Poražený M101",
+      "away": "Poražený M102",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "Doplní se podle postupujících"
+    },
+    {
+      "id": "m104",
+      "phase": "Finále",
+      "start_time": "2026-07-19T21:00",
+      "home": "Vítěz M101",
+      "away": "Vítěz M102",
+      "home_flag": "▫️",
+      "away_flag": "▫️",
+      "info": "Doplní se podle postupujících"
+    }
+  ]
+}
