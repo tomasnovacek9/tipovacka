@@ -112,9 +112,14 @@ function rank(){let top=data.ranking||[];return `<div class=card>${top.length?to
 const oldProfile=profile;function profile(){let h=oldProfile();return h.replace(/<div class=card><button class="btn danger full" onclick=out\(\)>Odhlásit<\/button><\/div>/,'<div class="card logout-profile"><button class="btn danger full" onclick=out()>Odhlásit</button></div>')}
 const oldAdmin=admin;function admin(){let h=oldAdmin();h=h.replace(/<div class=title>Správa zápasů<\/div>/,`<div class=title>Správa zápasů</div><button class="btn good full" onclick="resetSchedule()">Obnovit výchozí rozpis MS 2026</button><p class=note>Načte kompletní skupiny A–L se všemi 72 skupinovými zápasy. Používej opatrně, pokud už máš ručně upravený rozpis.</p>`);return h.replaceAll(/<div class=rank><div class=avatar>.*?<\/div>/g,'<div class=rank>')}
 async function resetSchedule(){if(confirm('Opravdu obnovit výchozí rozpis MS 2026?')){await api('/admin/reset-schedule',{method:'POST',body:'{}'});await refreshSilent();alert('Rozpis obnoven')}}
-</script>
 
-load();if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js').catch(()=>{})}
+// start app safely
+load();
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations()
+    .then(regs => Promise.all(regs.map(r => r.unregister())))
+    .catch(() => {});
+}
 </script>
 </body>
 </html>

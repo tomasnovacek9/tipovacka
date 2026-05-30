@@ -1,8 +1,8 @@
 {
   "name": "Tipovačka MS 2026",
   "short_name": "Tipovačka",
-  "start_url": ".",
-  "scope": ".",
+  "start_url": "/?v=30",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#0E1116",
   "theme_color": "#27D15B",
