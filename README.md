@@ -69,3 +69,14 @@ V adminu lze vložit řádky ve formátu:
 ## Důležité
 
 Tato verze nepoužívá externí sportovní API. Zápasy a výsledky spravuje admin ručně.
+
+
+## iPhone / Safari troubleshooting v31
+
+Pokud se na iPhonu pořád zobrazuje stará rozbitá verze:
+1. Smaž ikonu aplikace z plochy iPhonu.
+2. V Safari otevři Nastavení → Safari → Pokročilé → Data stránek a smaž data pro danou doménu.
+3. Otevři adresu s parametrem `?v=31`, např. `https://domena.cz/?v=31`.
+4. Až potom znovu přidej na plochu.
+
+Ve v31 je service worker vypnutý, aby iPhone nedržel starou cache.
