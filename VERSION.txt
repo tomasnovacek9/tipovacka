@@ -1,1 +1,1 @@
-v42-pravidla-platba-rozpis
+v43 pravidla platba poradi rozpis UX
