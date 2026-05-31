@@ -5,3 +5,7 @@ CREATE TABLE IF NOT EXISTS v21_seasons(id TEXT PRIMARY KEY,name TEXT,active INTE
 CREATE TABLE IF NOT EXISTS v21_matches(id TEXT PRIMARY KEY,season_id TEXT,phase TEXT,start_time TEXT,home TEXT,away TEXT,home_flag TEXT,away_flag TEXT,status TEXT DEFAULT 'open',score TEXT,confirmed INTEGER DEFAULT 0,info TEXT);
 CREATE UNIQUE INDEX IF NOT EXISTS v21_match_unique ON v21_matches(season_id,start_time,home,away);
 CREATE TABLE IF NOT EXISTS v21_bets(user_id TEXT,match_id TEXT,pick TEXT,home_goals INTEGER,away_goals INTEGER,created_at TEXT,PRIMARY KEY(user_id,match_id));
+CREATE TABLE IF NOT EXISTS v21_groups(id TEXT PRIMARY KEY,name TEXT NOT NULL,code TEXT NOT NULL UNIQUE,admin_fee INTEGER DEFAULT 0,game_fee INTEGER DEFAULT 0,bank_account TEXT DEFAULT '',rules_html TEXT,active INTEGER DEFAULT 1,created_at TEXT DEFAULT CURRENT_TIMESTAMP);
+ALTER TABLE v21_users ADD COLUMN group_id TEXT DEFAULT 'g-test';
+INSERT OR IGNORE INTO v21_groups(id,name,code,admin_fee,game_fee,bank_account,rules_html,active) VALUES('g-test','Pokus / testovací','TEST',0,0,'','',1);
+UPDATE v21_users SET group_id='g-test' WHERE group_id IS NULL OR group_id='';
