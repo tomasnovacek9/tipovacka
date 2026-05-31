@@ -1,8 +1,34 @@
-<!doctype html><meta charset="utf-8"><title>API test v63</title><style>body{font-family:system-ui;background:#080d12;color:white;padding:24px}pre{background:#111a23;border:1px solid #27313d;border-radius:12px;padding:14px;white-space:pre-wrap}.ok{color:#7cff5b}.bad{color:#ff7a86}</style><h1>TIPOVAČKA API test v63</h1><button onclick="run()">Spustit test</button><pre id="out">Klikni na test.</pre><script>
-async function post(url,body){let r=await fetch(url,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});let t=await r.text();let j;try{j=JSON.parse(t)}catch(e){throw new Error(url+' nevrátil JSON, ale: '+t.slice(0,120))}if(!r.ok)throw new Error(url+' '+r.status+': '+(j.error||t));return j}
-async function get(url,token){let h={}; if(token)h.authorization='Bearer '+token;let r=await fetch(url,{headers:h});let t=await r.text();let j;try{j=JSON.parse(t)}catch(e){throw new Error(url+' nevrátil JSON, ale: '+t.slice(0,120))}if(!r.ok)throw new Error(url+' '+r.status+': '+(j.error||t));return j}
-async function run(){let out=document.getElementById('out');out.textContent='Testuji...';try{let health=await get('/api/health');let login=await post('/api/auth/login',{first:'Admin',last:'',name:'Admin',login:'Admin',username:'Admin',password:'admiN9',pass:'admiN9'});let me=await get('/api/me',login.token);out.innerHTML='<span class="ok">OK</span>
-health: '+JSON.stringify(health,null,2)+'
-login token: '+login.token+'
-me: '+JSON.stringify(me,null,2)}catch(e){out.innerHTML='<span class="bad">CHYBA</span>
-'+e.message}}</script>
+<!doctype html>
+<html lang="cs">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TIPOVAČKA API test v64</title>
+<style>body{font-family:system-ui;background:#080d12;color:white;padding:24px;line-height:1.45}button{background:#7cff5b;color:#07100a;border:0;border-radius:12px;padding:12px 16px;font-weight:900}pre{background:#111a23;border:1px solid #27313d;border-radius:12px;padding:14px;white-space:pre-wrap;overflow:auto}.ok{color:#7cff5b}.bad{color:#ff7a86}</style></head>
+<body><h1>TIPOVAČKA API test v64</h1><p>Test ověří, jestli Cloudflare spouští <code>functions/api/[[path]].js</code> a D1 binding <code>DB</code>.</p><button onclick="run()">Spustit test</button><pre id="out">Klikni na test.</pre>
+<script>
+async function readJson(res,url){
+  const text=await res.text();
+  let json;
+  try{ json=text?JSON.parse(text):{}; }
+  catch(e){ throw new Error(url+' nevrátil JSON. Vrácený začátek: '+text.slice(0,200)); }
+  if(!res.ok) throw new Error(url+' HTTP '+res.status+': '+(json.error||text));
+  return json;
+}
+async function get(url,token){
+  const h={'accept':'application/json'}; if(token) h.authorization='Bearer '+token;
+  return readJson(await fetch(url+'?t='+Date.now(),{headers:h,cache:'no-store'}),url);
+}
+async function post(url,body){
+  return readJson(await fetch(url+'?t='+Date.now(),{method:'POST',headers:{'content-type':'application/json','accept':'application/json'},body:JSON.stringify(body),cache:'no-store'}),url);
+}
+async function run(){
+  const out=document.getElementById('out'); out.textContent='Testuji...';
+  try{
+    const root=await get('/api');
+    const health=await get('/api/health');
+    const login=await post('/api/auth/login',{first:'Admin',last:'',name:'Admin',login:'Admin',username:'Admin',password:'admiN9',pass:'admiN9'});
+    const me=await get('/api/me',login.token);
+    out.innerHTML='<span class="ok">OK – API běží a admin login funguje.</span>\n\n/api:\n'+JSON.stringify(root,null,2)+'\n\n/api/health:\n'+JSON.stringify(health,null,2)+'\n\n/api/me:\n'+JSON.stringify(me,null,2);
+  }catch(e){
+    out.innerHTML='<span class="bad">CHYBA</span>\n'+e.message+'\n\nPokud /api vrací HTML, Cloudflare nespouští Functions. Zkontroluj: složka functions v kořeni repozitáře, build output public, D1 binding DB.';
+  }
+}
+</script></body></html>

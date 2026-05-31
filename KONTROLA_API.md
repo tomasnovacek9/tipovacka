@@ -1,17 +1,16 @@
-# Rychlá kontrola nasazení Cloudflare Pages
+# Kontrola API v64
 
-Po nahrání ověř tyto adresy:
+Po nasazení otevři:
 
-1. `/api`
-   - musí vrátit JSON s `ok: true`
+- `/api` – musí vracet JSON `{ ok: true, api: true, version: "v64" }`
+- `/api/health` – musí vracet JSON a `db: true`
+- `/api-test.html` – musí projít i admin login
 
-2. `/api/health`
-   - musí vrátit JSON s `ok: true`, `api: true`, `db: true`
+Cloudflare Pages nastavení:
 
-Pokud `/api` nebo `/api/health` vrací HTML, není problém v přihlášení, ale v nasazení:
-- složka `functions` musí být v kořeni repozitáře,
-- soubor `functions/api/[[path]].js` musí být v repozitáři,
-- `public/_routes.json` musí obsahovat `/api` a `/api/*`,
-- v Cloudflare Pages musí být D1 binding přesně `DB`.
+- Build output directory: `public`
+- Functions directory musí být v kořeni projektu: `functions`
+- D1 binding se musí jmenovat přesně `DB`
+- `public/_routes.json` obsahuje `/api` a `/api/*`
 
-Nepoužívej statický hosting bez Functions. GitHub Pages samotný backend nespustí.
+Když `/api` vrací HTML, není to chyba přihlášení. Cloudflare nespouští Functions nebo je špatně nastavený build output.
