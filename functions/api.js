@@ -3,7 +3,7 @@ export async function onRequest() {
     ok: true,
     api: true,
     message: "Backend /api funguje. Pro detail použij /api/health.",
-    version: "v57"
+    version: "v58"
   }), {
     headers: {
       "content-type": "application/json;charset=utf-8",
