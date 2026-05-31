@@ -1,7 +1,4 @@
-<!doctype html><meta charset="utf-8"><title>API test</title><style>body{font-family:system-ui;background:#080d12;color:#fff;padding:20px}pre{white-space:pre-wrap;background:#111a23;padding:16px;border-radius:16px}</style><h1>API test v61</h1><pre id="out">Testuji...</pre><script>
-(async()=>{const out=document.getElementById('out');out.textContent='';async function t(label,url,opt){try{const r=await fetch(url,{cache:'no-store',...(opt||{})});const txt=await r.text();out.textContent += `\n${label}\n${url}\nstatus: ${r.status}\ncontent-type: ${r.headers.get('content-type')}\n${txt.slice(0,1200)}\n`; }catch(e){out.textContent += `\n${label}\nCHYBA: ${e.message}\n`;}}
-await t('1) /api','/api');
-await t('2) /api/health','/api/health');
-await t('3) test admin login','/api/auth/login',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({first:'Admin',last:'',name:'Admin',password:'admiN9'})});
-})();
-</script>
+<!doctype html><html lang="cs"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>API test</title><body style="font-family:Arial;background:#081018;color:white;padding:20px"><h1>API test</h1><pre id=o>Testuji...</pre><button onclick="run()">Znovu otestovat</button><script>
+async function t(name,url,opt){try{let r=await fetch(url,opt);let txt=await r.text();let json;try{json=JSON.parse(txt)}catch(e){return name+': CHYBA - server vrátil HTML/text místo JSON\n'+txt.slice(0,160)}return name+': '+r.status+' '+JSON.stringify(json)}catch(e){return name+': '+e.message}}
+async function run(){let a=[];a.push(await t('/api','/api'));a.push(await t('/api/health','/api/health'));a.push(await t('admin login','/api/auth/login',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({name:'Admin',first:'Admin',last:'',password:'admiN9'})}));o.textContent=a.join('\n\n')}
+run();</script></body></html>
