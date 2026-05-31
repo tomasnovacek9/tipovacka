@@ -1,4 +1,8 @@
-<!doctype html><html lang="cs"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>API test</title><body style="font-family:Arial;background:#081018;color:white;padding:20px"><h1>API test</h1><pre id=o>Testuji...</pre><button onclick="run()">Znovu otestovat</button><script>
-async function t(name,url,opt){try{let r=await fetch(url,opt);let txt=await r.text();let json;try{json=JSON.parse(txt)}catch(e){return name+': CHYBA - server vrátil HTML/text místo JSON\n'+txt.slice(0,160)}return name+': '+r.status+' '+JSON.stringify(json)}catch(e){return name+': '+e.message}}
-async function run(){let a=[];a.push(await t('/api','/api'));a.push(await t('/api/health','/api/health'));a.push(await t('admin login','/api/auth/login',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({name:'Admin',first:'Admin',last:'',password:'admiN9'})}));o.textContent=a.join('\n\n')}
-run();</script></body></html>
+<!doctype html><meta charset="utf-8"><title>API test v63</title><style>body{font-family:system-ui;background:#080d12;color:white;padding:24px}pre{background:#111a23;border:1px solid #27313d;border-radius:12px;padding:14px;white-space:pre-wrap}.ok{color:#7cff5b}.bad{color:#ff7a86}</style><h1>TIPOVAČKA API test v63</h1><button onclick="run()">Spustit test</button><pre id="out">Klikni na test.</pre><script>
+async function post(url,body){let r=await fetch(url,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});let t=await r.text();let j;try{j=JSON.parse(t)}catch(e){throw new Error(url+' nevrátil JSON, ale: '+t.slice(0,120))}if(!r.ok)throw new Error(url+' '+r.status+': '+(j.error||t));return j}
+async function get(url,token){let h={}; if(token)h.authorization='Bearer '+token;let r=await fetch(url,{headers:h});let t=await r.text();let j;try{j=JSON.parse(t)}catch(e){throw new Error(url+' nevrátil JSON, ale: '+t.slice(0,120))}if(!r.ok)throw new Error(url+' '+r.status+': '+(j.error||t));return j}
+async function run(){let out=document.getElementById('out');out.textContent='Testuji...';try{let health=await get('/api/health');let login=await post('/api/auth/login',{first:'Admin',last:'',name:'Admin',login:'Admin',username:'Admin',password:'admiN9',pass:'admiN9'});let me=await get('/api/me',login.token);out.innerHTML='<span class="ok">OK</span>
+health: '+JSON.stringify(health,null,2)+'
+login token: '+login.token+'
+me: '+JSON.stringify(me,null,2)}catch(e){out.innerHTML='<span class="bad">CHYBA</span>
+'+e.message}}</script>
