@@ -38,3 +38,7 @@ Po nasazení ověř:
 `/api-test.html`
 
 Pokud vrací JSON, backend běží. Pokud se zobrazí HTML nebo chyba, není správně nasazený backend/functions.
+
+
+## Přihlášení ve v57
+Admin: `Admin` / `admiN9`. Běžný uživatel se může přihlásit jménem a příjmením, přezdívkou nebo e-mailem. Pokud heslo nesedí, nastav ho znovu v Adminu.
