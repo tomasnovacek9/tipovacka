@@ -1,9 +1,7 @@
-name = "tipovacka"
-compatibility_date = "2026-05-31"
+name = "tipovacka-ms-2026"
 pages_build_output_dir = "public"
 
-# Pro lokální vývoj s wrangler pages dev:
-# [[d1_databases]]
-# binding = "DB"
-# database_name = "tipovacka-db"
-# database_id = "DOPLNIT_ID_DATABAZE"
+[[d1_databases]]
+binding = "DB"
+database_name = "tipovacka"
+database_id = "DOPLNIT_ID_DATABAZE"

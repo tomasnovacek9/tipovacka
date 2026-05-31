@@ -1,47 +1,450 @@
 <!doctype html>
-<html lang="cs">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tipovačka</title>
-  <link rel="stylesheet" href="/styles.css">
-</head>
-<body>
-  <main class="wrap">
-    <section class="card hero">
-      <div>
-        <p class="eyebrow">Cloudflare Pages + D1</p>
-        <h1>Tipovačka</h1>
-        <p id="apiStatus" class="muted">Kontroluji API…</p>
-      </div>
-      <div id="userBox" class="userbox"></div>
-    </section>
+<html lang="cs"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><meta name="theme-color" content="#080d12"><title>Tipovačka MS 2026</title><link rel="manifest" href="manifest.json?v=56"><link rel="icon" href="favicon.ico?v=56"><link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png?v=56"><link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png?v=56"><style>
+:root{--bg:#080d12;--bg2:#0b1118;--panel:#101922;--panel2:#0e171f;--card:#111b25;--text:#f5f7fb;--muted:#94a3b8;--line:rgba(255,255,255,.10);--green:#27d15b;--green2:#7cff5b;--danger:#ff5b6b;--warn:#ffd166;--shadow:0 18px 46px rgba(0,0,0,.35);--radius:24px}*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Arial,sans-serif}body{padding-bottom:104px}.app{max-width:1100px;margin:0 auto}.hide{display:none!important}button,input,select,textarea{font:inherit}button{cursor:pointer}.muted,.note{color:var(--muted)}.note{font-size:13px;line-height:1.45}.top{position:sticky;top:0;z-index:30;background:linear-gradient(180deg,#070c12,#081018);border-bottom:1px solid rgba(124,255,91,.22);box-shadow:0 12px 36px rgba(0,0,0,.38);padding:12px 14px 10px}.top-inner{max-width:1100px;margin:auto;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center}.brand{display:flex;align-items:center;gap:13px;min-width:0}.brand img{width:58px;height:58px;border-radius:16px;object-fit:cover;flex:0 0 auto}.brand-title{font-size:31px;line-height:.96;font-weight:950;letter-spacing:-.045em;text-transform:uppercase;white-space:nowrap}.brand-sub{font-size:15px;color:var(--green2);font-weight:950;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:5px}.header-meta{display:flex;align-items:center;justify-content:flex-end;gap:18px;text-align:right}.meta-block{min-width:0}.meta-label{font-size:11px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.08em}.meta-value{font-size:17px;font-weight:950;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px}.meta-value.green{color:var(--green2)}.top-stats{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);padding-top:11px;margin-top:2px}.stat-chip{text-align:center;border-right:1px solid var(--line);min-width:0}.stat-chip:last-child{border-right:0}.stat-chip strong{display:block;color:var(--green2);font-size:18px;line-height:1.1}.stat-chip span{display:block;color:var(--muted);font-size:11px;margin-top:3px}.card{background:linear-gradient(180deg,var(--card),var(--panel2));border:1px solid var(--line);border-radius:var(--radius);box-shadow:none;padding:16px;margin:12px 14px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px}.mini{margin:0}.mini b{font-size:26px;color:#fff}.mini span{display:block;color:var(--muted);font-size:12px;margin-top:4px}.title{font-size:22px;font-weight:950;letter-spacing:-.02em;margin:0 0 12px}.section-title{font-size:20px;font-weight:950;margin:4px 14px 0}.input{width:100%;border:1px solid var(--line);background:#0c141c;color:var(--text);border-radius:16px;padding:13px;margin:6px 0;outline:none}.input:focus{border-color:rgba(124,255,91,.75);box-shadow:0 0 0 4px rgba(39,209,91,.12)}textarea.input{min-height:120px}.btn{border:1px solid var(--line);border-radius:16px;padding:12px 14px;background:#121d27;color:var(--text);font-weight:900}.btn.primary,.btn.active{background:linear-gradient(180deg,var(--green2),var(--green));color:#07100a;border-color:rgba(124,255,91,.55)}.btn.danger{background:rgba(255,91,107,.14);color:#ff9aa4}.btn.good{background:rgba(39,209,91,.14);color:var(--green2)}.btn.small{padding:8px 10px;border-radius:12px;font-size:12px}.btn:disabled{opacity:.45;cursor:not-allowed}.full{width:100%}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.notice{border:1px solid rgba(246,193,75,.35);background:rgba(246,193,75,.10);color:#ffe0a3;border-radius:18px;padding:12px;line-height:1.45}.ok{border-color:rgba(39,209,91,.35);background:rgba(39,209,91,.12);color:var(--green2)}.bad{border-color:rgba(255,91,107,.35);background:rgba(255,91,107,.12);color:#ff9aa4}.login{min-height:100vh;display:grid;place-items:center;padding:18px}.login-card{width:100%;max-width:500px;background:linear-gradient(180deg,var(--card),var(--panel));border:1px solid var(--line);border-radius:34px;box-shadow:var(--shadow);padding:20px}.login-logo{display:block;width:92px;height:92px;border-radius:24px;margin:0 auto 12px}.center{text-align:center}.filters-card{padding:12px}.filter-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.filter-grid .btn{padding:9px 6px;font-size:12px;border-radius:14px}.phase-select{margin-top:8px}.match{position:relative;border:1px solid var(--line);border-radius:24px;padding:14px;margin:12px 0;background:#0e1720}.match.tipped{border-color:rgba(39,209,91,.42)}.match-state{position:absolute;right:12px;top:12px;font-size:11px;font-weight:950;border-radius:999px;padding:5px 9px;background:rgba(255,255,255,.07);color:var(--muted)}.match.tipped .match-state{background:rgba(39,209,91,.16);color:var(--green2)}.match-head{display:flex;gap:8px;align-items:center;justify-content:space-between;padding-right:82px}.badge{display:inline-flex;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:900}.open{background:rgba(39,209,91,.14);color:var(--green2)}.locked{background:rgba(246,193,75,.14);color:#ffd987}.done{background:rgba(148,163,184,.16);color:#cbd5e1}.teams{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin:16px 0}.team{text-align:center;font-weight:950}.flag{font-size:32px;margin-bottom:4px}.score{font-size:26px;font-weight:950;color:var(--green2);min-width:54px;text-align:center}.exact{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin-bottom:14px}.stepper{display:grid;grid-template-columns:auto 1fr auto;gap:6px;align-items:center}.stepper button{padding:10px 12px}.stepper-value{text-align:center;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:10px;font-weight:950}.saved-tip{margin-top:12px;border:1px solid rgba(39,209,91,.30);background:rgba(39,209,91,.10);color:var(--green2);border-radius:16px;padding:10px;text-align:center;font-weight:900}.tip-actions{margin-top:12px}.others{margin-top:10px;background:#090f15;border:1px solid var(--line);border-radius:16px;padding:10px}.others-row{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:7px 0}.others-row:last-child{border-bottom:0}.win{color:var(--green2)}.exact-hit{color:#ffd987}.bottom{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);width:min(980px,calc(100% - 16px));display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:8px;background:rgba(13,20,27,.92);border:1px solid var(--line);backdrop-filter:blur(20px);box-shadow:var(--shadow);border-radius:24px;z-index:40}.bottom button{height:58px;border:0;background:transparent;color:var(--muted);border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:11px;font-weight:900}.bottom .on{background:linear-gradient(180deg,rgba(39,209,91,.18),rgba(39,209,91,.08));box-shadow:inset 0 0 0 1px rgba(124,255,91,.20);color:var(--green2)}.bottom svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:2.35;stroke-linecap:round;stroke-linejoin:round}.rank{display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line);padding:12px 0}.rank:last-child{border-bottom:0}.grow{flex:1;min-width:0}.points{font-weight:950;font-size:18px;color:var(--green2)}.medal{font-size:28px;width:40px;text-align:center;flex:0 0 auto}.public-name{font-weight:950}.role{display:inline-flex;border-radius:999px;border:1px solid var(--line);padding:4px 8px;font-size:12px;font-weight:900}.role.admin,.role.superadmin{color:#ffd987}.role.player{color:var(--green2)}.profile-head{display:flex;align-items:center;gap:14px}.profile-head img{width:76px;height:76px;border-radius:22px}.profile-name{font-size:30px;font-weight:950;letter-spacing:-.04em}.profile-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.profile-stat{background:#0c141c;border:1px solid var(--line);border-radius:20px;padding:14px}.profile-stat b{font-size:24px;color:var(--green2)}.profile-stat span{display:block;color:var(--muted);font-size:12px;margin-top:4px}.admin-list{display:grid;gap:10px}.admin-row{border:1px solid var(--line);border-radius:18px;padding:12px;background:#0c141c}.admin-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.table-wrap{overflow:auto}.server-error{max-width:780px;margin:18px auto}.server-error code{background:#05090d;border:1px solid var(--line);border-radius:8px;padding:2px 5px}@media(max-width:760px){body{padding-bottom:96px}.top{padding:10px 10px 8px}.top-inner{grid-template-columns:1fr;gap:8px}.brand img{width:52px;height:52px}.brand-title{font-size:25px}.brand-sub{font-size:12px}.header-meta{justify-content:space-between;text-align:left;background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:16px;padding:9px 10px;gap:8px}.meta-label{font-size:9px}.meta-value{font-size:14px;max-width:145px}.top-stats{padding-top:9px}.stat-chip strong{font-size:15px}.stat-chip span{font-size:9px}.cards{grid-template-columns:1fr}.card{margin:10px;padding:13px}.grid2,.grid3{grid-template-columns:1fr}.filter-grid{grid-template-columns:repeat(3,1fr)}.match-head{display:block;padding-right:72px}.teams{gap:6px}.team{font-size:12px}.flag{font-size:28px}.score{font-size:22px}.profile-grid{grid-template-columns:repeat(2,1fr)}.bottom{bottom:8px;width:calc(100% - 12px);padding:7px}.bottom button{height:58px;font-size:10px}.bottom svg{width:22px;height:22px}}
 
-    <section id="loginCard" class="card">
-      <h2>Přihlášení</h2>
-      <form id="loginForm">
-        <label>E-mail nebo uživatelské jméno
-          <input name="login" autocomplete="username" required placeholder="admin">
-        </label>
-        <label>Heslo
-          <input name="password" type="password" autocomplete="current-password" required placeholder="••••••••">
-        </label>
-        <button type="submit">Přihlásit</button>
-        <p id="loginMsg" class="msg"></p>
-      </form>
-    </section>
+/* v33 UX fixes */
+html{touch-action:manipulation;-webkit-text-size-adjust:100%}button,.btn,.stepper button{touch-action:manipulation;-webkit-tap-highlight-color:transparent;user-select:none}
+.login-card .btn.full{margin-top:9px}.login-card .btn.primary.full{margin-top:14px}
+.login-brand{display:flex;align-items:center;justify-content:center;gap:13px;margin-bottom:14px}.login-brand img{width:64px;height:64px;border-radius:18px}.login-brand-title{font-size:30px;font-weight:950;letter-spacing:-.045em;text-transform:uppercase;line-height:.95}.login-brand-sub{font-size:13px;color:var(--green2);font-weight:950;text-transform:uppercase;margin-top:4px}.section-title{display:none!important}
+.rank-table{display:grid;gap:0}.rank-head,.rank-row{display:grid;grid-template-columns:44px minmax(0,1fr) 54px 44px 44px 64px;gap:8px;align-items:center;border-bottom:1px solid var(--line);padding:10px 0}.rank-head{color:var(--muted);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.05em}.rank-row:last-child{border-bottom:0}.rank-nick{font-weight:950;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.rank-cell{text-align:right;font-weight:900}.rank-total{color:var(--green2);font-size:17px}.profile-list{display:grid;gap:9px}.profile-item{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding:10px 0}.profile-item:last-child{border-bottom:0}.profile-item span{color:var(--muted)}.profile-item b{text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:65%}.rules-content{line-height:1.65;color:#d9e2ec}.rules-content h1,.rules-content h2,.rules-content h3{color:white}.rules-content ul{padding-left:20px}.match-state{top:48px}.match-head{padding-right:0!important}.badge.open{background:rgba(39,209,91,.12);color:var(--green2)}
+.bottom{grid-template-columns:repeat(auto-fit,minmax(0,1fr))!important}
+@media(max-width:760px){.rank-head,.rank-row{grid-template-columns:34px minmax(0,1fr) 42px 34px 34px 50px;gap:5px}.rank-head{font-size:9px}.rank-nick{font-size:14px}.rank-cell{font-size:12px}.rank-total{font-size:14px}.login-brand img{width:58px;height:58px}.login-brand-title{font-size:25px}.match-state{top:44px}}
 
-    <section id="appCard" class="card hidden">
-      <h2>Domů</h2>
-      <p>API funguje a uživatel je přihlášený.</p>
-      <button id="logoutBtn" class="secondary">Odhlásit</button>
-    </section>
+/* v34 fixes */
+.loader{display:inline-flex;align-items:center;gap:8px}.loader:after{content:"";width:14px;height:14px;border:2px solid rgba(7,16,10,.35);border-top-color:#07100a;border-radius:50%;animation:spin .7s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.btn.is-loading{opacity:.85;pointer-events:none}.btn.is-loading:after{content:"";display:inline-block;width:14px;height:14px;margin-left:8px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;vertical-align:-2px;animation:spin .7s linear infinite}
+.match-state{display:none!important}.badge.open{background:rgba(39,209,91,.13)!important;color:var(--green2)!important}
+.top-stats .stat-chip strong small{font-size:.65em;color:#b8c4ce;font-weight:850}.profile-list.compact .profile-item{padding:8px 0}.profile-list.compact .optional{display:none}
+.rank-card{padding-top:0}.rank-table-wrap{max-height:calc(100vh - 260px);overflow:auto;-webkit-overflow-scrolling:touch}.rank-head{position:sticky;top:0;z-index:2;background:#111b25;border-bottom:1px solid rgba(124,255,91,.35)}
+.rank-head,.rank-row{grid-template-columns:38px minmax(0,1fr) 68px 58px 58px 70px}.rank-cell small{display:block;color:var(--muted);font-size:10px;font-weight:800}.winner-hit{color:var(--green2)}.exact-hit2{color:#ffd987}.rank-nick{min-width:0}
+.phase-tools{display:grid;gap:10px}.phase-row{display:grid;grid-template-columns:1.2fr 1fr 1fr auto;gap:8px;align-items:center;border:1px solid var(--line);border-radius:16px;padding:10px;background:#0c141c}.phase-row b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:760px){.rank-head,.rank-row{grid-template-columns:30px minmax(0,1fr) 50px 40px 40px 52px;gap:4px}.rank-head{font-size:8.5px}.rank-cell small{font-size:8px}.phase-row{grid-template-columns:1fr;gap:6px}.phase-row .btn{width:100%}}
 
-    <section class="card small">
-      <h2>Diagnostika</h2>
-      <pre id="debug">Načítám…</pre>
-    </section>
-  </main>
-  <script src="/app.js" defer></script>
-</body>
-</html>
+/* v36 polish: profile, ranking, dashboard */
+.stat-chip strong small{color:var(--green2);font-size:.86em;font-weight:950}.rank-table-wrap{max-height:calc(100vh - 230px);overflow:auto;border-radius:18px}.rank-head{position:sticky;top:0;z-index:3;background:linear-gradient(180deg,#111b25,#0f1923);border-bottom:1px solid rgba(124,255,91,.24)}.rank-row.my-row{background:rgba(39,209,91,.075);border-radius:14px;padding-left:6px;padding-right:6px}.rank-row.my-row .rank-nick:after{content:"  • já";color:var(--green2);font-size:11px}.profile-hero{display:grid;gap:12px}.profile-nick{font-size:34px;font-weight:950;letter-spacing:-.04em;line-height:1}.profile-real{color:var(--muted);font-size:14px}.profile-data{display:grid;grid-template-columns:1fr 1fr;gap:10px}.data-row{background:#0c141c;border:1px solid var(--line);border-radius:16px;padding:12px;min-width:0}.data-row span{display:block;color:var(--muted);font-size:11px;font-weight:850;text-transform:uppercase;letter-spacing:.06em}.data-row b{display:block;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.role-chip{display:inline-flex;align-items:center;border:1px solid rgba(124,255,91,.24);background:rgba(39,209,91,.11);color:var(--green2);border-radius:999px;padding:6px 10px;font-weight:950}.admin-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.admin-summary .mini{background:#0c141c;border:1px solid var(--line);border-radius:18px;padding:12px}.btn.loading{position:relative;color:transparent!important;pointer-events:none}.btn.loading:after{content:"";position:absolute;left:50%;top:50%;width:18px;height:18px;margin:-9px 0 0 -9px;border:3px solid rgba(255,255,255,.35);border-top-color:#07100a;border-radius:50%;animation:spin .75s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}@media(max-width:760px){.profile-data{grid-template-columns:1fr}.admin-summary{grid-template-columns:1fr 1fr}.rank-table-wrap{max-height:calc(100vh - 205px)}}
+
+/* v37: polish ranking/admin/flicker */
+.rank-head{font-size:11px!important;letter-spacing:.02em!important;text-transform:none!important}
+.rank-head small{font-size:9px!important;color:var(--muted)!important;font-weight:700!important}
+.rank-row.my-row{background:transparent!important;box-shadow:none!important;border-left:0!important}
+.rank-row.my-row .rank-nick,.rank-row.my-row .rank-total{color:var(--green2)!important}
+.rank-row.my-row .medal{color:var(--green2)!important}
+.brand img,.tipmark{background:transparent!important;box-shadow:none!important}
+.admin-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.admin-tabs .btn{font-size:12px;padding:10px 8px;border-radius:14px}
+.admin-panel{display:none}.admin-panel.active{display:block}
+.todo-match{border:1px solid var(--line);border-radius:18px;background:#0b141c;padding:12px;margin:10px 0}
+.todo-match b{display:block;margin-bottom:4px}.setting-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.save-note{display:none;margin-top:8px}.save-note.show{display:block}
+@media(max-width:760px){.rank-head{font-size:9px!important}.rank-head small{font-size:8px!important}.rank-row{grid-template-columns:34px minmax(92px,1fr) 46px 38px 38px 48px!important}.admin-tabs{grid-template-columns:1fr 1fr}.setting-grid{grid-template-columns:1fr}}
+
+/* v38 admin stability and ranking polish */
+.btn{position:relative;transition:transform .08s ease, opacity .12s ease, background .12s ease}.btn:active,.btn.busy{transform:scale(.97);opacity:.78}.btn.busy{cursor:wait}.admin-tabs{position:sticky;top:142px;z-index:5;background:#0b1118;padding:8px 0;margin:-4px 0 12px;display:flex;gap:8px;overflow:auto}.admin-tab.active{background:linear-gradient(180deg,var(--green2),var(--green));color:#07100a}.admin-panel{display:none}.admin-panel.active{display:block}.admin-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.todo-match{border:1px solid var(--line);border-radius:18px;padding:12px;margin:10px 0;background:rgba(255,255,255,.025)}
+.rank-card,.rank-table-wrap{overflow:auto}.rank-table{min-width:560px}.rank-head,.rank-row{display:grid;grid-template-columns:46px minmax(120px,1fr) 78px 58px 62px 62px;align-items:center;gap:6px}.rank-head{position:sticky;top:142px;z-index:3;background:#0b1118;border-bottom:1px solid var(--line);padding:8px 4px;color:var(--muted);font-size:10px;line-height:1.05;text-transform:uppercase;letter-spacing:.03em}.rank-row{border-bottom:1px solid var(--line);padding:10px 4px}.rank-row.my-row{background:transparent!important;color:var(--green2)}.rank-row.my-row .rank-nick,.rank-row.my-row .rank-total{color:var(--green2)}.rank-nick{font-weight:950;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.rank-cell{text-align:center;font-weight:850;font-size:13px}.rank-total{font-size:16px;font-weight:950}.medal{text-align:center;font-size:20px}.points{color:var(--green2)}
+@media(max-width:720px){.admin-summary{grid-template-columns:repeat(2,1fr)}.admin-tabs{top:166px}.rank-head{top:166px}.rank-table{min-width:500px}.rank-head,.rank-row{grid-template-columns:38px minmax(105px,1fr) 70px 50px 54px 54px}.rank-head{font-size:9px}.rank-cell{font-size:12px}.rank-total{font-size:15px}.medal{font-size:18px}}
+
+
+/* v39: pořadí + dashboard finální korekce */
+.top-stats .stat-chip strong,
+.top-stats .stat-chip strong small{
+  color:var(--green2)!important;
+  font-size:18px!important;
+  line-height:1.1!important;
+  font-weight:950!important;
+}
+.top-stats .stat-chip span{font-size:11px!important;color:var(--muted)!important}
+.rank-card,.rank-table-wrap{
+  overflow:auto!important;
+  border-radius:18px!important;
+  max-height:calc(100vh - 220px)!important;
+}
+.rank-table{min-width:520px!important}
+.rank-head,.rank-row{
+  display:grid!important;
+  grid-template-columns:38px minmax(120px,1fr) 66px 48px 54px 54px!important;
+  gap:5px!important;
+  align-items:center!important;
+}
+.rank-head{
+  position:sticky!important;
+  top:0!important;
+  z-index:5!important;
+  background:#0b1118!important;
+  border-bottom:1px solid rgba(124,255,91,.24)!important;
+  padding:7px 6px!important;
+  font-size:8.5px!important;
+  line-height:1.05!important;
+  letter-spacing:0!important;
+  text-transform:uppercase!important;
+  color:#8fa0b2!important;
+  white-space:normal!important;
+}
+.rank-head div{text-align:center!important;overflow:hidden!important;text-overflow:ellipsis!important}
+.rank-head div:nth-child(2){text-align:left!important}
+.rank-row{
+  padding:10px 6px!important;
+  border-bottom:1px solid var(--line)!important;
+  border-radius:0!important;
+}
+.rank-row.my-row{
+  background:rgba(39,209,91,.12)!important;
+  color:var(--text)!important;
+  box-shadow:inset 3px 0 0 var(--green2)!important;
+}
+.rank-row.my-row .rank-nick,
+.rank-row.my-row .rank-total,
+.rank-row.my-row .rank-cell,
+.rank-row.my-row .medal{color:var(--green2)!important}
+.rank-row.my-row .rank-nick:after{content:""}
+.rank-nick{font-size:14px!important;font-weight:950!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+.rank-cell{font-size:12px!important;text-align:center!important;font-weight:850!important;white-space:nowrap!important}
+.rank-total{font-size:14px!important;font-weight:950!important;color:var(--green2)!important}
+.medal{font-size:18px!important;width:auto!important;text-align:center!important}
+@media(max-width:760px){
+  .top-stats .stat-chip strong,.top-stats .stat-chip strong small{font-size:15px!important}
+  .top-stats .stat-chip span{font-size:9px!important}
+  .rank-table-wrap{max-height:calc(100vh - 205px)!important}
+  .rank-table{min-width:500px!important}
+  .rank-head,.rank-row{grid-template-columns:34px minmax(110px,1fr) 62px 44px 50px 50px!important;gap:4px!important}
+  .rank-head{font-size:7.8px!important;padding:6px 4px!important}
+  .rank-nick{font-size:13px!important}.rank-cell{font-size:11px!important}.rank-total{font-size:13px!important}.medal{font-size:17px!important}
+}
+
+
+/* v40: mobilní pořadí, stabilnější přepínání, sjednocené dashboard čísla */
+.stat-chip strong{font-size:18px!important;color:var(--green2)!important;font-weight:950!important}.stat-chip span{font-size:10px!important;line-height:1.15!important}.rank-table-wrap{overflow:hidden!important}.rank-table{width:100%!important;min-width:0!important}.rank-head,.rank-row{grid-template-columns:30px minmax(0,1fr) 44px 34px 44px 48px!important;gap:5px!important;padding:8px 0!important}.rank-head{position:sticky!important;top:0!important;z-index:2!important;background:#0f1923!important;color:#8d99a8!important;font-size:8px!important;line-height:1.05!important;letter-spacing:0!important;text-transform:none!important;border-bottom:1px solid rgba(124,255,91,.22)!important}.rank-row{font-size:12px!important}.rank-nick{font-size:13px!important;min-width:0!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}.rank-cell{font-size:12px!important;text-align:center!important}.rank-total{font-size:14px!important;color:var(--green2)!important;font-weight:950!important}.medal{font-size:13px!important;width:auto!important;min-width:0!important}.my-row{background:rgba(39,209,91,.12)!important;box-shadow:inset 3px 0 0 var(--green2)!important;border-radius:12px!important;padding-left:4px!important;padding-right:4px!important}.my-row .rank-nick,.my-row .rank-cell{color:#eaffea!important}.admin-tabs{display:flex;gap:8px;overflow:auto;padding-bottom:6px}.admin-panel{display:none}.admin-panel.active{display:block}.btn.busy,.btn.is-loading{opacity:.75;transform:scale(.98)}.bottom{grid-template-columns:repeat(auto-fit,minmax(0,1fr))!important}
+@media(max-width:760px){.rank-head,.rank-row{grid-template-columns:26px minmax(70px,1fr) 38px 30px 38px 42px!important;gap:4px!important}.rank-head{font-size:7.5px!important}.rank-row{font-size:11px!important}.rank-nick{font-size:12px!important}.rank-cell{font-size:11px!important}.rank-total{font-size:13px!important}.card:has(.rank-table-wrap){padding:8px!important;margin-left:6px!important;margin-right:6px!important}.stat-chip strong{font-size:15px!important}.stat-chip span{font-size:8.5px!important}}
+
+/* v41 match count chips */
+.count-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.count-chip{border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:14px;padding:9px 8px;text-align:center}.count-chip b{display:block;color:var(--green2);font-size:16px}.count-chip span{display:block;color:var(--muted);font-size:10px;margin-top:2px}.rank-table th{font-size:10px!important;line-height:1.05!important;padding:7px 3px!important}.rank-table td{font-size:12px!important;padding:8px 3px!important}.rank-table .nick{max-width:118px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rank-table .me-row{background:rgba(39,209,91,.12)!important;color:#fff!important;box-shadow:inset 3px 0 0 var(--green)}
+@media(max-width:720px){.count-strip{grid-template-columns:repeat(3,1fr);gap:6px}.count-chip{padding:7px 4px}.count-chip b{font-size:13px}.count-chip span{font-size:9px}.rank-table th{font-size:9px!important}.rank-table td{font-size:11px!important}.rank-table .nick{max-width:92px}}
+
+/* v42 instructions, schedule counters, login header */
+.login{align-items:start;padding-top:18px}.login-card{max-width:560px}.login-brand{justify-content:flex-start!important;text-align:left!important}.login-brand img{flex:0 0 auto}.login-actions{display:grid;gap:10px;margin-top:12px}.install-help{margin-top:14px;background:#0c141c;border:1px solid var(--line);border-radius:18px;padding:12px}.install-help h3{margin:0 0 8px;font-size:16px}.install-help ol{margin:8px 0 0;padding-left:20px;color:#d9e2ec;line-height:1.55}.pay-box{border:1px solid rgba(124,255,91,.28);background:rgba(39,209,91,.10);border-radius:18px;padding:12px;margin-top:12px}.pay-code{font-size:18px;font-weight:950;color:var(--green2);letter-spacing:.02em}.schedule-counts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}.count-pill{border:1px solid var(--line);background:#0b131b;border-radius:15px;padding:9px;text-align:center}.count-pill b{display:block;color:var(--green2);font-size:17px}.count-pill span{display:block;color:var(--muted);font-size:10px;font-weight:850;text-transform:uppercase;letter-spacing:.04em}.rank-head{font-size:8px!important;text-transform:none!important;letter-spacing:0!important}.rank-row.my-row{background:rgba(39,209,91,.10)!important;border-radius:12px}.rank-row.my-row .rank-nick:after{content:""!important}.stat-chip strong{color:var(--green2)!important;font-size:18px!important}.stat-chip span{font-size:10px!important}.admin-note{font-size:12px;color:var(--muted);margin-top:8px}.rules-content .highlight{color:var(--green2);font-weight:900}.match-list-note{margin-top:10px}.phase-divider{margin:14px 0 8px;color:var(--green2);font-size:13px;font-weight:950;text-transform:uppercase;letter-spacing:.05em}
+@media(max-width:760px){.schedule-counts{grid-template-columns:repeat(2,1fr)}.login{padding:10px}.login-brand-title{font-size:28px}.install-help{font-size:13px}.rank-head,.rank-row{grid-template-columns:28px minmax(0,1fr) 48px 36px 36px 48px!important}.rank-head{font-size:7.5px!important}.rank-cell{font-size:12px!important}.rank-total{font-size:13px!important}.stat-chip strong{font-size:16px!important}.stat-chip span{font-size:9px!important}}
+
+/* v43 final UX fixes */
+.login{place-items:start center;padding-top:22px}.login-card{margin-top:0}.login-install{margin-top:14px;border:1px solid var(--line);background:#0c141c;border-radius:18px;padding:12px}.login-install b{color:var(--green2)}.login-actions{margin-top:12px}.rules-content h2{margin:22px 0 8px;font-size:20px;color:#fff}.rules-content h3{margin:16px 0 6px;font-size:16px;color:var(--green2)}.rules-content p,.rules-content li{line-height:1.55}.rules-content ul,.rules-content ol{padding-left:20px}.rules-content .rules-toc{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:12px 0}.rules-content .rules-toc a{display:block;text-decoration:none;color:var(--green2);background:rgba(39,209,91,.10);border:1px solid rgba(39,209,91,.20);border-radius:14px;padding:9px 10px;font-weight:850}.rules-content .example{background:#070c12;border:1px solid var(--line);border-radius:16px;padding:10px 12px;margin:8px 0}.rules-content table{width:100%;border-collapse:collapse;margin-top:10px}.rules-content th,.rules-content td{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left}.pay-card .pay-code{font-size:20px}.top-stats .stat-chip strong,.top-stats .stat-chip strong small{font-size:18px!important;line-height:1.1!important;color:var(--green2)!important}.top-stats .stat-chip strong small{font-weight:950!important}.schedule-counts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}.schedule-counts .count-pill{background:#0b131b;border:1px solid var(--line);border-radius:16px;padding:10px;text-align:center}.schedule-counts b{display:block;color:var(--green2);font-size:18px}.schedule-counts span{display:block;color:var(--muted);font-size:11px;margin-top:3px}.phase-breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:8px}.phase-pill{background:#0b131b;border:1px solid var(--line);border-radius:14px;padding:8px;text-align:center}.phase-pill b{display:block;font-size:12px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.phase-pill span{font-size:11px;color:var(--green2)}.rank-table-wrap{overflow:hidden}.rank-table{min-width:0;width:100%;font-size:13px}.rank-head,.rank-row{display:grid;grid-template-columns:30px minmax(0,1fr) 38px 38px 52px;align-items:center;gap:4px}.rank-head{position:sticky;top:0;background:#0b131b;z-index:2;border-bottom:1px solid var(--line);font-size:9px!important;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:850}.rank-head div{padding:7px 2px}.rank-row{border-bottom:1px solid var(--line);min-height:42px}.rank-row.my-row{background:rgba(39,209,91,.12);box-shadow:inset 3px 0 0 var(--green2)}.rank-row .medal{font-size:15px;width:auto}.rank-nick{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:900}.rank-cell{text-align:center;font-size:12px;font-weight:850;color:#dce6ef}.rank-total{color:var(--green2)!important;font-size:15px!important;font-weight:950!important}.rank-legend{margin-top:10px;font-size:12px;color:var(--muted);line-height:1.45}.rank-legend b{color:var(--green2)}
+@media(max-width:760px){.rules-content .rules-toc{grid-template-columns:1fr}.schedule-counts{grid-template-columns:repeat(2,1fr)}.phase-breakdown{grid-template-columns:repeat(2,1fr)}.rank-head,.rank-row{grid-template-columns:26px minmax(78px,1fr) 34px 34px 46px}.rank-table{font-size:12px}.rank-head{font-size:8px!important}.rank-cell{font-size:11px}.rank-total{font-size:14px!important}.top-stats .stat-chip strong,.top-stats .stat-chip strong small{font-size:15px!important}}
+
+/* v45: button feedback, fixed mobile ranking columns */
+.btn{transition:transform .12s ease, opacity .12s ease, box-shadow .12s ease, filter .12s ease}
+.btn:active{transform:scale(.965)!important;filter:brightness(1.12)}
+.btn.busy,.btn.loading,.btn.is-loading{opacity:.92!important;pointer-events:none!important;position:relative!important;box-shadow:0 0 0 3px rgba(39,209,91,.16)!important;filter:brightness(1.08)!important}
+.btn.busy:after,.btn.loading:after,.btn.is-loading:after{content:"";display:inline-block;width:13px;height:13px;margin-left:8px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;vertical-align:-2px;animation:spin .65s linear infinite}
+.btn.flash-ok{box-shadow:0 0 0 3px rgba(39,209,91,.22)!important;transform:scale(.985)}
+@keyframes tapPulse{0%{transform:scale(1)}50%{transform:scale(.975)}100%{transform:scale(1)}}
+.btn.tap-feedback{animation:tapPulse .18s ease-out}
+.rank-head,.rank-row{grid-template-columns:32px minmax(0,1fr) 36px 36px 52px!important}
+.rank-head{font-size:9px!important;letter-spacing:0!important;text-transform:none!important}
+.forgot-box{margin-top:10px;border:1px solid rgba(124,255,91,.22);background:rgba(39,209,91,.08);border-radius:16px;padding:11px}
+@media(max-width:760px){.rank-head,.rank-row{grid-template-columns:28px minmax(0,1fr) 32px 32px 46px!important;gap:4px!important}.rank-head{font-size:8px!important}.rank-cell{font-size:12px!important}.rank-total{font-size:13px!important}}
+
+
+/* v50: jasná odezva tlačítek bez mizení textu */
+.btn.loading{color:inherit!important}
+.btn.primary.loading{color:#07100a!important}
+.btn.busy,.btn.loading,.btn.is-loading{opacity:.94!important;pointer-events:none!important;position:relative!important;transform:scale(.985)!important;filter:brightness(1.08)!important;box-shadow:0 0 0 3px rgba(39,209,91,.16)!important}
+.btn.busy:after,.btn.loading:after,.btn.is-loading:after{content:"";display:inline-block;width:13px;height:13px;margin-left:8px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;vertical-align:-2px;animation:spin .7s linear infinite}
+.btn.primary.busy:after,.btn.primary.loading:after,.btn.primary.is-loading:after{border-color:#07100a;border-right-color:transparent}
+.admin-tabs{position:sticky;top:132px;z-index:12;background:#0b1118;padding:8px 0;display:flex;gap:7px;overflow:auto}
+.admin-panel{scroll-margin-top:190px}
+
+/* v51: čistší pořadí, oddělení tipnutých zápasů a lepší admin přidání zápasu */
+.rank-table-wrap{overflow:hidden!important}
+.rank-table{width:100%!important;min-width:0!important}
+.rank-head,.rank-row{grid-template-columns:30px minmax(0,1fr) 38px 38px 52px!important;gap:4px!important}
+.rank-head{font-size:8.5px!important;text-transform:uppercase!important;letter-spacing:.025em!important;color:#aab6c3!important;background:#0b131b!important;position:sticky!important;top:0!important;z-index:3!important}
+.rank-row.my-row{background:rgba(39,209,91,.11)!important;box-shadow:inset 3px 0 0 var(--green2)!important;border-radius:12px!important}
+.rank-nick{white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+.rank-legend{margin:0 0 10px!important;padding:10px 12px!important;border:1px solid rgba(255,255,255,.08)!important;background:rgba(255,255,255,.035)!important;border-radius:16px!important;font-size:12px!important;color:var(--muted)!important;line-height:1.35!important}
+.rank-legend b{color:var(--green2)!important}
+.match.tipped{border-color:rgba(56,189,248,.46)!important;background:linear-gradient(180deg,rgba(14,23,32,.98),rgba(10,20,30,.96))!important}
+.match.tipped .match-state{background:rgba(56,189,248,.16)!important;color:#7dd3fc!important;border:1px solid rgba(56,189,248,.22)!important}
+.match.missing .match-state{background:rgba(255,209,102,.12)!important;color:#ffd987!important;border:1px solid rgba(255,209,102,.20)!important}
+.match.tipped .saved-tip{border-color:rgba(56,189,248,.28)!important;background:rgba(56,189,248,.10)!important;color:#7dd3fc!important}
+.match.tipped .stepper-value{border-color:rgba(56,189,248,.28)!important}
+.admin-match-preview{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;margin:10px 0;padding:12px;border:1px solid var(--line);border-radius:18px;background:#0b131b;text-align:center}
+.admin-match-preview b{font-size:18px}.admin-match-preview span{display:block;color:var(--muted);font-size:12px;margin-top:3px}.admin-field-label{display:block;color:var(--muted);font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:.05em;margin-top:7px}
+.add-match-help{margin-top:8px;border:1px solid rgba(56,189,248,.22);background:rgba(56,189,248,.08);color:#bdeafe;border-radius:16px;padding:10px;font-size:12px;line-height:1.45}
+.top-stats .stat-chip strong{font-size:18px!important;color:var(--green2)!important}.top-stats .stat-chip span{font-size:10px!important}
+@media(max-width:760px){.rank-head,.rank-row{grid-template-columns:24px minmax(0,1fr) 32px 32px 44px!important}.rank-head{font-size:7.5px!important}.rank-cell{font-size:11px!important}.rank-total{font-size:13px!important}.rank-row .medal{font-size:13px!important}.rank-legend{font-size:11px!important;padding:9px!important}.admin-match-preview{grid-template-columns:1fr auto 1fr;padding:10px}.admin-match-preview b{font-size:15px}}
+
+
+
+/* v56: domů, notifikace, lepší texty */
+.home-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:12px;margin:12px 14px}.home-grid .card{margin:0}.home-hero{border-color:rgba(124,255,91,.20)!important;background:linear-gradient(135deg,#111c26,#0b1219)!important}.home-kicker{font-size:12px;color:var(--green2);font-weight:950;text-transform:uppercase;letter-spacing:.08em}.home-big{font-size:28px;font-weight:950;letter-spacing:-.04em;margin-top:4px}.home-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.pay-list{display:grid;gap:8px;margin-top:10px}.pay-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line)}.pay-row:last-child{border-bottom:0}.pay-row span{color:var(--muted)}.pay-row b{text-align:right}.pay-code{font-size:18px!important;letter-spacing:.02em}.next-match-mini{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;margin:12px 0;padding:12px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.035)}.next-match-mini .team-mini{text-align:center;font-weight:950}.next-match-mini .flag{font-size:26px}.feed-item{border-top:1px solid var(--line);padding:10px 0}.feed-item:first-child{border-top:0;padding-top:0}.soft-alert{border:1px solid rgba(255,209,102,.28);background:rgba(255,209,102,.09);border-radius:18px;padding:12px}.soft-alert b{color:#ffdf9a}.notify-row{display:flex;gap:8px;align-items:center;justify-content:space-between;margin-top:10px}.tiny{font-size:12px;color:var(--muted);line-height:1.35}.btn.ghost{background:rgba(255,255,255,.04)}
+@media(max-width:760px){.home-grid{grid-template-columns:1fr;margin:10px}.home-actions{grid-template-columns:1fr}.home-big{font-size:23px}.next-match-mini{grid-template-columns:1fr auto 1fr}.pay-row{display:block}.pay-row b{display:block;text-align:left;margin-top:3px}}
+
+</style></head><body><div id="root"></div><script>
+const API="/api";
+let tok=localStorage.tip_token||"",me=null,data=null,page="home",msg="",filter="all",phase="all",betsFilter="all",timer=null;
+let draftBets={},editingUntil=0;
+const root=document.getElementById('root');
+const esc=s=>String(s??"").replace(/[&<>\"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[m]));
+const norm=s=>String(s||"").trim();
+async function api(p,o={}){let h={"content-type":"application/json"};if(tok)h.authorization="Bearer "+tok;let r=await fetch(API+p,{...o,headers:h,cache:"no-store"});let txt=await r.text();let j={};try{j=txt?JSON.parse(txt):{}}catch{let hint=txt&&txt.trim().startsWith('<')?"/api vrací HTML místo JSON. Zkontroluj Cloudflare Pages: Functions directory musí být functions, D1 binding DB a public/_routes.json musí obsahovat /api a /api/*.":"Server nevrátil JSON.";throw Error(hint)};if(!r.ok)throw Error(j.error||"Chyba API");return j}
+async function load(silent=false){try{if(tok){let m=await api('/me');me=m.user;data=await api('/app')}else{me=null;data=null}}catch(e){if(!silent)msg=e.message;localStorage.removeItem('tip_token');tok='';me=null;data=null}render()}
+function startRealtime(){clearInterval(timer);timer=setInterval(refreshSilent,5000)}
+async function refreshSilent(){if(!me||Date.now()<editingUntil)return;try{data=await api('/app');me=(await api('/me')).user;render()}catch(e){}}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&me)refreshSilent()});
+function go(p){page=p;render()}function out(){localStorage.removeItem('tip_token');tok='';me=null;data=null;msg='';render()}
+function sectionTitle(){return ({home:'Domů',tips:'Zápasy',rank:'Pořadí',rules:'Pravidla',profile:'Profil',bets:'Tipy všech',admin:'Admin'})[page]||'Domů'}
+function competition(){let s=(data&&data.settings)||{};return {name:s.competition_name||'FIFA World Cup 2026',subtitle:s.competition_subtitle||'MS ve fotbale 2026'}}
+function userName(){return me?(me.public_name||me.nick||me.full_name||'hráč'):'hráč'}
+function userStats(){let st=(data&&data.meStats)||me||{},rank=(data&&data.ranking)||[],pos=rank.findIndex(x=>x.id==st.id)+1,pct=st.evaluated_count?Math.round(((st.hit_1||0)+(st.hit_3||0))/(st.evaluated_count||1)*100):0;return {st,pos,pct,ev:st.evaluated_count||0}}
+function topbar(){if(!me||!data)return'';let c=competition(),u=userName(),{st,pos,pct,ev}=userStats();let total=st.tips_count||0;return `<header class=top><div class=top-inner><div class=brand><img src="app-icon.png?v=56" alt="TIP"><div><div class=brand-title>Tipovačka</div><div class=brand-sub>${esc(c.name)}</div></div></div><div class=header-meta><div class=meta-block><div class=meta-label>sekce</div><div class=meta-value>${esc(sectionTitle())}</div></div><div class=meta-block><div class=meta-label>přihlášen</div><div class="meta-value green">${esc(u)}</div></div></div><div class=top-stats><div class=stat-chip><strong>${pos||'—'}.</strong><span>místo</span></div><div class=stat-chip><strong>${st.points||0}</strong><span>bodů</span></div><div class=stat-chip><strong>${pct}%</strong><span>úspěšnost</span></div><div class=stat-chip><strong>${ev}/${total}</strong><span>vyhodnoceno / tipy</span></div></div></div></header>`}
+function navIcon(k){return {home:'<svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13v-9.5"/><path d="M9.5 20v-6h5v6"/></svg>',tips:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>',rank:'<svg viewBox="0 0 24 24"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v4a5 5 0 0 1-10 0V4Z"/><path d="M7 6H4a3 3 0 0 0 3 5"/><path d="M17 6h3a3 3 0 0 1-3 5"/></svg>',profile:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>',rules:'<svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6z"/><path d="M14 3v4h4"/><path d="M8 11h8M8 15h8M8 19h5"/></svg>',admin:'<svg viewBox="0 0 24 24"><path d="M12 3 20 6v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3Z"/><path d="M9 12l2 2 4-5"/></svg>'}[k]||''}
+function nav(){if(!me)return'';let admin=['admin','superadmin'].includes(me.role);let items=[['home','Domů'],['tips','Zápasy'],['rank','Pořadí'],['rules','Pravidla'],['profile','Profil'],['admin','Admin']];return `<nav class=bottom>${items.map(i=>i[0]=='admin'&&!admin?'':`<button class="${page==i[0]?'on':''}" onclick="go('${i[0]}')">${navIcon(i[0])}<span>${i[1]}</span></button>`).join('')}</nav>`}
+function loginScreen(){let cname='FIFA World Cup 2026';return `<div class=login><div class=login-card><div class=login-brand><img src="app-icon.png?v=56" alt="TIP"><div><div class=login-brand-title>Tipovačka</div><div class=login-brand-sub>${cname}</div></div></div><p class=note>Tipuj výsledky zápasů, sleduj pořadí a porovnej se s ostatními. Veřejně se zobrazuje jen přezdívka.</p>${msg?`<div class="notice bad">${esc(msg)}</div>`:''}<input id=loginFirst class=input autocomplete=given-name placeholder="Jméno"><input id=loginLast class=input autocomplete=family-name placeholder="Příjmení"><input id=lp class=input type=password autocomplete=current-password placeholder="Heslo"><div class=login-actions><button class="btn primary full" onclick="login(this)">Přihlásit</button><button class="btn full" onclick="toggleRegister(this)">Registrace</button></div><button class="btn small full" style="margin-top:8px" onclick="showForgot(this)">Zapomenuté heslo</button><div id=forgot class="forgot-box hide"><b>Zapomenuté heslo</b><p class=note>Napiš správci soutěže na <b>tomas.nova9@seznam.cz</b>. Do zprávy uveď jméno, příjmení a přezdívku. Správce ti nastaví nové heslo. Původní heslo se z bezpečnostních důvodů nikde nezobrazuje.</p></div><div id=reg class=hide><div class=grid2><input id=first class=input placeholder="Jméno"><input id=last class=input placeholder="Příjmení"></div><input id=nick class=input placeholder="Přezdívka do pořadí"><input id=email class=input placeholder="E-mail"><input id=rp class=input type=password placeholder="Heslo"><input id=code class=input placeholder="Vstupní kód"><button class="btn primary full" onclick="register(this)">Registrovat</button><p class=note>Po registraci najdeš pokyny k platbě v profilu. Admin po spárování platby účet aktivuje.</p></div><div class=login-install><b>📱 Přidání na plochu</b><p class=note><b>iPhone:</b> otevři v Safari → Sdílet → Přidat na plochu.<br><b>Android:</b> otevři v Chrome → menu → Přidat na plochu.</p></div></div></div>`}
+function setLoading(btn,label){if(!btn)return()=>{};btn.classList.add('busy');btn.disabled=true;btn.setAttribute('aria-busy','true');return()=>{btn.classList.remove('busy');btn.disabled=false;btn.removeAttribute('aria-busy')}}
+function toggleRegister(btn){btn&&btn.classList.add('flash-ok');setTimeout(()=>btn&&btn.classList.remove('flash-ok'),300);let r=document.getElementById('reg');if(r)r.classList.toggle('hide')}
+function showForgot(btn){btn&&btn.classList.add('flash-ok');setTimeout(()=>btn&&btn.classList.remove('flash-ok'),300);let f=document.getElementById('forgot');if(f)f.classList.toggle('hide')}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('button');if(!b||b.disabled)return;b.classList.add('tap-feedback','flash-ok');setTimeout(()=>b.classList.remove('tap-feedback','flash-ok'),220)});
+async function login(btn){const done=setLoading(btn);try{msg='';let full=(norm(loginFirst.value)+' '+norm(loginLast.value)).trim();let r=await api('/auth/login',{method:'POST',body:JSON.stringify({name:full,password:lp.value})});tok=r.token;localStorage.tip_token=tok;await load()}catch(e){msg=e.message;done();render()}}
+async function register(btn){const done=setLoading(btn);try{msg='';let r=await api('/auth/register',{method:'POST',body:JSON.stringify({first:first.value,last:last.value,nick:nick.value,email:email.value,phone:(document.getElementById('phone')?.value||''),password:rp.value,code:code.value})});tok=r.token;localStorage.tip_token=tok;await load()}catch(e){msg=e.message;done();render()}}
+function dateKey(dt){let d=new Date(dt),n=new Date();let t=new Date(n.getFullYear(),n.getMonth(),n.getDate()).getTime();let x=new Date(d.getFullYear(),d.getMonth(),d.getDate()).getTime();return x==t?'today':x==t+86400000?'tomorrow':'other'}
+function left(m){let d=new Date(m.start_time)-new Date();if(d<=0)return'uzamčeno';let s=Math.floor(d/1000),days=Math.floor(s/86400);s%=86400;let h=Math.floor(s/3600);s%=3600;let min=Math.floor(s/60);return days?`${days}d ${h}h ${min}m`:`${h}h ${min}m`}
+function displayUser(u){return esc(u.nick||u.public_name||u.full_name||'?')}
+function roleLabel(r){return r=='admin'?'Admin':r=='superadmin'?'Superadmin':'Tipér'}
+function flagOf(team){
+  if(!data) return '';
+  const flags=data.teamFlags||{};
+  if(flags[team]) return flags[team];
+  const m=(data.matches||[]).find(x=>x.home===team||x.away===team);
+  if(m) return m.home===team?(m.home_flag||''):(m.away_flag||'');
+  if(/^(1|2|3)[A-L]$/.test(String(team||''))||/Vítěz|Poražený|M\d+|TBD|postup|Dopln/i.test(String(team||''))) return '▫️';
+  return '🏳️';
+}
+function teamSelect(id,selected=''){
+  const opts=(data&&data.teamOptions?data.teamOptions:[]).filter(Boolean);
+  return `<select id="${id}" class="input">${opts.map(t=>`<option value="${esc(t)}" ${t===selected?'selected':''}>${esc(flagOf(t))} ${esc(t)}</option>`).join('')}</select>`;
+}
+
+function defaultRulesHtml(){return `<h2>Pravidla a návod k tipovačce</h2><p>Vítej v tipovačce k soutěži <b>FIFA World Cup 2026</b>. Tipuješ přesné výsledky zápasů, sbíráš body a porovnáváš se s ostatními tipéry. Aplikace průběžně ukazuje tvoje body, pořadí, uložené tipy i výsledky ostatních hráčů po uzamčení zápasu.</p><div class=rules-toc><a href="#rules-tipovani">⚽ Jak tipovat</a><a href="#rules-body">🎯 Bodování</a><a href="#rules-ostatni">👥 Tipy ostatních</a><a href="#rules-poradi">📊 Pořadí</a><a href="#rules-zapasy">🗓️ Zápasy</a><a href="#rules-platba">💳 Platba</a><a href="#rules-instalace">📱 Přidání na plochu</a></div><h2 id=rules-tipovani>⚽ Jak tipovat</h2><ul><li>U každého zápasu zadáš přesný výsledek, například <b>2 : 1</b>.</li><li>Tip můžeš před výkopem kdykoliv změnit.</li><li>Po začátku utkání se tipování automaticky uzamkne.</li><li>Pokud zápas nestihneš tipnout, za tento zápas získáš 0 bodů.</li></ul><div class=example><b>Příklad tipu:</b><br>Česko – Německo<br>Tvůj tip: <b>2 : 1</b></div><h2 id=rules-body>🎯 Bodování</h2><h3>Přesný výsledek – 3 body</h3><p>Když trefíš přesné skóre zápasu, získáš <b>3 body</b>.</p><div class=example>Tip: 2 : 1<br>Výsledek: 2 : 1<br><b>+3 body</b></div><h3>Trefená výhra/remíza/prohra – 1 bod</h3><p>Když netrefíš přesné skóre, ale správně určíš, jestli vyhraje domácí tým, hostující tým nebo bude remíza, získáš <b>1 bod</b>.</p><div class=example>Tip: 3 : 1<br>Výsledek: 2 : 1<br>Trefený vítěz<br><b>+1 bod</b></div><h3>Špatný tip – 0 bodů</h3><p>Když netrefíš vítěze/remízu ani přesné skóre, nezískáváš žádný bod.</p><h2 id=rules-ostatni>👥 Tipy ostatních hráčů</h2><ul><li>Před uzavřením tipování vidíš pouze svůj vlastní tip.</li><li>Po uzamčení zápasu se zobrazí tipy ostatních hráčů.</li><li>Po vyhodnocení zápasu uvidíš všechny tipy, skutečný výsledek a přidělené body.</li><li>Tím je zajištěno, že nikdo nemůže před začátkem utkání opisovat tipy ostatních.</li></ul><h2 id=rules-poradi>📊 Pořadí a tabulka</h2><p>Pořadí se aktualizuje automaticky po vyhodnocení zápasu administrátorem.</p><ol><li>Nejdříve rozhoduje celkový počet bodů.</li><li>Při shodě rozhoduje počet přesných tipů za 3 body.</li><li>Poté rozhoduje počet trefených výher/remíz/proher za 1 bod.</li><li>Následně rozhoduje úspěšnost tipování.</li><li>Pokud jsou všechny hodnoty shodné, hráči sdílejí stejné pořadí.</li></ol><table><tr><th>Sloupec</th><th>Význam</th></tr><tr><td>1b</td><td>Kolikrát hráč trefil výhru, remízu nebo prohru.</td></tr><tr><td>3b</td><td>Kolikrát hráč trefil přesný výsledek.</td></tr><tr><td>Body</td><td>Celkový počet bodů.</td></tr></table><p>Počet vyhodnocených tipů a úspěšnost najdeš v dashboardu a v profilu hráče. V hlavní tabulce pořadí zůstávají jen nejdůležitější údaje, aby byla dobře čitelná na telefonu.</p><h2 id=rules-zapasy>🗓️ Zápasy a fáze turnaje</h2><ul><li>Skupinová fáze obsahuje <b>72 zápasů</b> – skupiny A až L, každá skupina má 6 utkání.</li><li>Vyřazovací část obsahuje <b>32 zápasů</b>.</li><li>U skupin jsou týmy, vlajky a termíny předpřipravené.</li><li>U vyřazovací části jsou předpřipravené termíny a pozice. Konkrétní týmy se doplní až po postupu ze skupin.</li><li>Administrátor může později doplnit nebo upravit týmy ve vyřazovací části bez zásahu do celé aplikace.</li></ul><h2>👤 Účet a přezdívka</h2><ul><li>Při registraci zadáváš jméno, příjmení, přezdívku, e-mail a heslo.</li><li>Ostatní hráči vidí pouze tvoji přezdívku.</li><li>Jméno, příjmení a e-mail vidí pouze administrátor.</li><li>Každý hráč může mít pouze jeden účet.</li></ul><h2 id=rules-platba>💳 Platba a aktivace účtu</h2><ul><li>Po registraci účet čeká na aktivaci.</li><li>Pokyny k platbě najdeš po přihlášení v sekci <b>Profil</b>.</li><li>Do zprávy pro příjemce uveď svůj údaj do platby, například <b>TIP-KANONYR89</b>.</li><li>Po spárování platby administrátor účet aktivuje.</li><li>Tipovat a soutěžit mohou pouze aktivované účty.</li></ul><h2>🔄 Vyhodnocení zápasů</h2><ul><li>Výsledky zadává administrátor.</li><li>Po zadání výsledku se body přepočítají automaticky.</li><li>Pořadí, profil i dashboard se aktualizují automaticky.</li></ul><h2 id=rules-instalace>📱 Přidání aplikace na plochu</h2><h3>iPhone / iPad</h3><ol><li>Otevři aplikaci v Safari.</li><li>Klepni na ikonu Sdílet.</li><li>Vyber <b>Přidat na plochu</b>.</li></ol><h3>Android</h3><ol><li>Otevři aplikaci v Chrome.</li><li>Otevři menu prohlížeče.</li><li>Vyber <b>Přidat na plochu</b>.</li></ol><h2>ℹ️ Důležité informace</h2><ul><li>Nepředávej své přihlašovací údaje jiným osobám.</li><li>Při technických problémech kontaktuj administrátora soutěže.</li><li>Organizátor může pravidla doplnit nebo upřesnit, pokud to bude potřeba pro férový průběh soutěže.</li></ul>`}
+function scheduleStats(){let ms=data&&data.matches?data.matches:[],groups=ms.filter(m=>(m.phase||'').startsWith('Skupina')).length,knock=ms.length-groups,shown=filtered().length;let phaseCounts={};for(const m of ms){phaseCounts[m.phase]=(phaseCounts[m.phase]||0)+1}return {total:ms.length,groups,knock,shown,phaseCounts}}
+function phaseExpected(name){if((name||'').startsWith('Skupina'))return 6;if(name==='32 postupujících')return 16;if(name==='Osmifinále')return 8;if(name==='Čtvrtfinále')return 4;if(name==='Semifinále')return 2;if(name==='O 3. místo')return 1;if(name==='Finále')return 1;return ''}
+function scheduleCountsHtml(){let s=scheduleStats();let order=['Skupina A','Skupina B','Skupina C','Skupina D','Skupina E','Skupina F','Skupina G','Skupina H','Skupina I','Skupina J','Skupina K','Skupina L','32 postupujících','Osmifinále','Čtvrtfinále','Semifinále','O 3. místo','Finále'];return `<div class=schedule-counts><div class=count-pill><b>${s.total}/104</b><span>celkem v rozpisu</span></div><div class=count-pill><b>${s.groups}/72</b><span>skupinová fáze</span></div><div class=count-pill><b>${s.knock}/32</b><span>vyřazovací část</span></div><div class=count-pill><b>${s.shown}</b><span>zobrazeno filtrem</span></div></div><div class=phase-breakdown>${order.map(p=>`<div class=phase-pill><b>${esc(p)}</b><span>${s.phaseCounts[p]||0}${phaseExpected(p)?'/'+phaseExpected(p):''}</span></div>`).join('')}</div>`}
+function badge(m){let has=data.bets&&data.bets.find(b=>b.match_id==m.id),st=m.effective_status;if(st=='open')return has?`<span class="badge open">tipnuto</span>`:`<span class="badge open">netipnuto</span>`;return st=='finished'?`<span class="badge done">vyhodnoceno</span>`:`<span class="badge locked">zamčeno</span>`}
+function phases(){return ['all',...Array.from(new Set((data.matches||[]).map(m=>m.phase))).filter(Boolean)]}
+function filtered(){let arr=[...(data.matches||[])];if(filter=='today')arr=arr.filter(m=>dateKey(m.start_time)=='today');if(filter=='tomorrow')arr=arr.filter(m=>dateKey(m.start_time)=='tomorrow');if(filter=='missing')arr=arr.filter(m=>!data.bets.find(b=>b.match_id==m.id)&&m.effective_status=='open');if(filter=='tipped')arr=arr.filter(m=>data.bets.find(b=>b.match_id==m.id));if(filter=='open')arr=arr.filter(m=>m.effective_status=='open');if(filter=='locked')arr=arr.filter(m=>m.effective_status=='locked');if(filter=='finished')arr=arr.filter(m=>m.effective_status=='finished');if(phase!='all')arr=arr.filter(m=>m.phase==phase);return arr}
+function scoreStepper(id,val,lock){let v=draftBets[id]??val??0;return `<div class=stepper><button class=btn onclick="step('${id}',-1)" ${lock?'disabled':''}>−</button><div id="${id}" class=stepper-value>${v}</div><button class=btn onclick="step('${id}',1)" ${lock?'disabled':''}>+</button></div>`}
+function step(id,delta){let el=document.getElementById(id);if(!el)return;let v=Math.max(0,Number(el.textContent||0)+delta);el.textContent=v;draftBets[id]=v;editingUntil=Date.now()+25000}
+async function bet(id){try{let h=Number(document.getElementById('h_'+id).textContent),a=Number(document.getElementById('a_'+id).textContent);await api('/bets',{method:'POST',body:JSON.stringify({matchId:id,homeGoals:h,awayGoals:a})});delete draftBets['h_'+id];delete draftBets['a_'+id];editingUntil=0;await refreshSilent()}catch(e){alert(e.message)}}
+function scoreClass(x,m){if(!m.score)return'';let [h,a]=m.score.split(':').map(Number);if(Number(x.home_goals)==h&&Number(x.away_goals)==a)return'exact-hit';let pick=h>a?'1':h<a?'2':'X';return x.pick==pick?'win':''}
+function otherBetsHtml(m){let arr=(data.publicBets||[]).filter(x=>x.match_id==m.id);if(m.effective_status=='open')return `<div class=note>Tipy ostatních se zobrazí po uzamčení zápasu.</div>`;return `<div class=others><b>Tipy ostatních</b>${arr.length?arr.map(x=>`<div class=others-row><span>${esc(x.nick||x.public_name)}</span><b class="${scoreClass(x,m)}">${x.home_goals}:${x.away_goals}</b></div>`).join(''):`<div class=note>Nikdo zatím netipoval.</div>`}</div>`}
+function filtersHtml(){let items=[['all','Vše'],['open','Otevřené'],['missing','Netipnuté'],['tipped','Tipnuté'],['finished','Vyhodnocené']];return `<div class="card filters-card"><div class=filter-grid>${items.map(x=>`<button class="btn ${filter==x[0]?'active':''}" onclick="filter='${x[0]}';render()">${x[1]}</button>`).join('')}</div><select class="input phase-select" onchange="phase=this.value;render()">${phases().map(p=>`<option value="${esc(p)}" ${phase==p?'selected':''}>${p=='all'?'Všechny skupiny a fáze':esc(p)}</option>`).join('')}</select>${scheduleCountsHtml()}</div>`}
+function upcomingMissingMatches(){
+  const now=new Date();
+  return (data.matches||[])
+    .filter(m=>m.effective_status==='open' && new Date(m.start_time)>now && !(data.bets||[]).find(b=>b.match_id===m.id))
+    .sort((a,b)=>new Date(a.start_time)-new Date(b.start_time));
+}
+function nextOpenMatch(){
+  const now=new Date();
+  return (data.matches||[]).filter(m=>m.effective_status==='open' && new Date(m.start_time)>now).sort((a,b)=>new Date(a.start_time)-new Date(b.start_time))[0];
+}
+function lastFinishedMatch(){
+  return (data.matches||[]).filter(m=>m.score || m.effective_status==='finished').sort((a,b)=>new Date(b.start_time)-new Date(a.start_time))[0];
+}
+function matchMini(m){
+  if(!m)return '<div class=note>Žádný nejbližší zápas není k dispozici.</div>';
+  return `<div class=next-match-mini><div class=team-mini><div class=flag>${esc(m.home_flag||'')}</div>${esc(m.home)}</div><b>VS</b><div class=team-mini><div class=flag>${esc(m.away_flag||'')}</div>${esc(m.away)}</div></div><div class=note>${new Date(m.start_time).toLocaleString('cs-CZ')} • ${esc(m.phase||'')}</div>`;
+}
+function notifyText(missing){
+  if(!missing.length)return `<div class="notice ok">Máš tipnuto všechno, co je teď otevřené. Skvělá práce.</div>`;
+  const m=missing[0];
+  return `<div class=soft-alert><b>Ještě zbývá tipnout ${missing.length} zápas${missing.length==1?'':'ů'}.</b><br><span class=tiny>Nejbližší netipnutý zápas: ${esc(m.home_flag||'')} ${esc(m.home)} vs ${esc(m.away_flag||'')} ${esc(m.away)} • ${new Date(m.start_time).toLocaleString('cs-CZ')}</span><div class=notify-row><button class="btn primary" onclick="filter='missing';page='tips';render()">Tipnout teď</button><button class="btn ghost" onclick="enableNotify()">Povolit připomenutí</button></div></div>`;
+}
+function enableNotify(){
+  try{
+    localStorage.tip_notify='1';
+    if('Notification' in window && Notification.permission==='default') Notification.requestPermission();
+    alert('Hotovo. V aplikaci se budou zvýrazňovat netipnuté zápasy. Skutečné push notifikace mimo otevřený prohlížeč by vyžadovaly samostatné serverové oznámení.');
+  }catch(e){alert('Připomenutí se nepodařilo povolit.')}
+}
+function home(){
+  let p=data.pool||{}, st=data.meStats||me||{}, ev=st.evaluated_count||0, tipsCount=st.tips_count||0;
+  const missing=upcomingMissingMatches();
+  const next=nextOpenMatch();
+  const last=lastFinishedMatch();
+  const fee=(Number(data.settings?.admin_fee||0)+Number(data.settings?.game_fee||0));
+  const feeText=fee?`${fee} Kč`:'dle nastavení admina';
+  const prize=data.settings?.game_fee?`${data.settings.game_fee} Kč do banku hry`:'dle domluvy soutěže';
+  const bank=data.settings?.bank_account||'číslo účtu doplní admin';
+  const payNote=`TIP - ${norm((me.first||'')+' '+(me.last||''))||displayUser(me)}`;
+  if(me.role!=='player'){
+    const waiting=(data.users||[]).filter(u=>u.role==='player'&&(!u.approved||!u.paid)).length;
+    const waitingResults=(data.matches||[]).filter(m=>(m.effective_status==='locked'||new Date(m.start_time)<=new Date())&&!m.score).length;
+    return `<div class=home-grid><div class="card home-hero"><div class=home-kicker>Admin centrum</div><div class=home-big>Vítej zpět, ${esc(displayUser(me))}</div><p class=note>Rychlý přehled toho, co je potřeba dnes vyřešit.</p><div class=home-actions><button class="btn primary" onclick="page='admin';render();setTimeout(()=>setAdminTab&&setAdminTab('todo'),0)">K vyřešení</button><button class="btn" onclick="page='rank';render()">Zobrazit pořadí</button></div></div><div class=card><div class=title>Rychlý stav</div><div class=pay-list><div class=pay-row><span>Čeká na aktivaci</span><b>${waiting}</b></div><div class=pay-row><span>Čeká na vyhodnocení</span><b>${waitingResults}</b></div><div class=pay-row><span>Aktivních tipérů</span><b>${p.players||0}</b></div></div></div></div>`;
+  }
+  if(!me.approved||!me.paid){
+    return `<div class=home-grid><div class="card home-hero"><div class=home-kicker>Účet čeká na aktivaci</div><div class=home-big>Dokonči registraci platbou</div><p class=note>Po připsání platby tě administrátor aktivuje a zařadí do soutěže. Do té doby se můžeš přihlásit a číst pravidla, ale nepůjde ukládat tipy.</p><div class=pay-list><div class=pay-row><span>Startovné</span><b>${esc(feeText)}</b></div><div class=pay-row><span>Hraje se o</span><b>${esc(prize)}</b></div><div class=pay-row><span>Číslo účtu</span><b>${esc(bank)}</b></div><div class=pay-row><span>Zpráva / poznámka</span><b>${esc(payNote)}</b></div></div></div><div class=card><div class=title>Co dál?</div><ol class=note><li>Pošli platbu podle údajů vlevo.</li><li>Do poznámky napiš přesně uvedený text.</li><li>Po aktivaci se ti odemkne tipování.</li></ol><button class="btn primary full" onclick="page='rules';render()">Přečíst pravidla</button></div></div>`;
+  }
+  return `<div class=home-grid><div class="card home-hero"><div class=home-kicker>Moje soutěž</div><div class=home-big>${ev}/${tipsCount} vyhodnoceno · ${st.points||0} bodů</div><p class=note>Pořadí se aktualizuje po zadání výsledků administrátorem. Tipy ostatních uvidíš až po uzamčení zápasu.</p>${notifyText(missing)}</div><div class=card><div class=title>Nejbližší zápas</div>${matchMini(next)}<button class="btn full" onclick="page='tips';render()">Otevřít zápasy</button></div></div><div class=home-grid><div class=card><div class=title>Poslední vyhodnocení</div>${last?`<div class=feed-item><b>${esc(last.home_flag||'')} ${esc(last.home)} ${esc(last.score||'')} ${esc(last.away_flag||'')} ${esc(last.away)}</b><div class=note>${esc(last.phase||'')} • pořadí a body jsou přepočítané</div></div>`:'<div class=note>Zatím není vyhodnocený žádný zápas.</div>'}</div><div class=card><div class=title>Rychlé odkazy</div><div class=home-actions><button class="btn primary" onclick="filter='missing';page='tips';render()">Netipnuté</button><button class="btn" onclick="page='rank';render()">Pořadí</button></div></div></div>`;
+}
+function tips(){let arr=filtered();return filtersHtml()+`<div class=card>${arr.length?arr.map(m=>{let b=data.bets.find(x=>x.match_id==m.id)||{},lock=m.effective_status!='open'||!me.approved||!me.paid||me.role!='player',tipped=!!b.match_id;return `<div class="match ${tipped?'tipped':'missing'}"><div class=match-head><div>${badge(m)}</div><div class=note>${new Date(m.start_time).toLocaleString('cs-CZ')} • ${esc(m.phase)} • ${left(m)}</div></div><div class=teams><div class=team><div class=flag>${esc(m.home_flag||'')}</div>${esc(m.home)}</div><div class=score>${m.score?esc(m.score):'VS'}</div><div class=team><div class=flag>${esc(m.away_flag||'')}</div>${esc(m.away)}</div></div><div class=exact>${scoreStepper('h_'+m.id,b.home_goals??0,lock)}<b>:</b>${scoreStepper('a_'+m.id,b.away_goals??0,lock)}</div><div class=tip-actions><button class="btn primary full" ${lock?'disabled':''} onclick="bet('${m.id}')">${tipped?'Upravit tip':'Potvrdit tip'}</button></div>${tipped?`<div class=saved-tip>✓ Uložený tip: ${b.home_goals}:${b.away_goals}</div>`:''}${otherBetsHtml(m)}</div>`}).join(''):'<div class=notice>Pro filtr nejsou zápasy.</div>'}</div>`}
+function rank(){let top=data.ranking||[];let updated=new Date().toLocaleString('cs-CZ');return `<div class=card><div class=rank-table-wrap><div class=rank-table><div class=rank-head><div>#</div><div>Tipér</div><div>1b</div><div>3b</div><div>Body</div></div>${top.length?top.map((u,i)=>`<div class="rank-row ${u.id==me.id?'my-row':''}"><div class=medal>${i==0?'🥇':i==1?'🥈':i==2?'🥉':i+1}</div><div class=rank-nick title="${displayUser(u)}">${displayUser(u)}</div><div class=rank-cell>${u.hit_1||0}</div><div class=rank-cell>${u.hit_3||0}</div><div class="rank-cell rank-total">${u.points||0}</div></div>`).join(''):'<div class=notice>Zatím nejsou vyhodnocené tipy.</div>'}</div></div><div class=rank-legend><b>1b</b> = trefená výhra, remíza nebo prohra. <b>3b</b> = přesný výsledek. <b>Body</b> rozhodují o pořadí. Při shodě rozhodují body, pak 3b, potom 1b a následně úspěšnost tipování.</div><div class=note style="margin-top:8px">Aktualizováno: ${updated}</div></div>`}
+function rules(){let r=(data.settings&&data.settings.rules_html)||'';if(!r||r.length<800)r=defaultRulesHtml();return `<div class=card><div class=rules-content>${r}</div></div>`}
+async function withBusy(label, fn){
+  const btn=document.activeElement && document.activeElement.tagName==='BUTTON' ? document.activeElement : null;
+  if(btn){btn.classList.add('busy');btn.disabled=true;btn.setAttribute('aria-busy','true')}
+  try{return await fn()}catch(e){alert(e.message||e)}
+  finally{if(btn){btn.classList.remove('busy');btn.disabled=false;btn.removeAttribute('aria-busy')}}
+}
+async function approve(id){await withBusy('Aktivuji…',async()=>{await api('/admin/approve',{method:'POST',body:JSON.stringify({userId:id})});await refreshSilent(true)})}
+async function deactivate(id){await withBusy('Vypínám…',async()=>{await api('/admin/deactivate',{method:'POST',body:JSON.stringify({userId:id})});await refreshSilent(true)})}
+async function role(id,r){await withBusy('Ukládám…',async()=>{await api('/admin/role',{method:'POST',body:JSON.stringify({userId:id,role:r})});await refreshSilent(true)})}
+async function resetPassword(id,nick){let p=prompt('Nové heslo pro '+(nick||'uživatele')+' (min. 4 znaky)');if(!p)return;await withBusy('Nastavuji…',async()=>{await api('/admin/reset-password',{method:'POST',body:JSON.stringify({userId:id,password:p})});await refreshSilent(true);alert('Heslo bylo nastaveno.')})}
+async function delUser(id){if(confirm('Smazat hráče i jeho tipy?'))await withBusy('Mažu…',async()=>{await api('/admin/delete-user',{method:'POST',body:JSON.stringify({userId:id})});await refreshSilent(true)})}
+async function setStatus(id,st){await withBusy('Ukládám…',async()=>{await api('/admin/status',{method:'POST',body:JSON.stringify({matchId:id,status:st})});await refreshSilent(true)})}
+async function result(id){let score=prompt('Výsledek např. 2:1');if(score)await withBusy('Vyhodnocuji…',async()=>{await api('/admin/result',{method:'POST',body:JSON.stringify({matchId:id,score})});await refreshSilent(true)})}
+async function editMatch(m){let home=prompt('Domácí tým',m.home);if(!home)return;let away=prompt('Hostující tým',m.away);if(!away)return;let start_time=prompt('Čas ve formátu 2026-06-11T21:00',m.start_time);if(!start_time)return;let ph=prompt('Fáze/skupina',m.phase)||m.phase;await withBusy('Ukládám…',async()=>{await api('/admin/edit-match',{method:'POST',body:JSON.stringify({matchId:m.id,home,away,start_time,phase:ph})});await refreshSilent(true)})}
+async function addMatch(){await withBusy('Přidávám…',async()=>{let home=homeTeam.value,away=awayTeam.value;if(!home||!away||!startTime.value){alert('Vyber týmy a čas zápasu.');return}await api('/admin/add-match',{method:'POST',body:JSON.stringify({phase:phaseIn.value,home,away,start_time:startTime.value})});await refreshSilent(true)})}
+async function imp(){await withBusy('Importuji…',async()=>{await api('/admin/import',{method:'POST',body:JSON.stringify({text:bulk.value})});await refreshSilent(true);alert('Import hotový')})}
+async function recalc(){await withBusy('Přepočítávám…',async()=>{await api('/admin/recalc',{method:'POST'});await refreshSilent(true);alert('Přepočítáno')})}
+async function resetSchedule(){if(confirm('Obnovit pevný rozpis MS 2026 uložený v aplikaci? Tím se odstraní staré duplicitní testovací zápasy a ponechá se pevná šablona 104 utkání.'))await withBusy('Obnovuji…',async()=>{let r=await api('/admin/reset-schedule',{method:'POST',body:'{}'});await refreshSilent(true);alert('Rozpis připraven. Přidáno: '+(r.added||0)+' • aktualizováno: '+(r.updated||0)+' • odstraněno duplicit: '+(r.removed||0)+' • celkem v šabloně: '+(r.total||104))})}
+async function quickTeams(id,start_time,phase){let h=document.getElementById('kh_'+id).value,a=document.getElementById('ka_'+id).value;await withBusy('Ukládám…',async()=>{await api('/admin/edit-match',{method:'POST',body:JSON.stringify({matchId:id,home:h,away:a,start_time,phase})});await refreshSilent(true)})}
+function admin(){if(!['admin','superadmin'].includes(me.role))return `<div class=card><div class=notice>Bez oprávnění.</div></div>`;let phasesList=['Skupina A','Skupina B','Skupina C','Skupina D','Skupina E','Skupina F','Skupina G','Skupina H','Skupina I','Skupina J','Skupina K','Skupina L','32 postupujících','Osmifinále','Čtvrtfinále','Semifinále','O 3. místo','Finále'];let active=(data.users||[]).filter(x=>x.approved&&x.paid).length, waiting=(data.users||[]).length-active, finished=(data.matches||[]).filter(x=>x.effective_status=='finished').length;return `<div class=card><div class=admin-summary><div class=mini><b>${data.users.length}</b><span>hráčů celkem</span></div><div class=mini><b>${active}</b><span>aktivních</span></div><div class=mini><b>${waiting}</b><span>čeká</span></div><div class=mini><b>${finished}/${data.matches.length}</b><span>vyhodnoceno zápasů</span></div></div></div><div class=card><div class=notice ok>API backend aktivní: pokud se při výsledku objeví „/api vrací HTML“, je na serveru nasazená stará nebo statická verze bez functions.</div></div><div class=card><div class=title>Nastavení soutěže</div><input id=compName class=input value="${esc(data.settings.competition_name||'FIFA World Cup 2026')}" placeholder="Název soutěže"><input id=compSub class=input value="${esc(data.settings.competition_subtitle||'MS ve fotbale 2026')}" placeholder="Podtitulek"><div class=grid2><input id=af class=input type=number value="${data.settings.admin_fee||0}" placeholder="Poplatek adminovi"><input id=gf class=input type=number value="${data.settings.game_fee||0}" placeholder="Vklad do hry"></div><input id=bank class=input value="${esc(data.settings.bank_account||'')}" placeholder="Bankovní účet"><input id=access class=input value="${esc(data.settings.access_code||'TIP2026')}" placeholder="Vstupní kód"><textarea id=rulesText class=input placeholder="Pravidla">${esc(data.settings.rules_html||defaultRulesHtml())}</textarea><button class="btn primary full" onclick=saveSettings()>Uložit nastavení</button></div><div class=card><button class="btn good full" onclick=recalc()>Přepočítat body</button></div><div class=card><div class=title>Hráči, kontakty a platby</div><div class=admin-list>${data.users.map(u=>`<div class=admin-row><div class=rank><div class=grow><b>${esc(u.first)} ${esc(u.last)}</b><div class=note>Veřejně: <b>${displayUser(u)}</b> • ${esc(u.email||'bez e-mailu')}<br>Platba: <b>${esc(u.payment_note||'')}</b></div><span class="role ${u.role}">${roleLabel(u.role)}</span> ${u.approved&&u.paid?'<span class="role player">aktivní</span>':'<span class="role admin">čeká</span>'}</div><div class=points>${u.points||0} b</div></div><div class=admin-actions><button class="btn good small" onclick="approve('${u.id}')">Aktivovat</button><button class="btn small" onclick="deactivate('${u.id}')">Deaktivovat</button><button class="btn small" onclick="role('${u.id}','player')">Tipér</button><button class="btn small" onclick="role('${u.id}','admin')">Admin</button><button class="btn small" onclick="resetPassword('${u.id}','${esc(u.nick||u.first)}')">Reset hesla</button><button class="btn danger small" onclick="delUser('${u.id}')">Smazat</button></div></div>`).join('')}</div></div><div class=card><div class=title>Přidat zápas</div><select id=phaseIn class=input>${phasesList.map(x=>`<option>${x}</option>`).join('')}</select><div class=grid2>${teamSelect('homeTeam')} ${teamSelect('awayTeam')}</div><input id=startTime class=input type=datetime-local><button class="btn primary full" onclick=addMatch()>Přidat zápas</button><p class=note>Vybereš zemi ze seznamu a vlajka se doplní automaticky po uložení zápasu.</p></div><div class=card><div class=title>Import zápasů</div><p class=note>Formát: 2026-06-11 21:00; Skupina A; Mexiko; Jihoafrická republika</p><textarea id=bulk class=input></textarea><button class="btn primary full" onclick=imp()>Importovat</button></div><div class=card><div class=title>Doplnění vyřazovací fáze</div><p class=note>Pro zápasy, kde zatím není jasné obsazení, vybereš týmy ručně. Hodí se pro 32 postupujících, osmifinále i další fáze.</p><div class=phase-tools>${(data.matches||[]).filter(m=>m.home=='TBD'||m.away=='TBD'||/^(1|2|3)[A-L]/.test(m.home)||/^(1|2|3)[A-L]/.test(m.away)||/Vítěz|Poražený|M\d+|TBD|postup|Doplní/i.test((m.home||'')+' '+(m.away||'')+' '+(m.info||''))).map(m=>`<div class=phase-row><b>${esc(m.phase)} • ${new Date(m.start_time).toLocaleDateString('cs-CZ')}</b><select id="kh_${m.id}" class=input>${data.teamOptions.map(t=>`<option value="${esc(t)}" ${t==m.home?'selected':''}>${esc(flagOf(t))} ${esc(t)}</option>`).join('')}</select><select id="ka_${m.id}" class=input>${data.teamOptions.map(t=>`<option value="${esc(t)}" ${t==m.away?'selected':''}>${esc(flagOf(t))} ${esc(t)}</option>`).join('')}</select><button class="btn good" onclick="quickTeams('${m.id}','${esc(m.start_time)}','${esc(m.phase)}')">Uložit</button></div>`).join('')||'<div class=notice>Žádný zápas k doplnění.</div>'}</div></div><div class=card><div class=title>Správa zápasů</div><button class="btn good full" onclick=resetSchedule()>Obnovit pevný rozpis MS 2026</button>${data.matches.map(m=>`<div class=match><div class=match-head><b>${esc(m.home_flag||'')} ${esc(m.home)} vs ${esc(m.away_flag||'')} ${esc(m.away)}</b>${badge(m)}</div><div class=note>${esc(m.phase)} • ${new Date(m.start_time).toLocaleString('cs-CZ')} ${m.score?'• '+esc(m.score):''}</div><div class=admin-actions><button class="btn small" onclick='editMatch(${JSON.stringify(m).replace(/'/g,"&#39;")})'>Upravit</button><button class="btn small" onclick="setStatus('${m.id}','open')">Otevřít</button><button class="btn small" onclick="setStatus('${m.id}','locked')">Zamknout</button><button class="btn good small" onclick="result('${m.id}')">Výsledek</button><button class="btn small" onclick="setStatus('${m.id}','finished')">Dohráno</button></div></div>`).join('')}</div>`}
+
+function profile(){
+  let u=data.meStats||me||{};
+  let pos=(data.ranking||[]).findIndex(x=>x.id==u.id)+1;
+  let evaluated=u.evaluated_count||0, tips=u.tips_count||0;
+  let pct=evaluated?Math.round(((u.hit_1||0)+(u.hit_3||0))/evaluated*100):0;
+  let nick=u.public_name||u.nick||me.public_name||me.nick||me.full_name||'Hráč';
+  return `<div class="card profile-hero"><div><div class=profile-nick>${esc(nick)}</div><div class=profile-real>${esc(me.first||'')} ${esc(me.last||'')} ${me.email?'• '+esc(me.email):''}</div></div><div><span class=role-chip>${roleLabel(me.role)}</span></div></div>
+  <div class="card profile-grid"><div class=profile-stat><b>${pos||'—'}</b><span>pořadí</span></div><div class=profile-stat><b>${u.points||0}</b><span>bodů</span></div><div class=profile-stat><b>${evaluated}<small>/${tips}</small></b><span>vyhodnoceno / tipy</span></div><div class=profile-stat><b>${pct}%</b><span>úspěšnost</span></div></div>
+  <div class=card><div class=profile-data><div class=data-row><span>jméno</span><b>${esc(me.first||'—')}</b></div><div class=data-row><span>příjmení</span><b>${esc(me.last||'—')}</b></div><div class=data-row><span>přezdívka</span><b>${esc(nick)}</b></div><div class=data-row><span>e-mail</span><b>${esc(me.email||'—')}</b></div><div class=data-row><span>role</span><b>${roleLabel(me.role)}</b></div><div class=data-row><span>stav účtu</span><b>${me.approved&&me.paid?'aktivní':'čeká na aktivaci'}</b></div><div class=data-row><span>údaj do platby</span><b>${esc(me.payment_note||'TIP')}</b></div><div class=data-row><span>veřejně viditelné</span><b>jen přezdívka</b></div></div><button class="btn danger full" style="margin-top:14px" onclick=out()>Odhlásit</button></div>`;
+}
+function betsPage(){
+  let ms=(data.matches||[]).filter(m=>m.effective_status!='open');
+  return `<div class=card><div class=title>Tipy všech</div><p class=note>Tipy ostatních se zobrazují pouze u zamčených nebo vyhodnocených zápasů.</p>${ms.length?ms.map(m=>`<div class=match><div class=match-head><b>${esc(m.home_flag||'')} ${esc(m.home)} vs ${esc(m.away_flag||'')} ${esc(m.away)}</b>${badge(m)}</div><div class=note>${esc(m.phase)} • ${new Date(m.start_time).toLocaleString('cs-CZ')} ${m.score?'• výsledek '+esc(m.score):''}</div>${otherBetsHtml(m)}</div>`).join(''):'<div class=notice>Zatím není žádný zamčený zápas.</div>'}</div>`;
+}
+
+
+// v37 overrides: less flicker, cleaner admin, compact ranking
+let __lastRenderSignature = '';
+let adminTab='todo';
+function renderSignature(){
+  try {
+    return JSON.stringify({page, me: me && {id:me.id, role:me.role, nick:me.nick, public_name:me.public_name, approved:me.approved, paid:me.paid}, data});
+  } catch(e) { return String(Date.now()) }
+}
+function setAdminTab(tab){
+  adminTab=tab;
+  document.querySelectorAll('.admin-panel').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));
+  let p=document.getElementById('admin-'+tab), b=document.getElementById('tab-'+tab);
+  if(p)p.classList.add('active'); if(b)b.classList.add('active');
+}
+async function saveSettings(){
+  try{
+    const btn=document.getElementById('saveSettingsBtn'); if(btn){btn.disabled=true;btn.classList.add('busy')}
+    await api('/admin/settings',{method:'POST',body:JSON.stringify({
+      admin_fee:+af.value||0,
+      game_fee:+gf.value||0,
+      bank_account:bank.value,
+      access_code:access.value,
+      rules_html:rulesText.value,
+      competition_name:compName.value,
+      competition_subtitle:compSub.value,
+      competition_logo_url:''
+    })});
+    const n=document.getElementById('saveNote'); if(n){n.classList.add('show');setTimeout(()=>n.classList.remove('show'),2200)}
+    await refreshSilent(true);
+  }catch(e){alert(e.message)}
+  finally{const btn=document.getElementById('saveSettingsBtn'); if(btn){btn.disabled=false;btn.classList.remove('busy')}}
+}
+function admin(){
+  if(!['admin','superadmin'].includes(me.role))return `<div class=card><div class=notice>Bez oprávnění.</div></div>`;
+  let phasesList=['Skupina A','Skupina B','Skupina C','Skupina D','Skupina E','Skupina F','Skupina G','Skupina H','Skupina I','Skupina J','Skupina K','Skupina L','32 postupujících','Osmifinále','Čtvrtfinále','Semifinále','O 3. místo','Finále'];
+  let users=data.users||[], matches=data.matches||[];
+  let playerUsers=users.filter(x=>x.role==='player');
+  let active=playerUsers.filter(x=>x.approved&&x.paid).length, waiting=playerUsers.length-active, finished=matches.filter(x=>x.effective_status=='finished').length;
+  let toConfirm=matches.filter(m=>(m.effective_status=='locked'||new Date(m.start_time)<=new Date())&&!m.score).slice(0,18);
+  let placeholders=matches.filter(m=>m.home=='TBD'||m.away=='TBD'||/^(1|2|3)[A-L]/.test(m.home)||/^(1|2|3)[A-L]/.test(m.away)||/Vítěz|Poražený|M\d+|TBD|postup|Doplní/i.test((m.home||'')+' '+(m.away||'')+' '+(m.info||'')));
+  return `<div class=card><div class=admin-summary><div class=mini><b>${playerUsers.length}</b><span>tipérů celkem</span></div><div class=mini><b>${active}</b><span>aktivních</span></div><div class=mini><b>${waiting}</b><span>čeká</span></div><div class=mini><b>${finished}/${matches.length}</b><span>vyhodnoceno</span></div></div></div>
+  <div class=card><div class=admin-tabs><button id=tab-todo class="btn admin-tab ${adminTab=='todo'?'active':''}" onclick="setAdminTab('todo')">K vyřešení</button><button id=tab-users class="btn admin-tab ${adminTab=='users'?'active':''}" onclick="setAdminTab('users')">Hráči</button><button id=tab-settings class="btn admin-tab ${adminTab=='settings'?'active':''}" onclick="setAdminTab('settings')">Nastavení</button><button id=tab-phases class="btn admin-tab ${adminTab=='phases'?'active':''}" onclick="setAdminTab('phases')">Fáze</button><button id=tab-import class="btn admin-tab ${adminTab=='import'?'active':''}" onclick="setAdminTab('import')">Import</button><button id=tab-all class="btn admin-tab ${adminTab=='all'?'active':''}" onclick="setAdminTab('all')">Zápasy</button></div>
+  <div id=admin-todo class="admin-panel ${adminTab=='todo'?'active':''}"><div class=title>Co je potřeba vyřešit</div>${toConfirm.length?toConfirm.map(m=>`<div class=todo-match><b>${esc(m.home_flag||'')} ${esc(m.home)} vs ${esc(m.away_flag||'')} ${esc(m.away)}</b><div class=note>${esc(m.phase)} • ${new Date(m.start_time).toLocaleString('cs-CZ')}</div><div class=admin-actions><button class="btn good small" onclick="result('${m.id}')">Zadat výsledek</button><button class="btn small" onclick="setStatus('${m.id}','open')">Znovu otevřít</button></div></div>`).join(''):'<div class=notice>Teď není žádný zápas k vyhodnocení.</div>'}${placeholders.length?`<div class=title style="margin-top:18px">Doplnit týmy ve fázích</div>${placeholders.slice(0,8).map(m=>`<div class=todo-match><b>${esc(m.phase)} • ${new Date(m.start_time).toLocaleDateString('cs-CZ')}</b><div class=grid2><select id="kh_${m.id}" class=input>${data.teamOptions.map(t=>`<option value="${esc(t)}" ${t==m.home?'selected':''}>${esc(flagOf(t))} ${esc(t)}</option>`).join('')}</select><select id="ka_${m.id}" class=input>${data.teamOptions.map(t=>`<option value="${esc(t)}" ${t==m.away?'selected':''}>${esc(flagOf(t))} ${esc(t)}</option>`).join('')}</select></div><button class="btn good full" onclick="quickTeams('${m.id}','${esc(m.start_time)}','${esc(m.phase)}')">Uložit týmy</button></div>`).join('')}`:''}</div>
+  <div id=admin-users class="admin-panel ${adminTab=='users'?'active':''}"><div class=title>Hráči, kontakty a platby</div><div class=admin-list>${users.map(u=>`<div class=admin-row><div class=rank><div class=grow><b>${esc(u.first)} ${esc(u.last)}</b><div class=note>Veřejně: <b>${displayUser(u)}</b> • ${esc(u.email||'bez e-mailu')}<br>Platba: <b>${esc(u.payment_note||'')}</b></div><span class="role ${u.role}">${roleLabel(u.role)}</span> ${u.approved&&u.paid?'<span class="role player">aktivní</span>':'<span class="role admin">čeká</span>'}</div><div class=points>${u.points||0} b</div></div><div class=admin-actions><button class="btn good small" onclick="approve('${u.id}')">Aktivovat</button><button class="btn small" onclick="deactivate('${u.id}')">Deaktivovat</button><button class="btn small" onclick="role('${u.id}','player')">Tipér</button><button class="btn small" onclick="role('${u.id}','admin')">Admin</button><button class="btn small" onclick="resetPassword('${u.id}','${esc(u.nick||u.first)}')">Reset hesla</button><button class="btn danger small" onclick="delUser('${u.id}')">Smazat</button></div></div>`).join('')}</div></div>
+  <div id=admin-settings class="admin-panel ${adminTab=='settings'?'active':''}"><div class=title>Nastavení soutěže a plateb</div><input id=compName class=input value="${esc(data.settings.competition_name||'FIFA World Cup 2026')}" placeholder="Název soutěže"><input id=compSub class=input value="${esc(data.settings.competition_subtitle||'MS ve fotbale 2026')}" placeholder="Podtitulek"><div class=setting-grid><input id=af class=input type=number value="${data.settings.admin_fee||0}" placeholder="Poplatek adminovi"><input id=gf class=input type=number value="${data.settings.game_fee||0}" placeholder="Vklad do hry"></div><input id=bank class=input value="${esc(data.settings.bank_account||'')}" placeholder="Bankovní účet"><input id=access class=input value="${esc(data.settings.access_code||'TIP2026')}" placeholder="Vstupní kód"><textarea id=rulesText class=input placeholder="Pravidla">${esc(data.settings.rules_html||defaultRulesHtml())}</textarea><button id=saveSettingsBtn class="btn primary full" onclick=saveSettings()>Uložit nastavení</button><div id=saveNote class="notice ok save-note">Nastavení uloženo.</div><button class="btn good full" style="margin-top:10px" onclick=recalc()>Přepočítat body</button></div>
+  <div id=admin-phases class="admin-panel ${adminTab=='phases'?'active':''}"><div class=title>Doplnění vyřazovací fáze</div>${placeholders.length?placeholders.map(m=>`<div class=phase-row><b>${esc(m.phase)} • ${new Date(m.start_time).toLocaleDateString('cs-CZ')}</b><select id="kh_${m.id}" class=input>${data.teamOptions.map(t=>`<option value="${esc(t)}" ${t==m.home?'selected':''}>${esc(flagOf(t))} ${esc(t)}</option>`).join('')}</select><select id="ka_${m.id}" class=input>${data.teamOptions.map(t=>`<option value="${esc(t)}" ${t==m.away?'selected':''}>${esc(flagOf(t))} ${esc(t)}</option>`).join('')}</select><button class="btn good" onclick="quickTeams('${m.id}','${esc(m.start_time)}','${esc(m.phase)}')">Uložit</button></div>`).join(''):'<div class=notice>Žádný zápas k doplnění.</div>'}</div>
+  <div id=admin-import class="admin-panel ${adminTab=='import'?'active':''}"><div class=title>Přidat / importovat zápasy</div><label class=admin-field-label>Fáze</label><select id=phaseIn class=input>${phasesList.map(x=>`<option>${x}</option>`).join('')}</select><label class=admin-field-label>Týmy</label><div class=grid2>${teamSelect('homeTeam')} ${teamSelect('awayTeam')}</div><div id=teamPreview class=admin-match-preview></div><label class=admin-field-label>Datum a čas výkopu</label><input id=startTime class=input type=datetime-local><button class="btn primary full" onclick=addMatch()>Přidat zápas</button><div class=add-match-help>Vyber fázi, domácí a hostující tým a hlavně doplň datum a čas. Vlajky se doplní automaticky podle názvů zemí. Po uložení zůstaneš v této záložce.</div><hr style="border:0;border-top:1px solid var(--line);margin:16px 0"><p class=note>Hromadný import: 2026-06-11 21:00; Skupina A; Mexiko; Jihoafrická republika</p><textarea id=bulk class=input></textarea><button class="btn primary full" onclick=imp()>Importovat</button></div>
+  <div id=admin-all class="admin-panel ${adminTab=='all'?'active':''}"><div class=title>Pokročilá správa zápasů</div><button class="btn good full" onclick=resetSchedule()>Obnovit pevný rozpis MS 2026</button><div class="admin-note">Použije pevný rozpis uložený přímo v aplikaci. Nic se nestahuje z internetu ani z externího API.</div>${matches.map(m=>`<div class=match><div class=match-head><b>${esc(m.home_flag||'')} ${esc(m.home)} vs ${esc(m.away_flag||'')} ${esc(m.away)}</b>${badge(m)}</div><div class=note>${esc(m.phase)} • ${new Date(m.start_time).toLocaleString('cs-CZ')} ${m.score?'• '+esc(m.score):''}</div><div class=admin-actions><button class="btn small" onclick='editMatch(${JSON.stringify(m).replace(/'/g,"&#39;")})'>Upravit</button><button class="btn small" onclick="setStatus('${m.id}','open')">Otevřít</button><button class="btn small" onclick="setStatus('${m.id}','locked')">Zamknout</button><button class="btn good small" onclick="result('${m.id}')">Výsledek</button><button class="btn small" onclick="setStatus('${m.id}','finished')">Dohráno</button></div></div>`).join('')}</div></div>`;
+}
+async function refreshSilent(force=false){
+  if(!me)return;
+  if(Date.now()<editingUntil)return;
+  const ae=document.activeElement;
+  if(!force && page==='admin' && ae && ['INPUT','TEXTAREA','SELECT'].includes(ae.tagName))return;
+  try{data=await api('/app');me=(await api('/me')).user;let sig=renderSignature();if(force||sig!==__lastRenderSignature){render()}}catch(e){}
+}
+
+// v51 overrides: lepší pořadí, preview zápasu a bezpečnější přidání zápasu
+function rank(){
+  let top=data.ranking||[];
+  let updated=new Date().toLocaleString('cs-CZ');
+  return `<div class=card><div class=rank-legend><b>1b</b> trefená výhra/remíza/prohra · <b>3b</b> přesný výsledek · <b>Body</b> určují pořadí</div><div class=rank-table-wrap><div class=rank-table><div class=rank-head><div>#</div><div>Tipér</div><div>1b</div><div>3b</div><div>Body</div></div>${top.length?top.map((u,i)=>`<div class="rank-row ${u.id==me.id?'my-row':''}"><div class=medal>${i==0?'🥇':i==1?'🥈':i==2?'🥉':i+1}</div><div class=rank-nick title="${displayUser(u)}">${displayUser(u)}</div><div class=rank-cell>${u.hit_1||0}</div><div class=rank-cell>${u.hit_3||0}</div><div class="rank-cell rank-total">${u.points||0}</div></div>`).join(''):'<div class=notice>Zatím nejsou vyhodnocené tipy.</div>'}</div></div><div class=note style="margin-top:8px">Aktualizováno: ${updated}</div></div>`
+}
+function teamSelect(id,selected=''){
+  const opts=(data&&data.teamOptions?data.teamOptions:[]).filter(Boolean);
+  return `<select id="${id}" class="input" onchange="updateTeamPreview()">${opts.map(t=>`<option value="${esc(t)}" ${t===selected?'selected':''}>${esc(flagOf(t))} ${esc(t)}</option>`).join('')}</select>`;
+}
+function updateTeamPreview(){
+  const box=document.getElementById('teamPreview');
+  if(!box)return;
+  const h=document.getElementById('homeTeam')?.value||'';
+  const a=document.getElementById('awayTeam')?.value||'';
+  box.innerHTML=`<div><b>${esc(flagOf(h))}</b><span>${esc(h||'Domácí')}</span></div><strong>VS</strong><div><b>${esc(flagOf(a))}</b><span>${esc(a||'Hosté')}</span></div>`;
+}
+async function addMatch(){
+  await withBusy('Přidávám…',async()=>{
+    const home=document.getElementById('homeTeam')?.value||'';
+    const away=document.getElementById('awayTeam')?.value||'';
+    const start=document.getElementById('startTime')?.value||'';
+    const ph=document.getElementById('phaseIn')?.value||'Zápas';
+    if(!home||!away){alert('Vyber oba týmy.');return}
+    if(home===away){alert('Vyber dva různé týmy.');return}
+    if(!start){alert('Doplň datum a čas výkopu. Bez času se zápas nedá správně zobrazit ani uzamknout.');return}
+    adminTab='import';
+    let r=await api('/admin/add-match',{method:'POST',body:JSON.stringify({phase:ph,home,away,start_time:start})});
+    await refreshSilent(true);
+    setTimeout(()=>{setAdminTab('import');updateTeamPreview()},0);
+    alert(r.exists?'Zápas už v rozpisu existoval, proto se znovu nepřidal.':'Zápas byl přidán. Vlajky se doplnily automaticky.');
+  })
+}
+function render(){
+  const rootEl=document.getElementById('root');
+  if(!me){rootEl.innerHTML=loginScreen();return}
+  if(!document.getElementById('app-main')){rootEl.innerHTML=topbar()+`<main id=app-main class=app></main>`+nav()}
+  updateHeader();
+  const main=document.getElementById('app-main'); if(main)main.innerHTML=pageContent();
+  updateNav();
+  if(page==='admin')setTimeout(updateTeamPreview,0);
+  __lastRenderSignature=renderSignature();
+  startRealtime();
+}
+
+function pageContent(){let pages={home,tips,rank,rules,profile,bets:betsPage,admin};return (pages[page]||home)()}
+function updateHeader(){
+  if(!me||!data)return;
+  const c=competition(),u=userName(),{st,pos,pct,ev}=userStats(),total=st.tips_count||0;
+  const sub=document.querySelector('.brand-sub'); if(sub)sub.textContent=c.name||'FIFA World Cup 2026';
+  const meta=document.querySelectorAll('.meta-value'); if(meta[0])meta[0].textContent=sectionTitle(); if(meta[1])meta[1].textContent=u;
+  const nums=document.querySelectorAll('.stat-chip strong');
+  if(nums[0])nums[0].textContent=(pos||'—')+'.'; if(nums[1])nums[1].textContent=st.points||0; if(nums[2])nums[2].textContent=pct+'%'; if(nums[3])nums[3].textContent=ev+'/'+total;
+}
+function updateNav(){const old=document.querySelector('nav.bottom'); if(old)old.outerHTML=nav()}
+function render(){
+  const rootEl=document.getElementById('root');
+  if(!me){rootEl.innerHTML=loginScreen();return}
+  if(!document.getElementById('app-main')){rootEl.innerHTML=topbar()+`<main id=app-main class=app></main>`+nav()}
+  updateHeader();
+  const main=document.getElementById('app-main'); if(main)main.innerHTML=pageContent();
+  updateNav();
+  __lastRenderSignature=renderSignature();
+  startRealtime();
+}
+load();
+if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(regs=>Promise.all(regs.map(r=>r.unregister()))).catch(()=>{})}
+</script></body></html>
